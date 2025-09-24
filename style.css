@@ -1,14 +1,15 @@
-/* Reset */
+/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Background image container */
+/* === HERO SECTION === */
 .hero-image {
   width: 100%;
   height: 100vh;
+  background-image: url('moja-fotka-desktop.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,40 +17,35 @@
   opacity: 0;
 }
 
-/* Default desktop image */
-.hero-image {
-  background-image: url('moja-fotka-desktop.jpg');
-}
-
-/* Mobile override */
+/* === MOBILE OVERRIDE === */
 @media (max-width: 768px) {
   .hero-image {
     background-image: url('moja-fotka-mob.jpg');
   }
 }
 
-/* Countdown timer */
+/* === COUNTDOWN TIMER === */
 #countdown {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: transparent;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
   font-family: 'Share Tech Mono', monospace;
   font-size: 22px;
   padding: 12px 18px;
-  border: 2px solid white;
+  border: 2px solid #fff;
   border-radius: 6px;
   z-index: 999;
   opacity: 0;
 }
 
-/* Fade-in effect */
+/* === FADE-IN EFFECTS === */
 .fade-in {
   animation: fadeInTimer 3s ease-in-out forwards;
 }
 
-/* Animations */
+/* === ANIMATIONS === */
 @keyframes fadeInBg {
   to { opacity: 1; }
 }
@@ -58,7 +54,7 @@
   to { opacity: 1; }
 }
 
-/* Optional: hide audio player */
+/* === AUDIO PLAYER HIDDEN === */
 audio {
   display: none;
 }

@@ -1,0 +1,64 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background image container */
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeInBg 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+/* Default desktop image */
+.hero-image {
+  background-image: url('moja-fotka-desktop.jpg');
+}
+
+/* Mobile override */
+@media (max-width: 768px) {
+  .hero-image {
+    background-image: url('moja-fotka-mob.jpg');
+  }
+}
+
+/* Countdown timer */
+#countdown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 22px;
+  padding: 12px 18px;
+  border: 2px solid white;
+  border-radius: 6px;
+  z-index: 999;
+  opacity: 0;
+}
+
+/* Fade-in effect */
+.fade-in {
+  animation: fadeInTimer 3s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes fadeInBg {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInTimer {
+  to { opacity: 1; }
+}
+
+/* Optional: hide audio player */
+audio {
+  display: none;
+}

@@ -1,73 +1,9 @@
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-  <meta charset="UTF-8">
-  <title>LAstarworks</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="LAstarworks Teaser">
+<meta property="og:description" content="The art of having fun is heading to space.">
+<meta property="og:image" content="https://www.lastarworks.space/moja-fotka-desktop.jpg">
+<meta property="og:url" content="https://www.lastarworks.space">
+<meta property="og:type" content="website">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-  <!-- Open Graph meta tags -->
-  <meta property="og:title" content="LAstarworks Teaser">
-  <meta property="og:description" content="Pripremi se za lansiranje – uskoro dolazi nešto posebno.">
-  <meta property="og:image" content="https://www.lastarworks.space/moja-fotka-mob.jpg">
-  <meta property="og:url" content="https://www.lastarworks.space">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter card -->
-  <meta name="twitter:card" content="summary_large_image">
-</head>
-<body>
-  <div class="hero-image"></div>
-
-  <!-- Audio -->
-  <audio id="bg-audio" loop>
-    <source src="ok.mp3" type="audio/mpeg">
-    Tvoj browser ne podržava audio element.
-  </audio>
-
-  <!-- Countdown -->
-  <div id="countdown" class="fade-in"></div>
-
-  <script>
-    // === Countdown ===
-    const countdownElement = document.getElementById("countdown");
-    const targetDate = new Date("2026-06-30T00:00:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        countdownElement.innerHTML = "00:00:00:00";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      countdownElement.innerHTML =
-        `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // === Audio unlock on first interaction ===
-    const audio = document.getElementById("bg-audio");
-
-    function playAudio() {
-      if (audio && audio.paused) {
-        audio.play().catch(() => {});
-      }
-    }
-
-    document.addEventListener("click", playAudio, { once: true });
-    document.addEventListener("touchstart", playAudio, { once: true });
-  </script>
-</body>
-</html> 
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image"> 

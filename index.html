@@ -4,12 +4,8 @@
   <meta charset="UTF-8">
   <title>LAstarworks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-  <!-- Open Graph meta tags -->
   <meta property="og:title" content="LAstarworks">
   <meta property="og:description" content="The art of having fun is heading to space.">
   <meta property="og:image" content="https://www.lastarworks.space/moja-fotka-mob.jpg">
@@ -17,24 +13,24 @@
   <meta property="og:type" content="website">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-
-  <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-  <!-- Background layer -->
   <div class="background-layer"></div>
 
-  <!-- Social icons top -->
-  <div class="social-top">
-    <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook" class="pulse">
+  <!-- Social icons with labels -->
+  <div class="social-row">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item pulse">
       <img src="fb.svg" alt="Facebook">
+      <span>Facebook</span>
     </a>
-    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram" class="pulse">
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item pulse">
       <img src="ig.svg" alt="Instagram">
+      <span>Instagram</span>
     </a>
-    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" aria-label="AstroBin" class="pulse">
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item pulse">
       <img src="astrobin.svg" alt="AstroBin">
+      <span>AstroBin</span>
     </a>
   </div>
 
@@ -56,7 +52,6 @@
   </footer>
 
   <script>
-    // === Countdown ===
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -81,15 +76,12 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // === Audio unlock on first interaction (mobile safe) ===
     const audio = document.getElementById("bg-audio");
-
     function playAudio() {
       if (audio && audio.paused) {
         audio.play().catch(() => {});
       }
     }
-
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
   </script>

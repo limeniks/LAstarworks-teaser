@@ -22,8 +22,29 @@
   <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
+  <!-- Background layer -->
+  <div class="background-layer"></div>
+
+  <!-- Social icons top -->
+  <div class="social-top">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook" class="pulse">
+      <img src="fb.svg" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram" class="pulse">
+      <img src="ig.svg" alt="Instagram">
+    </a>
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" aria-label="AstroBin" class="pulse">
+      <img src="astrobin.svg" alt="AstroBin">
+    </a>
+  </div>
+
   <!-- Hero background -->
-  <div class="hero-image"></div>
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1>SPACE</h1>
+      <div id="countdown"></div>
+    </div>
+  </div>
 
   <!-- Background audio -->
   <audio id="bg-audio" loop>
@@ -31,8 +52,10 @@
     Tvoj browser ne podržava audio element.
   </audio>
 
-  <!-- Countdown -->
-  <div id="countdown" class="fade-in"></div>
+  <!-- Footer -->
+  <footer>
+    © LAstarworks.space — All rights reserved
+  </footer>
 
   <script>
     // === Countdown ===

@@ -1,110 +1,72 @@
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-.background-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: -2;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100vh;
-  background-image: url('moja-fotka-desktop.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: fadeInBg 2s ease-in-out forwards;
-  opacity: 0;
-  z-index: 1;
-}
-
-@media screen and (max-width: 768px) {
-  .hero-image {
-    background-image: url('moja-fotka-mob.jpg');
-    background-size: contain;
-  }
-}
-
-.countdown-bottom {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  padding: 10px 20px;
-  border: 2px solid white;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000;
   color: white;
-  font-family: 'Share Tech Mono', monospace;
-  z-index: 999;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* === SOCIAL ICONS TOP === */
-.social-row {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
+.container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  z-index: 999;
+  padding: 40px 20px;
 }
 
-.social-item {
+.title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.countdown {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.icon-panel {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.pulse-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.social-item span {
   color: white;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 14px;
-  opacity: 0.6;
-  transition: opacity 0.8s ease;
 }
 
-.social-item:hover span {
+.icon-placeholder {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  margin-bottom: 8px;
+}
+
+.icon-label {
+  font-size: 0.9em;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.pulse-icon:hover .icon-label {
   opacity: 1;
 }
 
-.social-item img {
-  width: 24px;
-  height: 24px;
-  display: block;
-  opacity: 1 !important;
-  filter: none !important;
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* === NAVIGATION ICONS ABOVE COUNTDOWN === */
-.nav-row {
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 40px;
-  z-index: 999;
+.footer-info {
+  text-align: center;
+  font-size: 0.8em;
+  opacity: 0.6;
 }
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 14px;[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/kenjisaitovn/lzdhunter_client/tree/d217ca50fded79cc6d3aa8d5750723caa65d342c/spinner%2Findex.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/Muaykhao86/Eurobrake-1.0/tree/5f0dbfd3a81f93a6c19cebf52dae3ec6ac0b98ba/components%2FCountDownBanner.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "2")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/dj9308/JS_Momontum/tree/0897079fa7323c24ffbf89eb74e25849a3b34325/Assign_5%2Findex.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "3")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/devtinatina/keunsup-military-dday/tree/08dfd6166424b78401ecca5bf2bcc66f7bf293b5/clock.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "4")

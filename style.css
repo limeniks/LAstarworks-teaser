@@ -1,72 +1,117 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  background-color: #000;
+  box-sizing: border-box;
+}
+
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -2;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  background-image: url('moja-fotka-desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeInBg 2s ease-in-out forwards;
+  opacity: 0;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-image {
+    background-image: url('moja-fotka-mob.jpg');
+    background-size: contain;
+  }
+}
+
+.countdown-bottom {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 999;
 }
 
-.container {
+/* === SOCIAL ICONS WITH LABELS === */
+.social-row {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.social-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-}
-
-.title {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.countdown {
-  font-size: 1.5em;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
-}
-
-.icon-panel {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.pulse-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 6px;
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-item span {
   color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.8s ease;
 }
 
-.icon-placeholder {
-  width: 60px;
-  height: 60px;
-  background-color: white;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  margin-bottom: 8px;
-}
-
-.icon-label {
-  font-size: 0.9em;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-
-.pulse-icon:hover .icon-label {
+.social-item:hover span {
   opacity: 1;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
+.social-item img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  opacity: 1 !important;
+  filter: none !important;
 }
 
-.footer-info {
+/* Puls efekt */
+.active-pulse {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+/* Fade-in pozadine */
+@keyframes fadeInBg {
+  to { opacity: 1; }
+}
+
+audio {
+  display: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
   text-align: center;
-  font-size: 0.8em;
-  opacity: 0.6;
+  font-size: 12px;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 999;
 }

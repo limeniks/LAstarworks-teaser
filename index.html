@@ -91,23 +91,33 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    // Valoviti puls za ikone
+    // Valoviti puls u loopu: 3 vala, pauza 3s
     const icons = document.querySelectorAll('.social-item');
-    function wavePulse(index = 0) {
-      if (icons.length === 0) return;
+    let waveCount = 0;
+
+    function wavePulseOnce(index = 0) {
+      if (index >= icons.length) {
+        waveCount++;
+        if (waveCount < 3) {
+          setTimeout(() => wavePulseOnce(0), 600);
+        } else {
+          waveCount = 0;
+          setTimeout(() => wavePulseOnce(0), 3000); // pauza 3 sekunde
+        }
+        return;
+      }
 
       const icon = icons[index];
       icon.classList.add('active-pulse');
 
       setTimeout(() => {
         icon.classList.remove('active-pulse');
-      }, 800);
+      }, 500);
 
-      const nextIndex = (index + 1) % icons.length;
-      const delay = Math.random() * 2000 + 1000;
-      setTimeout(() => wavePulse(nextIndex), delay);
+      setTimeout(() => wavePulseOnce(index + 1), 200);
     }
-    wavePulse();
+
+    wavePulseOnce();
   </script>
 </body>
 </html>

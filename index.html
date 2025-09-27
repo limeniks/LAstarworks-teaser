@@ -1,77 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAstarworks Teaser</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>LAstarworks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="LAstarworks">
+  <meta property="og:description" content="The art of having fun is heading to space.">
+  <meta property="og:image" content="https://www.lastarworks.space/moja-fotka-mob.jpg">
+  <meta property="og:url" content="https://www.lastarworks.space">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">LAstarworks</h1>
+  <div class="background-layer"></div>
 
-    <div class="countdown">
-      <span id="days">00</span>d :
-      <span id="hours">00</span>h :
-      <span id="minutes">00</span>m :
-      <span id="seconds">00</span>s
-    </div>
-
-    <div class="icon-panel">
-      <a href="observatory.html" class="pulse-icon">
-        <div class="icon-placeholder"></div>
-        <span class="icon-label">Observatory</span>
-      </a>
-      <a href="gallery.html" class="pulse-icon">
-        <div class="icon-placeholder"></div>
-        <span class="icon-label">Gallery</span>
-      </a>
-      <a href="about.html" class="pulse-icon">
-        <div class="icon-placeholder"></div>
-        <span class="icon-label">About</span>
-      </a>
-    </div>
-
-    <div class="footer-info">
-      © 2025 Limeniks Astro Starworks. All rights reserved.
-    </div>
-  </div>
-
-  <script>
-    // Countdown logic
-    const targetDate = new Date("2025-12-31T23:59:59").getTime();
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    };
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</body>
-</html>  <!-- Navigation icons above countdown -->
-  <div class="nav-row">
-    <a href="galerija.html" class="nav-item">
-      <img src="galerija.svg" alt="Galerija">
-      <span>Galerija</span>
+  <div class="social-row">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
+      <img src="fb.svg" alt="Facebook">
+      <span>Facebook</span>
     </a>
-    <a href="onama.html" class="nav-item">
-      <img src="onama.svg" alt="O nama">
-      <span>O nama</span>
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
+      <img src="ig.svg" alt="Instagram">
+      <span>Instagram</span>
     </a>
-    <a href="kontakt.html" class="nav-item">
-      <img src="kontakt.svg" alt="Kontakt">
-      <span>Kontakt</span>
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
+      <img src="astrobin.svg" alt="AstroBin">
+      <span>AstroBin</span>
+    </a>
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
+      <img src="youtube.svg" alt="YouTube">
+      <span>YouTube</span>
     </a>
   </div>
 
@@ -150,5 +119,4 @@
     waveCycle('forward');
   </script>
 </body>
-</html> 
-
+</html>

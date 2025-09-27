@@ -79,6 +79,11 @@
   opacity: 1;
 }
 
+.social-item img {
+  width: 28px;
+  height: 28px;
+}
+
 .active-pulse {
   transform: scale(1.3);
   opacity: 1;

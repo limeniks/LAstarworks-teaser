@@ -67,7 +67,7 @@
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  transition: transform 0.3s ease, opacity 0.8s ease;
+  transition: transform 0.3s ease;
 }
 
 .social-item span {
@@ -83,10 +83,11 @@
 }
 
 .social-item img {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: block;
   opacity: 1 !important;
+  filter: none !important;
 }
 
 /* Puls efekt */

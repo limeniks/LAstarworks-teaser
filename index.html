@@ -91,33 +91,32 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    // Valoviti puls u loopu: 3 vala, pauza 3s
+    // Valoviti puls: lijevo → desno → lijevo → pauza 5s → loop
     const icons = document.querySelectorAll('.social-item');
-    let waveCount = 0;
 
-    function wavePulseOnce(index = 0) {
-      if (index >= icons.length) {
-        waveCount++;
-        if (waveCount < 3) {
-          setTimeout(() => wavePulseOnce(0), 600);
-        } else {
-          waveCount = 0;
-          setTimeout(() => wavePulseOnce(0), 3000); // pauza 3 sekunde
-        }
-        return;
-      }
+    function waveCycle(direction = 'forward') {
+      const sequence = direction === 'forward' ? [...icons] : [...icons].reverse();
 
-      const icon = icons[index];
-      icon.classList.add('active-pulse');
+      sequence.forEach((icon, i) => {
+        setTimeout(() => {
+          icon.classList.add('active-pulse');
+          setTimeout(() => icon.classList.remove('active-pulse'), 500);
+        }, i * 200);
+      });
+
+      const totalDuration = sequence.length * 200 + 500;
+      const nextDirection = direction === 'forward' ? 'backward' : 'forward';
 
       setTimeout(() => {
-        icon.classList.remove('active-pulse');
-      }, 500);
-
-      setTimeout(() => wavePulseOnce(index + 1), 200);
+        if (nextDirection === 'forward') {
+          setTimeout(() => waveCycle(nextDirection), 5000); // pauza 5 sekundi
+        } else {
+          waveCycle(nextDirection);
+        }
+      }, totalDuration);
     }
 
-    wavePulseOnce();
+    waveCycle('forward');
   </script>
 </body>
 </html>

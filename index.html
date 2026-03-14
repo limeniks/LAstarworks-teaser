@@ -5,24 +5,17 @@
   <title>LAstarworks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=80">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=70">
-
-  <!-- Meta -->
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
   <meta name="theme-color" content="#000000">
 
-  <!-- Icons -->
   <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 </head>
 
 <body>
 
-  <!-- BACKGROUND -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
@@ -30,29 +23,24 @@
     </video>
   </div>
 
-  <!-- SOCIAL ICONS -->
   <div class="social-row">
     <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
       <img src="fb.svg"><span>Facebook</span>
     </a>
-
     <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
       <img src="ig.svg"><span>Instagram</span>
     </a>
-
     <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
       <img src="astrobin.svg"><span>AstroBin</span>
     </a>
-
     <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
       <img src="youtube.svg"><span>YouTube</span>
     </a>
   </div>
 
-  <!-- LAUNCH BUTTON -->
+  <!-- LAUNCH -->
   <a href="about.html" class="enter-space-btn">LAUNCH</a>
 
-  <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom"></div>
 
   <!-- AUDIO -->
@@ -60,10 +48,8 @@
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FOOTER -->
   <footer>© LAstarworks.space — All rights reserved</footer>
 
-  <!-- SCRIPT -->
   <script>
     /* COUNTDOWN */
     const countdownElement = document.getElementById("countdown");
@@ -96,7 +82,7 @@
     /* AUDIO UNLOCK */
     const audio = document.getElementById("bg-audio");
     function playAudio() {
-      if (audio && audio.paused) audio.play().catch(() => {});
+      if (audio.paused) audio.play().catch(() => {});
     }
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });

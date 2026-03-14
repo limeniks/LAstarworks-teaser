@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=40">
+  <link rel="stylesheet" href="style.css?v=50">
 
   <!-- Meta -->
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
@@ -50,30 +50,10 @@
   </div>
 
   <!-- LAUNCH BUTTON -->
-  <div class="enter-space-btn" id="openMenu">LAUNCH</div>
+  <a href="about.html" class="enter-space-btn">LAUNCH</a>
 
   <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom"></div>
-
-  <!-- AUDIO -->
-  <audio id="bg-audio" loop>
-    <source src="ok.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- FULLSCREEN MENU -->
-  <div class="fullscreen-menu" id="menu">
-    <div class="menu-close" id="closeMenu">CLOSE</div>
-
-    <a href="about.html" class="menu-item" id="openAbout">ABOUT THE PROJECT</a>
-    <a href="#" class="menu-item">OBSERVATORY</a>
-    <a href="#" class="menu-item">GALLERY</a>
-    <a href="#" class="menu-item">CONTACT</a>
-  </div>
-
-  <!-- ABOUT OVERLAY (SPA) -->
-  <div id="aboutOverlay" class="subpage-overlay">
-    <div class="subpage-inner" id="aboutContent"></div>
-  </div>
 
   <!-- FOOTER -->
   <footer>© LAstarworks.space — All rights reserved</footer>
@@ -108,22 +88,6 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* AUDIO UNLOCK */
-    const audio = document.getElementById("bg-audio");
-    function playAudio() {
-      if (audio && audio.paused) audio.play().catch(() => {});
-    }
-    document.addEventListener("click", playAudio, { once: true });
-    document.addEventListener("touchstart", playAudio, { once: true });
-
-    /* MENU */
-    const menu = document.getElementById("menu");
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-
-    openMenu.onclick = () => menu.classList.add("active");
-    closeMenu.onclick = () => menu.classList.remove("active");
-
     /* WAVE PULSE */
     const icons = document.querySelectorAll('.social-item');
 
@@ -150,29 +114,6 @@
     }
 
     waveCycle('forward');
-
-    /* ABOUT LOADER (SPA) */
-    const aboutOverlay = document.getElementById("aboutOverlay");
-    const aboutContent = document.getElementById("aboutContent");
-    const openAbout = document.getElementById("openAbout");
-
-    openAbout.onclick = (e) => {
-      e.preventDefault();
-
-      fetch("about.html")
-        .then(res => res.text())
-        .then(html => {
-          aboutContent.innerHTML = `
-            <div class="close-about" id="closeAbout">CLOSE</div>
-            ${html}
-          `;
-          aboutOverlay.classList.add("active");
-
-          document.getElementById("closeAbout").onclick = () => {
-            aboutOverlay.classList.remove("active");
-          };
-        });
-    };
   </script>
 
 </body>

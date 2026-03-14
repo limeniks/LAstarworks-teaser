@@ -80,13 +80,12 @@
   color: white;
   font-family: 'Share Tech Mono', monospace;
   font-size: 14px;
-  opacity: 1;
 }
 
 .social-item img {
   width: 24px;
   height: 24px;
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /* ORIGINAL PULSE EFFECT */
@@ -96,20 +95,21 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* ENTER SPACE */
+/* ENTER SPACE BUTTON */
 .enter-space-btn {
   position: fixed;
-  bottom: 80px;
+  bottom: 120px; /* pomaknuto gore */
   left: 50%;
   transform: translateX(-50%);
-  padding: 6px 18px;
+  padding: 8px 22px;
   border: 1px solid rgba(255,255,255,0.5);
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.35);
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
   font-size: 22px;
-  letter-spacing: 2px;
-  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
   cursor: pointer;
   z-index: 999;
   animation: softpulse 2.6s ease-in-out infinite;
@@ -128,30 +128,37 @@
   100% { transform: translateX(-50%) scale(1); }
 }
 
-/* FULLSCREEN MENU */
+/* FULLSCREEN MENU — DUGA EXPOZICIJA EFEKT */
 .fullscreen-menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(6px);
-  display: none;
+  backdrop-filter: blur(0px);
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 40px;
   z-index: 2000;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transition:
+    opacity 0.6s ease,
+    backdrop-filter 0.6s ease,
+    background 0.6s ease;
 }
 
 .fullscreen-menu.active {
-  display: flex;
   opacity: 1;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.65);
+  pointer-events: auto;
 }
 
+/* MENU ITEMS — fade-in kao zvijezde */
 .menu-item {
   font-size: 32px;
   color: white;
@@ -161,13 +168,21 @@
   background: rgba(0,0,0,0.4);
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s ease;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.menu-item:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.1);
+.fullscreen-menu.active .menu-item {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+.fullscreen-menu.active .menu-item:nth-child(2) { transition-delay: 0.1s; }
+.fullscreen-menu.active .menu-item:nth-child(3) { transition-delay: 0.2s; }
+.fullscreen-menu.active .menu-item:nth-child(4) { transition-delay: 0.3s; }
+.fullscreen-menu.active .menu-item:nth-child(5) { transition-delay: 0.4s; }
 
 .menu-close {
   position: absolute;
@@ -180,52 +195,12 @@
   border: 2px solid white;
   border-radius: 6px;
   background: rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  transition: 0.3s ease;
 }
 
 .menu-close:hover {
   transform: scale(1.1);
-}
-
-/* SUBPAGES */
-.subpage {
-  background: black;
-  color: white;
-  padding: 40px;
-  font-family: 'Share Tech Mono', monospace;
-  overflow-y: auto;
-}
-
-.sub-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.sub-header h1 {
-  font-size: 32px;
-  margin-top: 10px;
-}
-
-.back-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  border: 1px solid white;
-  padding: 6px 12px;
-  border-radius: 6px;
-}
-
-.sub-content {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.sub-content ul {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 20px;
 }
 
 /* FOOTER */

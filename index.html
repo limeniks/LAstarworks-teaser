@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=50">
+  <link rel="stylesheet" href="style.css?v=70">
 
   <!-- Meta -->
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
@@ -55,6 +55,11 @@
   <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom"></div>
 
+  <!-- AUDIO -->
+  <audio id="bg-audio" loop>
+    <source src="ok.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- FOOTER -->
   <footer>© LAstarworks.space — All rights reserved</footer>
 
@@ -87,6 +92,14 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    /* AUDIO UNLOCK */
+    const audio = document.getElementById("bg-audio");
+    function playAudio() {
+      if (audio && audio.paused) audio.play().catch(() => {});
+    }
+    document.addEventListener("click", playAudio, { once: true });
+    document.addEventListener("touchstart", playAudio, { once: true });
 
     /* WAVE PULSE */
     const icons = document.querySelectorAll('.social-item');

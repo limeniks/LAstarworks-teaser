@@ -54,7 +54,7 @@
   z-index: 999;
 }
 
-/* === SOCIAL ICONS WITH LABELS === */
+/* === SOCIAL ICONS === */
 .social-row {
   position: fixed;
   top: 20px;
@@ -83,10 +83,6 @@
   opacity: 1;
 }
 
-.social-item:hover span {
-  opacity: 1;
-}
-
 .social-item img {
   width: 24px;
   height: 24px;
@@ -95,13 +91,11 @@
   filter: none !important;
 }
 
-/* Puls efekt za social ikone */
 .active-pulse {
   transform: scale(1.3);
   opacity: 1;
 }
 
-/* Fade-in pozadine */
 @keyframes fadeInBg {
   to { opacity: 1; }
 }
@@ -122,27 +116,96 @@ footer {
 }
 
 /* ========================================================= */
-/* === ENTER SPACE BUTTON (pulsirajući, iznad countdowna) === */
+/* === ENTER SPACE BUTTON (identičan countdownu) =========== */
 /* ========================================================= */
 
 .enter-space-btn {
   position: fixed;
-  bottom: 110px; /* iznad countdowna */
+  bottom: 110px;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;
-  height: 60px;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   cursor: pointer;
-  animation: heartbeat 2s ease-in-out infinite;
+  animation: softpulse 2.6s ease-in-out infinite;
 }
 
-/* Puls kao otkucaji srca */
-@keyframes heartbeat {
+.enter-space-btn img {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
+/* smireni puls */
+@keyframes softpulse {
   0%   { transform: translateX(-50%) scale(1); }
-  10%  { transform: translateX(-50%) scale(1.18); }
-  20%  { transform: translateX(-50%) scale(1); }
-  30%  { transform: translateX(-50%) scale(1.12); }
-  40%  { transform: translateX(-50%) scale(1); }
+  50%  { transform: translateX(-50%) scale(1.08); }
   100% { transform: translateX(-50%) scale(1); }
+}
+
+/* ========================================================= */
+/* === FULLSCREEN MENU ===================================== */
+/* ========================================================= */
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(6px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fullscreen-menu.active {
+  display: flex;
+  opacity: 1;
+}
+
+.menu-item {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 32px;
+  color: white;
+  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Close button */
+.menu-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.menu-close:hover {
+  transform: scale(1.1);
 }

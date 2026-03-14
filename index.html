@@ -5,7 +5,7 @@
   <title>LAstarworks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Osnovni meta podaci -->
+  <!-- Meta -->
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
   <meta name="theme-color" content="#000000">
 
@@ -13,11 +13,11 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 
-  <!-- Stilovi i fontovi -->
+  <!-- Stilovi -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
+  <!-- OG -->
   <meta property="og:locale" content="hr_HR">
   <meta property="og:title" content="LAstarworks">
   <meta property="og:description" content="The art of having fun is heading to space.">
@@ -35,6 +35,7 @@
 </head>
 
 <body>
+
   <div class="background-layer"></div>
 
   <div class="video-wrapper">
@@ -45,8 +46,11 @@
   </div>
 
   <!-- ENTER SPACE BUTTON -->
-  <img src="ENTERSPACE.svg" class="enter-space-btn" alt="Enter Space">
+  <div class="enter-space-btn" id="enterBtn">
+    <img src="ENTERSPACE.svg" alt="Enter Space">
+  </div>
 
+  <!-- SOCIAL ICONS -->
   <div class="social-row">
     <a href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener noreferrer" class="social-item">
       <img src="fb.svg" alt="Facebook">
@@ -66,8 +70,20 @@
     </a>
   </div>
 
+  <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom"></div>
 
+  <!-- FULLSCREEN MENU -->
+  <div class="fullscreen-menu" id="menu">
+    <div class="menu-close" id="closeMenu">CLOSE</div>
+
+    <div class="menu-item">ASTROPHOTOGRAPHY</div>
+    <div class="menu-item">PROJECTS</div>
+    <div class="menu-item">BASTION</div>
+    <div class="menu-item">CONTACT</div>
+  </div>
+
+  <!-- AUDIO -->
   <audio id="bg-audio" loop>
     <source src="ok.mp3" type="audio/mpeg">
     Tvoj browser ne podržava audio element.
@@ -77,7 +93,9 @@
     © LAstarworks.space — All rights reserved
   </footer>
 
+  <!-- SCRIPT -->
   <script>
+    /* COUNTDOWN */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -102,6 +120,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    /* AUDIO AUTOPLAY */
     const audio = document.getElementById("bg-audio");
     function playAudio() {
       if (audio && audio.paused) {
@@ -111,6 +130,7 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
+    /* SOCIAL ICON WAVE */
     const icons = document.querySelectorAll('.social-item');
 
     function waveCycle(direction = 'forward') {
@@ -136,11 +156,20 @@
     }
 
     waveCycle('forward');
-  </script>
-</body>
-</html>
 
-    waveCycle('forward');
+    /* FULLSCREEN MENU LOGIC */
+    const enterBtn = document.getElementById("enterBtn");
+    const menu = document.getElementById("menu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    enterBtn.addEventListener("click", () => {
+      menu.classList.add("active");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
   </script>
+
 </body>
 </html>

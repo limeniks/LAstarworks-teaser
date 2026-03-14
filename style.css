@@ -95,10 +95,10 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* ENTER SPACE BUTTON */
+/* LAUNCH BUTTON */
 .enter-space-btn {
   position: fixed;
-  bottom: 120px; /* pomaknuto gore */
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 22px;
@@ -128,7 +128,7 @@
   100% { transform: translateX(-50%) scale(1); }
 }
 
-/* FULLSCREEN MENU — DUGA EXPOZICIJA EFEKT */
+/* FULLSCREEN MENU — DUGA EXPOZICIJA */
 .fullscreen-menu {
   position: fixed;
   top: 0;

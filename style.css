@@ -203,6 +203,45 @@
   overflow-x: hidden;
 }
 
+/* BACK BUTTON AS ARROW ONLY */
+.back-btn {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background: rgba(0,0,0,0.45);
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  z-index: 1000;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* show only arrow character */
+.back-btn::before {
+  content: '←';
+  display: inline-block;
+  transform: translateX(0);
+}
+
+/* remove any visible text inside anchor (if present) */
+.back-btn span {
+  display: none;
+}
+
+/* hover/tap feedback */
+.back-btn:hover,
+.back-btn:active {
+  transform: translateX(-4px);
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.28);
+}
+
 /* CYBERPUNK BACKGROUND */
 .about-bg {
   position: fixed;
@@ -283,17 +322,17 @@
   100% { transform: translate(1px,-1px); }
 }
 
-/* TEXT REVEAL — FASTER */
+/* TEXT REVEAL — VERY FAST (0.45s) */
 .sub-content, .sub-header h1 {
-  animation: textReveal 1.5s ease forwards;
+  animation: textReveal 0.45s cubic-bezier(.2,.9,.2,1) forwards;
   filter: blur(20px);
   opacity: 0;
 }
 
 @keyframes textReveal {
-  0%   { opacity: 0; filter: blur(20px); }
-  50%  { opacity: 0.6; filter: blur(8px); }
-  100% { opacity: 1; filter: blur(0px); }
+  0%   { opacity: 0; filter: blur(20px); transform: translateY(6px); }
+  60%  { opacity: 0.8; filter: blur(6px); transform: translateY(2px); }
+  100% { opacity: 1; filter: blur(0px); transform: translateY(0); }
 }
 
 /* FOOTER */

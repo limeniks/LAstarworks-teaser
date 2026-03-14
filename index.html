@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=80">
+  <link rel="stylesheet" href="style.css?v=90">
 
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
   <meta name="theme-color" content="#000000">
@@ -16,6 +16,7 @@
 
 <body>
 
+  <!-- BACKGROUND -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
@@ -23,6 +24,7 @@
     </video>
   </div>
 
+  <!-- SOCIAL ICONS -->
   <div class="social-row">
     <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
       <img src="fb.svg"><span>Facebook</span>
@@ -38,9 +40,10 @@
     </a>
   </div>
 
-  <!-- LAUNCH -->
-  <a href="about.html" class="enter-space-btn">LAUNCH</a>
+  <!-- LAUNCH BUTTON -->
+  <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
+  <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom"></div>
 
   <!-- AUDIO -->
@@ -48,8 +51,20 @@
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- FULLSCREEN MENU -->
+  <div class="fullscreen-menu" id="menu">
+    <div class="menu-close" id="closeMenu">CLOSE</div>
+
+    <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
+    <a href="observatory.html" class="menu-item">OBSERVATORY</a>
+    <a href="gallery.html" class="menu-item">GALLERY</a>
+    <a href="contact.html" class="menu-item">CONTACT</a>
+  </div>
+
+  <!-- FOOTER -->
   <footer>© LAstarworks.space — All rights reserved</footer>
 
+  <!-- SCRIPT -->
   <script>
     /* COUNTDOWN */
     const countdownElement = document.getElementById("countdown");
@@ -86,6 +101,14 @@
     }
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
+
+    /* MENU */
+    const menu = document.getElementById("menu");
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    openMenu.onclick = () => menu.classList.add("active");
+    closeMenu.onclick = () => menu.classList.remove("active");
 
     /* WAVE PULSE */
     const icons = document.querySelectorAll('.social-item');

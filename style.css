@@ -177,11 +177,6 @@
   transform: translateY(0);
 }
 
-.fullscreen-menu.active .menu-item:nth-child(2) { transition-delay: 0.1s; }
-.fullscreen-menu.active .menu-item:nth-child(3) { transition-delay: 0.2s; }
-.fullscreen-menu.active .menu-item:nth-child(4) { transition-delay: 0.3s; }
-.fullscreen-menu.active .menu-item:nth-child(5) { transition-delay: 0.4s; }
-
 .menu-close {
   position: absolute;
   top: 30px;
@@ -197,50 +192,124 @@
   transition: 0.3s ease;
 }
 
-.menu-close:hover {
-  transform: scale(1.1);
-}
-
-/* SUBPAGE */
+/* SUBPAGE BASE */
 .subpage {
   background: #000;
   color: #e6e6e6;
   padding: 40px;
   font-family: 'Orbitron', sans-serif;
   line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.sub-header {
-  text-align: center;
-  margin-bottom: 40px;
+/* CYBERPUNK BACKGROUND */
+.about-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('about-bg.jpg') center/cover no-repeat;
+  filter: blur(12px) brightness(0.6) contrast(1.2);
+  opacity: 0.4;
+  z-index: -1;
+  pointer-events: none;
+  animation: glitchBlur 2s ease-in-out forwards;
 }
 
+/* glitch blur pulse */
+@keyframes glitchBlur {
+  0%   { filter: blur(40px) brightness(0.4) contrast(1.4); opacity: 0; }
+  20%  { filter: blur(20px) brightness(0.5) contrast(1.3); opacity: 0.2; }
+  40%  { filter: blur(30px) brightness(0.6) contrast(1.4); opacity: 0.3; }
+  60%  { filter: blur(15px) brightness(0.6) contrast(1.2); opacity: 0.35; }
+  100% { filter: blur(12px) brightness(0.6) contrast(1.2); opacity: 0.4; }
+}
+
+/* RGB SPLIT GLITCH */
+.about-bg::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: inherit;
+  mix-blend-mode: screen;
+  filter: blur(20px) hue-rotate(180deg);
+  opacity: 0.15;
+  animation: rgbShift 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes rgbShift {
+  0%   { transform: translate(0,0); }
+  50%  { transform: translate(3px,-3px); }
+  100% { transform: translate(-2px,2px); }
+}
+
+/* SCANLINES */
+.subpage::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+}
+
+/* NOISE */
+.subpage::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P4//8/AwAI/AL+zWx/AAAAAElFTkSuQmCC');
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  animation: noise 0.2s infinite;
+  z-index: 2;
+}
+
+@keyframes noise {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-1px,1px); }
+  100% { transform: translate(1px,-1px); }
+}
+
+/* TEXT REVEAL */
+.sub-content, .sub-header h1 {
+  animation: textReveal 3s ease forwards;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+@keyframes textReveal {
+  0%   { opacity: 0; filter: blur(20px); }
+  40%  { opacity: 0.3; filter: blur(12px); }
+  70%  { opacity: 0.7; filter: blur(6px); }
+  100% { opacity: 1; filter: blur(0px); }
+}
+
+/* GLITCH TITLE */
 .sub-header h1 {
-  font-size: 32px;
-  margin-top: 10px;
-  text-shadow: 0 0 12px rgba(255,255,255,0.25);
+  position: relative;
+  animation: textReveal 3s ease forwards, titleGlitch 2s infinite 3s;
 }
 
-.back-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  border: 1px solid white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.sub-content p,
-.sub-content li {
-  text-shadow: 0 0 6px rgba(255,255,255,0.15);
-  margin-bottom: 18px;
-}
-
-.sub-content ul {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 20px;
+@keyframes titleGlitch {
+  0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+  20% { text-shadow: -2px 0 red, 2px 0 cyan; }
+  40% { text-shadow: 3px 0 red, -3px 0 cyan; }
+  60% { text-shadow: -3px 0 red, 3px 0 cyan; }
+  80% { text-shadow: 1px 0 red, -1px 0 cyan; }
+  100% { text-shadow: 0 0 0; }
 }
 
 /* FOOTER */

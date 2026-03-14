@@ -103,10 +103,12 @@ body {
   width: 24px;
   height: 24px;
   opacity: 0.7;
+  transition: 0.2s ease;
 }
 
 .social-item:hover img {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 /* ========================================================= */
@@ -115,10 +117,10 @@ body {
 
 .enter-space-btn {
   position: fixed;
-  bottom: 80px; /* bliže countdownu */
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 6px 16px;
+  padding: 6px 18px;
   border: 1px solid rgba(255,255,255,0.5);
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.35);

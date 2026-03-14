@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>LAstarworks</title>
+  <meta charset="utf-8">
+  <title>LAstarworks — Goran Mandić (Limeniks)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=90">
+  <!-- SEO Meta -->
+  <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a long-term DIY observatory project combining astrophotography, STEM engineering, art installations and permaculture.">
+  <meta name="author" content="Goran Mandić (Limeniks)">
 
-  <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
-  <meta name="theme-color" content="#000000">
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=100">
+
+  <!-- JSON-LD Person Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Goran Mandić",
+    "alternateName": "Limeniks",
+    "url": "https://LAstarworks.space",
+    "sameAs": [
+      "https://www.instagram.com/lastarworks.space/",
+      "https://www.youtube.com/@LAstarworks",
+      "https://app.astrobin.com/u/LAstarworks.space#gallery"
+    ],
+    "jobTitle": "Maker, Photographer, Engineer, Artist"
+  }
+  </script>
 
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
-
 <body>
 
+  <!-- Background -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
@@ -23,32 +42,34 @@
     </video>
   </div>
 
+  <!-- Social Row -->
   <div class="social-row">
     <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
-      <img src="fb.svg"><span>Facebook</span>
+      <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
     <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
-      <img src="ig.svg"><span>Instagram</span>
+      <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
     <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
-      <img src="astrobin.svg"><span>AstroBin</span>
+      <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
     <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
-      <img src="youtube.svg"><span>YouTube</span>
+      <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
   </div>
 
-  <!-- LAUNCH -->
+  <!-- Launch Button opens fullscreen menu -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
+  <!-- Countdown -->
   <div id="countdown" class="countdown-bottom"></div>
 
-  <!-- AUDIO -->
+  <!-- Background Audio (plays after user interaction on mobile) -->
   <audio id="bg-audio" loop>
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FULLSCREEN MENU -->
+  <!-- Fullscreen Menu -->
   <div class="fullscreen-menu" id="menu">
     <div class="menu-close" id="closeMenu">CLOSE</div>
 
@@ -58,19 +79,21 @@
     <a href="contact.html" class="menu-item">CONTACT</a>
   </div>
 
-  <footer>© LAstarworks.space — All rights reserved</footer>
+  <!-- Footer with author line -->
+  <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
+  <!-- Scripts -->
   <script>
-    /* COUNTDOWN */
+    /* Countdown */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
     function updateCountdown() {
-      const now = new Date().getTime();
+      const now = Date.now();
       const distance = targetDate - now;
 
-      if (distance < 0) {
-        countdownElement.innerHTML = "00:00:00:00";
+      if (distance <= 0) {
+        countdownElement.textContent = "00:00:00:00";
         return;
       }
 
@@ -79,57 +102,49 @@
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
       const seconds = Math.floor((distance / 1000) % 60);
 
-      countdownElement.innerHTML =
-        `${String(days).padStart(2, '0')}:` +
-        `${String(hours).padStart(2, '0')}:` +
-        `${String(minutes).padStart(2, '0')}:` +
-        `${String(seconds).padStart(2, '0')}`;
+      countdownElement.textContent =
+        `${String(days).padStart(2,'0')}:` +
+        `${String(hours).padStart(2,'0')}:` +
+        `${String(minutes).padStart(2,'0')}:` +
+        `${String(seconds).padStart(2,'0')}`;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* AUDIO UNLOCK */
+    /* Audio unlock for mobile */
     const audio = document.getElementById("bg-audio");
     function playAudio() {
-      if (audio.paused) audio.play().catch(() => {});
+      if (audio && audio.paused) audio.play().catch(()=>{});
     }
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    /* MENU */
+    /* Menu open/close */
     const menu = document.getElementById("menu");
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenu.onclick = () => menu.classList.add("active");
-    closeMenu.onclick = () => menu.classList.remove("active");
+    openMenu.addEventListener("click", () => menu.classList.add("active"));
+    closeMenu.addEventListener("click", () => menu.classList.remove("active"));
 
-    /* WAVE PULSE */
+    /* Wave pulse for social icons */
     const icons = document.querySelectorAll('.social-item');
-
     function waveCycle(direction = 'forward') {
-      const sequence = direction === 'forward' ? [...icons] : [...icons].reverse();
-
-      sequence.forEach((icon, i) => {
+      const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
+      seq.forEach((icon, i) => {
         setTimeout(() => {
           icon.classList.add('active-pulse');
           setTimeout(() => icon.classList.remove('active-pulse'), 500);
         }, i * 200);
       });
-
-      const totalDuration = sequence.length * 200 + 500;
-      const nextDirection = direction === 'forward' ? 'backward' : 'forward';
-
+      const total = seq.length * 200 + 500;
+      const next = direction === 'forward' ? 'backward' : 'forward';
       setTimeout(() => {
-        if (nextDirection === 'forward') {
-          setTimeout(() => waveCycle(nextDirection), 5000);
-        } else {
-          waveCycle(nextDirection);
-        }
-      }, totalDuration);
+        if (next === 'forward') setTimeout(() => waveCycle(next), 5000);
+        else waveCycle(next);
+      }, total);
     }
-
     waveCycle('forward');
   </script>
 

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>LAstarworks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fontovi -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  <!-- Stilovi -->
-  <link rel="stylesheet" href="style.css?v=32">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css?v=40">
 
   <!-- Meta -->
   <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
   <meta name="theme-color" content="#000000">
 
-  <!-- Ikone -->
+  <!-- Icons -->
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 </head>
@@ -64,10 +64,15 @@
   <div class="fullscreen-menu" id="menu">
     <div class="menu-close" id="closeMenu">CLOSE</div>
 
-    <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
-    <a href="observatory.html" class="menu-item">OBSERVATORY</a>
-    <a href="gallery.html" class="menu-item">GALLERY</a>
-    <a href="contact.html" class="menu-item">CONTACT</a>
+    <a href="about.html" class="menu-item" id="openAbout">ABOUT THE PROJECT</a>
+    <a href="#" class="menu-item">OBSERVATORY</a>
+    <a href="#" class="menu-item">GALLERY</a>
+    <a href="#" class="menu-item">CONTACT</a>
+  </div>
+
+  <!-- ABOUT OVERLAY (SPA) -->
+  <div id="aboutOverlay" class="subpage-overlay">
+    <div class="subpage-inner" id="aboutContent"></div>
   </div>
 
   <!-- FOOTER -->
@@ -111,7 +116,7 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    /* FULLSCREEN MENU */
+    /* MENU */
     const menu = document.getElementById("menu");
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
@@ -119,7 +124,7 @@
     openMenu.onclick = () => menu.classList.add("active");
     closeMenu.onclick = () => menu.classList.remove("active");
 
-    /* ORIGINAL WAVE PULSE */
+    /* WAVE PULSE */
     const icons = document.querySelectorAll('.social-item');
 
     function waveCycle(direction = 'forward') {
@@ -145,6 +150,29 @@
     }
 
     waveCycle('forward');
+
+    /* ABOUT LOADER (SPA) */
+    const aboutOverlay = document.getElementById("aboutOverlay");
+    const aboutContent = document.getElementById("aboutContent");
+    const openAbout = document.getElementById("openAbout");
+
+    openAbout.onclick = (e) => {
+      e.preventDefault();
+
+      fetch("about.html")
+        .then(res => res.text())
+        .then(html => {
+          aboutContent.innerHTML = `
+            <div class="close-about" id="closeAbout">CLOSE</div>
+            ${html}
+          `;
+          aboutOverlay.classList.add("active");
+
+          document.getElementById("closeAbout").onclick = () => {
+            aboutOverlay.classList.remove("active");
+          };
+        });
+    };
   </script>
 
 </body>

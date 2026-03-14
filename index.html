@@ -1,54 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="UTF-8">
-  <title>LAstarworks.space</title>
+  <title>LAstarworks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=20">
+
+  <!-- Meta -->
+  <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Ikone -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+
+  <!-- Stilovi -->
+  <link rel="stylesheet" href="style.css?v=30">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="hr_HR">
+  <meta property="og:title" content="LAstarworks">
+  <meta property="og:description" content="The art of having fun is heading to space.">
+  <meta property="og:image" content="https://www.lastarworks.space/zweb.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.lastarworks.space">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LAstarworks">
+  <meta name="twitter:description" content="The art of having fun is heading to space.">
+  <meta name="twitter:image" content="https://www.lastarworks.space/zweb.png">
 </head>
 
 <body>
 
-  <!-- BACKGROUND VIDEO -->
+  <!-- BACKGROUND -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
       <source src="test.mp4" type="video/mp4">
+      Tvoj browser ne podržava video tag.
     </video>
   </div>
 
   <!-- SOCIAL ICONS -->
   <div class="social-row">
-
-    <a class="social-item" href="https://www.facebook.com/lastarworks.space" target="_blank">
-      <img src="fb.svg" alt="Facebook">
-      <span>Facebook</span>
+    <a href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener noreferrer" class="social-item">
+      <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
 
-    <a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank">
-      <img src="ig.svg" alt="Instagram">
-      <span>Instagram</span>
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener noreferrer" class="social-item">
+      <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
 
-    <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank">
-      <img src="astrobin.svg" alt="AstroBin">
-      <span>AstroBin</span>
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener noreferrer" class="social-item">
+      <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
 
-    <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank">
-      <img src="youtube.svg" alt="YouTube">
-      <span>YouTube</span>
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener noreferrer" class="social-item">
+      <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
-
   </div>
 
-  <!-- ENTER SPACE (TEXT VERSION) -->
-  <div class="enter-space-btn" id="openMenu">
-    ENTER SPACE
-  </div>
+  <!-- ENTER SPACE -->
+  <div class="enter-space-btn" id="openMenu">ENTER SPACE</div>
 
   <!-- COUNTDOWN -->
-  <div class="countdown-bottom" id="countdown">107:14:29:00</div>
+  <div id="countdown" class="countdown-bottom"></div>
+
+  <!-- AUDIO -->
+  <audio id="bg-audio" loop>
+    <source src="ok.mp3" type="audio/mpeg">
+    Tvoj browser ne podržava audio element.
+  </audio>
 
   <!-- FULLSCREEN MENU -->
   <div class="fullscreen-menu" id="menu">
@@ -61,18 +87,80 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>
-    © LAstarworks.space – All rights reserved
-  </footer>
+  <footer>© LAstarworks.space — All rights reserved</footer>
 
-  <!-- MENU SCRIPT -->
+  <!-- SCRIPT -->
   <script>
+    /* COUNTDOWN */
+    const countdownElement = document.getElementById("countdown");
+    const targetDate = new Date("2026-06-30T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "00:00:00:00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdownElement.innerHTML =
+        `${String(days).padStart(2, '0')}:` +
+        `${String(hours).padStart(2, '0')}:` +
+        `${String(minutes).padStart(2, '0')}:` +
+        `${String(seconds).padStart(2, '0')}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* AUDIO UNLOCK */
+    const audio = document.getElementById("bg-audio");
+    function playAudio() {
+      if (audio && audio.paused) audio.play().catch(() => {});
+    }
+    document.addEventListener("click", playAudio, { once: true });
+    document.addEventListener("touchstart", playAudio, { once: true });
+
+    /* FULLSCREEN MENU */
     const menu = document.getElementById("menu");
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
     openMenu.onclick = () => menu.classList.add("active");
     closeMenu.onclick = () => menu.classList.remove("active");
+
+    /* ORIGINAL WAVE PULSE */
+    const icons = document.querySelectorAll('.social-item');
+
+    function waveCycle(direction = 'forward') {
+      const sequence = direction === 'forward' ? [...icons] : [...icons].reverse();
+
+      sequence.forEach((icon, i) => {
+        setTimeout(() => {
+          icon.classList.add('active-pulse');
+          setTimeout(() => icon.classList.remove('active-pulse'), 500);
+        }, i * 200);
+      });
+
+      const totalDuration = sequence.length * 200 + 500;
+      const nextDirection = direction === 'forward' ? 'backward' : 'forward';
+
+      setTimeout(() => {
+        if (nextDirection === 'forward') {
+          setTimeout(() => waveCycle(nextDirection), 5000);
+        } else {
+          waveCycle(nextDirection);
+        }
+      }, totalDuration);
+    }
+
+    waveCycle('forward');
   </script>
 
 </body>

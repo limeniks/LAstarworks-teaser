@@ -1,50 +1,120 @@
-<h1>ABOUT THE PROJECT</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LAstarworks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<p>
-<strong>LAstarworks</strong> is a long‑term, fully independent project created by 
-<strong>Goran Mandić</strong>, known under the creative alias <strong>Limeniks</strong>.
-It grew naturally from years of work under <strong>Limeniks Artworks</strong> – a platform dedicated to visual storytelling, experimentation, and the joy of creating.
-</p>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<p>
-Through photography, video production, 3D printing, DIY engineering, STEM exploration, and artistic installations, the idea slowly took shape:  
-to build a <strong>personal, private astronomical observatory</strong>.
-</p>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css?v=50">
 
-<p>
-Not as a luxury.  
-Not as a status symbol.  
-But as a <strong>manifestation of creativity</strong>.  
-As a <strong>journey</strong>.  
-As a <strong>story about making something real</strong>.
-</p>
+  <!-- Meta -->
+  <meta name="description" content="LAstarworks — The art of having fun is heading to space.">
+  <meta name="theme-color" content="#000000">
 
-<p>
-LAstarworks combines:
-</p>
+  <!-- Icons -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+</head>
 
-<ul>
-  <li>STEM and hands‑on engineering</li>
-  <li>astrophotography and long‑exposure imaging</li>
-  <li>DIY construction and open‑source tools</li>
-  <li>artistic expression and visual identity</li>
-  <li>permaculture and sustainable living</li>
-  <li>storytelling and personal development</li>
-</ul>
+<body>
 
-<p>
-The observatory will stand <strong>in the middle of a garden</strong>, surrounded by vegetables, trees, and a permaculture ecosystem – a contrast between technology and nature, science and soil, sky and earth.  
-It will function both as a <strong>scientific tool</strong> and an <strong>art installation</strong>.
-</p>
+  <!-- BACKGROUND -->
+  <div class="background-layer"></div>
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline>
+      <source src="test.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<p>
-Every part of the project – design, engineering, construction, imaging, branding – is created by one person:  
-<strong>Goran Mandić (Limeniks)</strong>.
-</p>
+  <!-- SOCIAL ICONS -->
+  <div class="social-row">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
+      <img src="fb.svg"><span>Facebook</span>
+    </a>
 
-<p>
-LAstarworks is not just an observatory.  
-It is a story about learning, building, failing, improving, and moving forward.  
-A story about following curiosity.  
-A story about light – captured through long exposures, and created through long‑term dedication.
-</p>
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
+      <img src="ig.svg"><span>Instagram</span>
+    </a>
+
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
+      <img src="astrobin.svg"><span>AstroBin</span>
+    </a>
+
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
+      <img src="youtube.svg"><span>YouTube</span>
+    </a>
+  </div>
+
+  <!-- LAUNCH BUTTON -->
+  <a href="about.html" class="enter-space-btn">LAUNCH</a>
+
+  <!-- COUNTDOWN -->
+  <div id="countdown" class="countdown-bottom"></div>
+
+  <!-- FOOTER -->
+  <footer>© LAstarworks.space — All rights reserved</footer>
+
+  <!-- SCRIPT -->
+  <script>
+    /* COUNTDOWN */
+    const countdownElement = document.getElementById("countdown");
+    const targetDate = new Date("2026-06-30T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "00:00:00:00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdownElement.innerHTML =
+        `${String(days).padStart(2, '0')}:` +
+        `${String(hours).padStart(2, '0')}:` +
+        `${String(minutes).padStart(2, '0')}:` +
+        `${String(seconds).padStart(2, '0')}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* WAVE PULSE */
+    const icons = document.querySelectorAll('.social-item');
+
+    function waveCycle(direction = 'forward') {
+      const sequence = direction === 'forward' ? [...icons] : [...icons].reverse();
+
+      sequence.forEach((icon, i) => {
+        setTimeout(() => {
+          icon.classList.add('active-pulse');
+          setTimeout(() => icon.classList.remove('active-pulse'), 500);
+        }, i * 200);
+      });
+
+      const totalDuration = sequence.length * 200 + 500;
+      const nextDirection = direction === 'forward' ? 'backward' : 'forward';
+
+      setTimeout(() => {
+        if (nextDirection === 'forward') {
+          setTimeout(() => waveCycle(nextDirection), 5000);
+        } else {
+          waveCycle(nextDirection);
+        }
+      }, totalDuration);
+    }
+
+    waveCycle('forward');
+  </script>
+
+</body>
+</html>

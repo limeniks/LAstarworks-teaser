@@ -1,0 +1,22 @@
+<svg
+  width="260"
+  height="60"
+  viewBox="0 0 260 60"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <text
+    x="50%"
+    y="50%"
+    fill="#FFFFFF"
+    stroke="#FFFFFF"
+    stroke-width="1"
+    font-family="'Share Tech Mono', monospace"
+    font-size="22"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    style="letter-spacing: 2px;"
+  >
+    ENTER SPACE
+  </text>
+</svg>
+

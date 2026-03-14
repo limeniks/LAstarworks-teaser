@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>LAstarworks.space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body>
@@ -40,9 +40,9 @@
     </a>
   </div>
 
-  <!-- ENTER SPACE BUTTON -->
+  <!-- ENTER SPACE (TEXT VERSION) -->
   <div class="enter-space-btn" id="openMenu">
-    <img src="ENTERSPACE.svg" alt="Enter Space">
+    ENTER SPACE
   </div>
 
   <!-- COUNTDOWN -->
@@ -69,13 +69,8 @@
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenu.onclick = () => {
-      menu.classList.add("active");
-    };
-
-    closeMenu.onclick = () => {
-      menu.classList.remove("active");
-    };
+    openMenu.onclick = () => menu.classList.add("active");
+    closeMenu.onclick = () => menu.classList.remove("active");
   </script>
 
 </body>

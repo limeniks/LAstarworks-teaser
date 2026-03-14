@@ -1,258 +1,50 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<h1>ABOUT THE PROJECT</h1>
 
-/* BACKGROUND */
-.background-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: -2;
-}
+<p>
+<strong>LAstarworks</strong> is a long‑term, fully independent project created by 
+<strong>Goran Mandić</strong>, known under the creative alias <strong>Limeniks</strong>.
+It grew naturally from years of work under <strong>Limeniks Artworks</strong> – a platform dedicated to visual storytelling, experimentation, and the joy of creating.
+</p>
 
-.video-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
-}
+<p>
+Through photography, video production, 3D printing, DIY engineering, STEM exploration, and artistic installations, the idea slowly took shape:  
+to build a <strong>personal, private astronomical observatory</strong>.
+</p>
 
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: fadeInBg 2s ease-in-out forwards;
-  opacity: 0;
-}
+<p>
+Not as a luxury.  
+Not as a status symbol.  
+But as a <strong>manifestation of creativity</strong>.  
+As a <strong>journey</strong>.  
+As a <strong>story about making something real</strong>.
+</p>
 
-@keyframes fadeInBg {
-  to { opacity: 1; }
-}
+<p>
+LAstarworks combines:
+</p>
 
-/* COUNTDOWN */
-.countdown-bottom {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  padding: 10px 20px;
-  border: 2px solid white;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-family: 'Share Tech Mono', monospace;
-  z-index: 999;
-}
+<ul>
+  <li>STEM and hands‑on engineering</li>
+  <li>astrophotography and long‑exposure imaging</li>
+  <li>DIY construction and open‑source tools</li>
+  <li>artistic expression and visual identity</li>
+  <li>permaculture and sustainable living</li>
+  <li>storytelling and personal development</li>
+</ul>
 
-/* SOCIAL ICONS */
-.social-row {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  align-items: center;
-  z-index: 999;
-}
+<p>
+The observatory will stand <strong>in the middle of a garden</strong>, surrounded by vegetables, trees, and a permaculture ecosystem – a contrast between technology and nature, science and soil, sky and earth.  
+It will function both as a <strong>scientific tool</strong> and an <strong>art installation</strong>.
+</p>
 
-.social-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
+<p>
+Every part of the project – design, engineering, construction, imaging, branding – is created by one person:  
+<strong>Goran Mandić (Limeniks)</strong>.
+</p>
 
-.social-item span {
-  color: white;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 14px;
-}
-
-.social-item img {
-  width: 24px;
-  height: 24px;
-  opacity: 1;
-}
-
-/* ORIGINAL PULSE EFFECT */
-.active-pulse {
-  transform: scale(1.3);
-  opacity: 1;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* LAUNCH BUTTON */
-.enter-space-btn {
-  position: fixed;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 22px;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.35);
-  color: rgba(255,255,255,0.85);
-  font-size: 22px;
-  letter-spacing: 3px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 400;
-  cursor: pointer;
-  z-index: 999;
-  animation: softpulse 2.6s ease-in-out infinite;
-  transition: 0.25s ease;
-}
-
-.enter-space-btn:hover {
-  color: white;
-  border-color: white;
-  background-color: rgba(255,255,255,0.1);
-}
-
-@keyframes softpulse {
-  0%   { transform: translateX(-50%) scale(1); }
-  50%  { transform: translateX(-50%) scale(1.08); }
-  100% { transform: translateX(-50%) scale(1); }
-}
-
-/* FULLSCREEN MENU — DUGA EXPOZICIJA */
-.fullscreen-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(0px);
-  background: rgba(0,0,0,0);
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  z-index: 2000;
-  transition:
-    opacity 0.6s ease,
-    backdrop-filter 0.6s ease,
-    background 0.6s ease;
-}
-
-.fullscreen-menu.active {
-  opacity: 1;
-  backdrop-filter: blur(12px);
-  background: rgba(0,0,0,0.65);
-  pointer-events: auto;
-}
-
-/* MENU ITEMS — fade-in kao zvijezde */
-.menu-item {
-  font-size: 32px;
-  color: white;
-  padding: 12px 24px;
-  border: 2px solid white;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.4);
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.5s ease;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.fullscreen-menu.active .menu-item {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fullscreen-menu.active .menu-item:nth-child(2) { transition-delay: 0.1s; }
-.fullscreen-menu.active .menu-item:nth-child(3) { transition-delay: 0.2s; }
-.fullscreen-menu.active .menu-item:nth-child(4) { transition-delay: 0.3s; }
-.fullscreen-menu.active .menu-item:nth-child(5) { transition-delay: 0.4s; }
-
-.menu-close {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 26px;
-  color: white;
-  cursor: pointer;
-  padding: 8px 16px;
-  border: 2px solid white;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.4);
-  font-family: 'Orbitron', sans-serif;
-  transition: 0.3s ease;
-}
-
-.menu-close:hover {
-  transform: scale(1.1);
-}
-
-/* SUBPAGE (ABOUT, OBSERVATORY, ETC.) */
-.subpage {
-  background: #000;
-  color: #e6e6e6;
-  padding: 40px;
-  font-family: 'Orbitron', sans-serif;
-  line-height: 1.7;
-}
-
-.sub-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.sub-header h1 {
-  font-size: 32px;
-  margin-top: 10px;
-  text-shadow: 0 0 12px rgba(255,255,255,0.25);
-}
-
-.back-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  border: 1px solid white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.sub-content p,
-.sub-content li {
-  text-shadow: 0 0 6px rgba(255,255,255,0.15);
-  margin-bottom: 18px;
-}
-
-.sub-content ul {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 20px;
-}
-
-/* FOOTER */
-footer {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  color: white;
-  font-family: 'Share Tech Mono', monospace;
-  z-index: 999;
-}
+<p>
+LAstarworks is not just an observatory.  
+It is a story about learning, building, failing, improving, and moving forward.  
+A story about following curiosity.  
+A story about light – captured through long exposures, and created through long‑term dedication.
+</p>

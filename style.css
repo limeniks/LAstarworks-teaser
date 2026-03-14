@@ -283,33 +283,17 @@
   100% { transform: translate(1px,-1px); }
 }
 
-/* TEXT REVEAL */
+/* TEXT REVEAL — FASTER */
 .sub-content, .sub-header h1 {
-  animation: textReveal 3s ease forwards;
+  animation: textReveal 1.5s ease forwards;
   filter: blur(20px);
   opacity: 0;
 }
 
 @keyframes textReveal {
   0%   { opacity: 0; filter: blur(20px); }
-  40%  { opacity: 0.3; filter: blur(12px); }
-  70%  { opacity: 0.7; filter: blur(6px); }
+  50%  { opacity: 0.6; filter: blur(8px); }
   100% { opacity: 1; filter: blur(0px); }
-}
-
-/* GLITCH TITLE */
-.sub-header h1 {
-  position: relative;
-  animation: textReveal 3s ease forwards, titleGlitch 2s infinite 3s;
-}
-
-@keyframes titleGlitch {
-  0% { text-shadow: 2px 0 red, -2px 0 cyan; }
-  20% { text-shadow: -2px 0 red, 2px 0 cyan; }
-  40% { text-shadow: 3px 0 red, -3px 0 cyan; }
-  60% { text-shadow: -3px 0 red, 3px 0 cyan; }
-  80% { text-shadow: 1px 0 red, -1px 0 cyan; }
-  100% { text-shadow: 0 0 0; }
 }
 
 /* FOOTER */

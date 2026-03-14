@@ -60,7 +60,7 @@ body {
   transform: translateX(-50%);
   font-size: 24px;
   padding: 6px 14px;
-  border: 1.5px solid white;     /* TANJI BORDER */
+  border: 1px solid white;      /* tanji border */
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -115,9 +115,9 @@ body {
   bottom: 110px;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;                 /* ISTO KAO COUNTDOWN */
-  padding: 4px 10px;            /* MANJE – IDENTIČNO COUNTDOWNU */
-  border: 1.5px solid white;    /* TANJI BORDER */
+  width: 220px;                 /* identično countdownu */
+  padding: 4px 10px;            /* manji padding = kompaktno */
+  border: 1px solid white;      /* tanji border */
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
@@ -129,7 +129,7 @@ body {
 }
 
 .enter-space-btn img {
-  width: 180px;                 /* VEĆI TEKST UNUTRA */
+  width: 200px;                 /* VEĆI TEKST UNUTRA */
   height: auto;
   display: block;
 }

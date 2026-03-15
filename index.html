@@ -24,7 +24,7 @@
 
   <!-- Fonts and Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=102">
+  <link rel="stylesheet" href="style.css?v=103">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
@@ -59,7 +59,7 @@
   <!-- LAUNCH button (UNCHANGED) -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
-  <!-- Countdown (UNCHANGED position/size) -->
+  <!-- Countdown (UNCHANGED) -->
   <div id="countdown" class="countdown-bottom"></div>
 
   <!-- Background Audio (UNCHANGED) -->
@@ -68,16 +68,15 @@
   </audio>
 
   <!-- Fullscreen Menu (NEW, NON-DESTRUCTIVE)
-       Hidden until opened by LAUNCH. Does not change homepage layout. -->
+       - Support and bottom social links removed as requested
+       - Semi-transparent blur so homepage animation remains visible through it -->
   <div class="fullscreen-menu" id="menu" aria-hidden="true">
     <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
     <nav class="menu-items" aria-label="Fullscreen menu">
-      <!-- Keep About the Project as first item (you already have this page) -->
       <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
 
-      <!-- Projects group (expanded list inside fullscreen menu) -->
-      <div class="menu-group">
+      <div class="menu-group" aria-hidden="false">
         <div class="menu-group-title">PROJECTS</div>
         <a href="observatory.html" class="menu-item sub">Observatory</a>
         <a href="studio.html" class="menu-item sub">Garden</a>
@@ -86,20 +85,11 @@
         <a href="sculpture.html" class="menu-item sub">Sculpture</a>
       </div>
 
-      <!-- Other top-level pages -->
       <a href="gallery.html" class="menu-item">GALLERY</a>
       <a href="blog.html" class="menu-item">BLOG NOTES</a>
       <a href="events.html" class="menu-item">EVENTS</a>
       <a href="contact.html" class="menu-item">CONTACT</a>
-
-      <!-- Support CTA -->
-      <a href="support.html" class="menu-item support">SUPPORT</a>
     </nav>
-
-    <div class="menu-social">
-      <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram">Instagram</a>
-      <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook">Facebook</a>
-    </div>
   </div>
 
   <!-- Footer (UNCHANGED) -->
@@ -151,7 +141,6 @@
     openMenu.addEventListener("click", () => {
       menu.classList.add("active");
       menu.setAttribute('aria-hidden','false');
-      // ensure focus lands inside menu for accessibility
       const first = menu.querySelector('.menu-item');
       if (first) first.focus();
     });
@@ -161,7 +150,6 @@
       openMenu.focus();
     });
 
-    // close on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && menu.classList.contains('active')) {
         menu.classList.remove('active');

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
@@ -11,14 +11,14 @@
 
   <!-- Fonts + Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=105">
+  <link rel="stylesheet" href="style.css?v=107">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
-  <!-- BACKGROUND (UNCHANGED) -->
+  <!-- BACKGROUND (unchanged) -->
   <div class="background-layer" aria-hidden="true"></div>
 
   <div class="video-wrapper" aria-hidden="true">
@@ -28,7 +28,7 @@
     </video>
   </div>
 
-  <!-- TOP SOCIAL ROW (UNCHANGED) -->
+  <!-- TOP SOCIAL ROW (unchanged) -->
   <div class="social-row" role="navigation" aria-label="Social links">
     <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener" aria-label="Facebook">
       <img src="fb.svg" alt=""><span>Facebook</span>
@@ -44,24 +44,23 @@
     </a>
   </div>
 
-  <!-- LAUNCH BUTTON (UNCHANGED) -->
+  <!-- LAUNCH BUTTON (unchanged) -->
   <button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
 
-  <!-- COUNTDOWN (UNCHANGED) -->
+  <!-- COUNTDOWN (unchanged) -->
   <div id="countdown" class="countdown-bottom" aria-live="polite"></div>
 
-  <!-- BACKGROUND AUDIO (UNCHANGED) -->
+  <!-- BACKGROUND AUDIO (unchanged) -->
   <audio id="bg-audio" loop preload="none">
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FULLSCREEN MENU (NEW) -->
+  <!-- FULLSCREEN MENU (responsive, non-destructive) -->
   <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <button class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</button>
 
     <div class="menu-inner">
 
-      <!-- Primary single-column area for small screens; grid for larger -->
       <nav class="menu-items" role="menu" aria-label="Site menu">
 
         <a class="menu-item" role="menuitem" href="about.html">ABOUT THE PROJECT</a>
@@ -84,7 +83,7 @@
     </div>
   </div>
 
-  <!-- FOOTER (UNCHANGED) -->
+  <!-- FOOTER (unchanged) -->
   <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
   <!-- SCRIPTS -->
@@ -127,10 +126,8 @@
         menu.classList.add('active');
         menu.setAttribute('aria-hidden','false');
         openBtn.setAttribute('aria-expanded','true');
-        // focus first menu item
         const first = menu.querySelector('.menu-item');
         if(first) first.focus();
-        // trap focus
         document.addEventListener('focus', trapFocus, true);
         document.addEventListener('keydown', onKeyDown);
       }
@@ -155,7 +152,6 @@
       function onKeyDown(e){
         if(e.key === 'Escape') closeMenu();
         if(e.key === 'Tab'){
-          // simple focus loop
           const focusables = Array.from(menu.querySelectorAll(focusableSelector));
           if(!focusables.length) return;
           const idx = focusables.indexOf(document.activeElement);
@@ -167,9 +163,7 @@
       openBtn.addEventListener('click', openMenu);
       closeBtn.addEventListener('click', closeMenu);
 
-      // Ensure menu layout adapts on orientation change/resizes
       function adjustMenuForViewport(){
-        // no destructive changes to homepage; only toggles CSS class for layout
         if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
           menu.classList.add('mobile-layout');
           menu.classList.remove('desktop-layout');

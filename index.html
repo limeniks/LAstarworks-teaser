@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta -->
-  <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a collection of projects: garden, DIY technology, observatory and multimedia.">
+  <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a long-term DIY observatory project combining astrophotography, engineering, art installations and permaculture.">
   <meta name="author" content="Goran Mandić (Limeniks)">
 
-  <!-- OpenGraph -->
+  <!-- OpenGraph (Google, Facebook, Instagram, Discord, WhatsApp) -->
   <meta property="og:title" content="LAstarworks — Goran Mandić (Limeniks)">
-  <meta property="og:description" content="A collection of projects connecting land and sky: garden, DIY technology, observatory and multimedia.">
+  <meta property="og:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
   <meta property="og:image" content="https://lastarworks.space/zweb.png">
   <meta property="og:url" content="https://lastarworks.space">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summarylargeimage">
   <meta name="twitter:title" content="LAstarworks — Goran Mandić (Limeniks)">
-  <meta name="twitter:description" content="A collection of projects connecting land and sky: garden, DIY technology, observatory and multimedia.">
+  <meta name="twitter:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
   <meta name="twitter:image" content="https://lastarworks.space/zweb.png">
 
   <!-- Fonts and Styles -->
@@ -50,36 +50,6 @@
 
 <body>
 
-  <!-- Header / Main Navigation -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">LAstarworks</a>
-
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li class="has-dropdown">
-            <a href="projects.html">Projects</a>
-            <ul class="dropdown">
-              <li><a href="observatory.html">Observatory</a></li>
-              <li><a href="studio.html">Garden</a></li>
-              <li><a href="sculpture.html">Sculpture</a></li>
-              <li><a href="open-hardware.html">DIY Technology</a></li>
-            </ul>
-          </li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <button id="openMenu" class="enter-space-btn">LAUNCH</button>
-      </div>
-    </div>
-  </header>
-
   <!-- Background -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
@@ -88,21 +58,24 @@
     </video>
   </div>
 
-  <!-- Social Row (smaller icons) -->
-  <div class="social-row small">
-    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item" aria-label="Facebook">
+  <!-- Social Row -->
+  <div class="social-row">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
       <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
-    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item" aria-label="Instagram">
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
       <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
-    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item" aria-label="AstroBin">
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
       <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
-    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item" aria-label="YouTube">
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
       <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
   </div>
+
+  <!-- Launch Button -->
+  <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
   <!-- Countdown -->
   <div id="countdown" class="countdown-bottom"></div>
@@ -112,24 +85,14 @@
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fullscreen Menu (vertical) -->
-  <div class="fullscreen-menu" id="menu" aria-hidden="true">
-    <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
+  <!-- Fullscreen Menu -->
+  <div class="fullscreen-menu" id="menu">
+    <div class="menu-close" id="closeMenu">CLOSE</div>
 
-    <nav class="menu-items" aria-label="Fullscreen menu">
-      <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
-      <a href="observatory.html" class="menu-item">OBSERVATORY</a>
-      <a href="gallery.html" class="menu-item">GALLERY</a>
-      <a href="projects.html" class="menu-item">PROJECTS</a>
-      <a href="blog.html" class="menu-item">BLOG</a>
-      <a href="contact.html" class="menu-item">CONTACT</a>
-      <a href="support.html" class="menu-item support">SUPPORT</a>
-    </nav>
-
-    <div class="menu-social">
-      <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram">Instagram</a>
-      <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook">Facebook</a>
-    </div>
+    <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
+    <a href="observatory.html" class="menu-item">OBSERVATORY</a>
+    <a href="gallery.html" class="menu-item">GALLERY</a>
+    <a href="contact.html" class="menu-item">CONTACT</a>
   </div>
 
   <!-- Footer -->
@@ -137,7 +100,7 @@
 
   <!-- Scripts -->
   <script>
-    /* Countdown */
+    / Countdown /
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -150,22 +113,22 @@
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(distance / (1000  60  60 * 24));
+      const hours = Math.floor((distance / (1000  60  60)) % 24);
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
       const seconds = Math.floor((distance / 1000) % 60);
 
       countdownElement.textContent =
-        `${String(days).padStart(2,'0')}:` +
-        `${String(hours).padStart(2,'0')}:` +
-        `${String(minutes).padStart(2,'0')}:` +
-        `${String(seconds).padStart(2,'0')}`;
+        ${String(days).padStart(2,'0')}: +
+        ${String(hours).padStart(2,'0')}: +
+        ${String(minutes).padStart(2,'0')}: +
+        ${String(seconds).padStart(2,'0')};
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* Audio unlock for mobile */
+    / Audio unlock for mobile /
     const audio = document.getElementById("bg-audio");
     function playAudio() {
       if (audio && audio.paused) audio.play().catch(()=>{});
@@ -173,21 +136,15 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    /* Menu open/close */
+    / Menu open/close /
     const menu = document.getElementById("menu");
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenu.addEventListener("click", () => {
-      menu.classList.add("active");
-      menu.setAttribute('aria-hidden','false');
-    });
-    closeMenu.addEventListener("click", () => {
-      menu.classList.remove("active");
-      menu.setAttribute('aria-hidden','true');
-    });
+    openMenu.addEventListener("click", () => menu.classList.add("active"));
+    closeMenu.addEventListener("click", () => menu.classList.remove("active"));
 
-    /* Wave pulse for social icons */
+    / Wave pulse for social icons /
     const icons = document.querySelectorAll('.social-item');
     function waveCycle(direction = 'forward') {
       const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
@@ -208,4 +165,4 @@
   </script>
 
 </body>
-</html>
+</html> 

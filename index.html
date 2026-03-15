@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta -->
-  <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a long-term DIY observatory project combining astrophotography, engineering, art installations and permaculture.">
+  <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a collection of projects: garden, DIY technology, observatory and multimedia.">
   <meta name="author" content="Goran Mandić (Limeniks)">
 
-  <!-- OpenGraph (Google, Facebook, Instagram, Discord, WhatsApp) -->
+  <!-- OpenGraph -->
   <meta property="og:title" content="LAstarworks — Goran Mandić (Limeniks)">
-  <meta property="og:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
+  <meta property="og:description" content="A collection of projects connecting land and sky: garden, DIY technology, observatory and multimedia.">
   <meta property="og:image" content="https://lastarworks.space/zweb.png">
   <meta property="og:url" content="https://lastarworks.space">
   <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LAstarworks — Goran Mandić (Limeniks)">
-  <meta name="twitter:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
+  <meta name="twitter:description" content="A collection of projects connecting land and sky: garden, DIY technology, observatory and multimedia.">
   <meta name="twitter:image" content="https://lastarworks.space/zweb.png">
 
   <!-- Fonts and Styles -->
@@ -50,6 +50,36 @@
 
 <body>
 
+  <!-- Header / Main Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">LAstarworks</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="projects.html">Projects</a>
+            <ul class="dropdown">
+              <li><a href="observatory.html">Observatory</a></li>
+              <li><a href="studio.html">Garden</a></li>
+              <li><a href="sculpture.html">Sculpture</a></li>
+              <li><a href="open-hardware.html">DIY Technology</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="openMenu" class="enter-space-btn">LAUNCH</button>
+      </div>
+    </div>
+  </header>
+
   <!-- Background -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
@@ -58,24 +88,21 @@
     </video>
   </div>
 
-  <!-- Social Row -->
-  <div class="social-row">
-    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
+  <!-- Social Row (smaller icons) -->
+  <div class="social-row small">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item" aria-label="Facebook">
       <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
-    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item" aria-label="Instagram">
       <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
-    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item" aria-label="AstroBin">
       <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
-    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item" aria-label="YouTube">
       <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
   </div>
-
-  <!-- Launch Button -->
-  <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
   <!-- Countdown -->
   <div id="countdown" class="countdown-bottom"></div>
@@ -85,14 +112,24 @@
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fullscreen Menu -->
-  <div class="fullscreen-menu" id="menu">
-    <div class="menu-close" id="closeMenu">CLOSE</div>
+  <!-- Fullscreen Menu (vertical) -->
+  <div class="fullscreen-menu" id="menu" aria-hidden="true">
+    <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
-    <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
-    <a href="observatory.html" class="menu-item">OBSERVATORY</a>
-    <a href="gallery.html" class="menu-item">GALLERY</a>
-    <a href="contact.html" class="menu-item">CONTACT</a>
+    <nav class="menu-items" aria-label="Fullscreen menu">
+      <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
+      <a href="observatory.html" class="menu-item">OBSERVATORY</a>
+      <a href="gallery.html" class="menu-item">GALLERY</a>
+      <a href="projects.html" class="menu-item">PROJECTS</a>
+      <a href="blog.html" class="menu-item">BLOG</a>
+      <a href="contact.html" class="menu-item">CONTACT</a>
+      <a href="support.html" class="menu-item support">SUPPORT</a>
+    </nav>
+
+    <div class="menu-social">
+      <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook">Facebook</a>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -141,8 +178,14 @@
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenu.addEventListener("click", () => menu.classList.add("active"));
-    closeMenu.addEventListener("click", () => menu.classList.remove("active"));
+    openMenu.addEventListener("click", () => {
+      menu.classList.add("active");
+      menu.setAttribute('aria-hidden','false');
+    });
+    closeMenu.addEventListener("click", () => {
+      menu.classList.remove("active");
+      menu.setAttribute('aria-hidden','true');
+    });
 
     /* Wave pulse for social icons */
     const icons = document.querySelectorAll('.social-item');
@@ -165,4 +208,4 @@
   </script>
 
 </body>
-</html> 
+</html>

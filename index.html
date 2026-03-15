@@ -24,7 +24,7 @@
 
   <!-- Fonts and Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=101">
+  <link rel="stylesheet" href="style.css?v=102">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
@@ -59,7 +59,7 @@
   <!-- LAUNCH button (UNCHANGED) -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
-  <!-- Countdown (RESTORED CENTERED) -->
+  <!-- Countdown (UNCHANGED position/size) -->
   <div id="countdown" class="countdown-bottom"></div>
 
   <!-- Background Audio (UNCHANGED) -->
@@ -67,19 +67,32 @@
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fullscreen Menu (NEW but NON‑DESTRUCTIVE)
-       Hidden until opened by LAUNCH; does not alter homepage layout. -->
+  <!-- Fullscreen Menu (NEW, NON-DESTRUCTIVE)
+       Hidden until opened by LAUNCH. Does not change homepage layout. -->
   <div class="fullscreen-menu" id="menu" aria-hidden="true">
     <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
     <nav class="menu-items" aria-label="Fullscreen menu">
+      <!-- Keep About the Project as first item (you already have this page) -->
       <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
-      <a href="observatory.html" class="menu-item">OBSERVATORY</a>
+
+      <!-- Projects group (expanded list inside fullscreen menu) -->
+      <div class="menu-group">
+        <div class="menu-group-title">PROJECTS</div>
+        <a href="observatory.html" class="menu-item sub">Observatory</a>
+        <a href="studio.html" class="menu-item sub">Garden</a>
+        <a href="open-hardware.html" class="menu-item sub">DIY Technology</a>
+        <a href="multimedia.html" class="menu-item sub">Multimedia</a>
+        <a href="sculpture.html" class="menu-item sub">Sculpture</a>
+      </div>
+
+      <!-- Other top-level pages -->
       <a href="gallery.html" class="menu-item">GALLERY</a>
-      <a href="projects.html" class="menu-item">PROJECTS</a>
-      <a href="blog.html" class="menu-item">BLOG</a>
+      <a href="blog.html" class="menu-item">BLOG NOTES</a>
       <a href="events.html" class="menu-item">EVENTS</a>
       <a href="contact.html" class="menu-item">CONTACT</a>
+
+      <!-- Support CTA -->
       <a href="support.html" class="menu-item support">SUPPORT</a>
     </nav>
 
@@ -94,7 +107,7 @@
 
   <!-- Scripts (UNCHANGED behavior; menu open/close only affects fullscreen menu) -->
   <script>
-    /* Countdown (RESTORED CENTERED) */
+    /* Countdown (UNCHANGED) */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -138,10 +151,23 @@
     openMenu.addEventListener("click", () => {
       menu.classList.add("active");
       menu.setAttribute('aria-hidden','false');
+      // ensure focus lands inside menu for accessibility
+      const first = menu.querySelector('.menu-item');
+      if (first) first.focus();
     });
     closeMenu.addEventListener("click", () => {
       menu.classList.remove("active");
       menu.setAttribute('aria-hidden','true');
+      openMenu.focus();
+    });
+
+    // close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        menu.setAttribute('aria-hidden','true');
+        openMenu.focus();
+      }
     });
 
     /* Wave pulse for social icons (UNCHANGED) */

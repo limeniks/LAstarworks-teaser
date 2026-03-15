@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summarylargeimage">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LAstarworks — Goran Mandić (Limeniks)">
   <meta name="twitter:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
   <meta name="twitter:image" content="https://lastarworks.space/zweb.png">
@@ -100,7 +100,7 @@
 
   <!-- Scripts -->
   <script>
-    / Countdown /
+    /* Countdown */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -113,22 +113,22 @@
         return;
       }
 
-      const days = Math.floor(distance / (1000  60  60 * 24));
-      const hours = Math.floor((distance / (1000  60  60)) % 24);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
       const seconds = Math.floor((distance / 1000) % 60);
 
       countdownElement.textContent =
-        ${String(days).padStart(2,'0')}: +
-        ${String(hours).padStart(2,'0')}: +
-        ${String(minutes).padStart(2,'0')}: +
-        ${String(seconds).padStart(2,'0')};
+        `${String(days).padStart(2,'0')}:` +
+        `${String(hours).padStart(2,'0')}:` +
+        `${String(minutes).padStart(2,'0')}:` +
+        `${String(seconds).padStart(2,'0')}`;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    / Audio unlock for mobile /
+    /* Audio unlock for mobile */
     const audio = document.getElementById("bg-audio");
     function playAudio() {
       if (audio && audio.paused) audio.play().catch(()=>{});
@@ -136,7 +136,7 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    / Menu open/close /
+    /* Menu open/close */
     const menu = document.getElementById("menu");
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
@@ -144,7 +144,7 @@
     openMenu.addEventListener("click", () => menu.classList.add("active"));
     closeMenu.addEventListener("click", () => menu.classList.remove("active"));
 
-    / Wave pulse for social icons /
+    /* Wave pulse for social icons */
     const icons = document.querySelectorAll('.social-item');
     function waveCycle(direction = 'forward') {
       const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
@@ -165,4 +165,4 @@
   </script>
 
 </body>
-</html> 
+</html>

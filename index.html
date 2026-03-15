@@ -24,59 +24,105 @@
 
   <!-- Fonts and Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=100">
+  <link rel="stylesheet" href="style.css?v=101">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
+  <!-- Header / Main Navigation (non-destructive) -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">LAstarworks</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="projects.html">Projects</a>
+            <ul class="dropdown">
+              <li><a href="observatory.html">Observatory</a></li>
+              <li><a href="studio.html">Garden</a></li>
+              <li><a href="sculpture.html">Sculpture</a></li>
+              <li><a href="open-hardware.html">DIY Technology</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="support-cta"><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="openMenu" class="enter-space-btn">LAUNCH</button>
+      </div>
+    </div>
+  </header>
+
   <!-- Background -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
       <source src="test.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
   </div>
 
-  <!-- Social Row -->
+  <!-- Social Row (top) -->
   <div class="social-row">
-    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item" aria-label="Facebook">
       <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
-    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item" aria-label="Instagram">
       <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
-    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item" aria-label="AstroBin">
       <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
-    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item" aria-label="YouTube">
       <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
   </div>
 
-  <!-- Launch Button opens fullscreen menu -->
+  <!-- Launch Button (kept in original position) -->
+  <div class="enter-space-btn center" id="openMenuAlt" style="display:none;">LAUNCH</div>
+
+  <!-- Original LAUNCH button (keeps behavior) -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
   <!-- Countdown -->
   <div id="countdown" class="countdown-bottom"></div>
 
-  <!-- Background Audio (plays after user interaction on mobile) -->
+  <!-- Background Audio -->
   <audio id="bg-audio" loop>
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fullscreen Menu -->
-  <div class="fullscreen-menu" id="menu">
-    <div class="menu-close" id="closeMenu">CLOSE</div>
+  <!-- Fullscreen Menu (vertical) -->
+  <div class="fullscreen-menu" id="menu" aria-hidden="true">
+    <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
-    <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
-    <a href="observatory.html" class="menu-item">OBSERVATORY</a>
-    <a href="gallery.html" class="menu-item">GALLERY</a>
-    <a href="contact.html" class="menu-item">CONTACT</a>
+    <nav class="menu-items" aria-label="Fullscreen menu">
+      <a href="about.html" class="menu-item">ABOUT THE PROJECT</a>
+      <a href="observatory.html" class="menu-item">OBSERVATORY</a>
+      <a href="gallery.html" class="menu-item">GALLERY</a>
+      <a href="projects.html" class="menu-item">PROJECTS</a>
+      <a href="blog.html" class="menu-item">BLOG</a>
+      <a href="events.html" class="menu-item">EVENTS</a>
+      <a href="contact.html" class="menu-item">CONTACT</a>
+      <a href="support.html" class="menu-item support">SUPPORT</a>
+    </nav>
+
+    <div class="menu-social">
+      <a href="https://www.instagram.com/lastarworks.space/" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://www.facebook.com/lastarworks" target="_blank" aria-label="Facebook">Facebook</a>
+    </div>
   </div>
 
-  <!-- Footer with author line -->
+  <!-- Footer -->
   <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
   <!-- Scripts -->
@@ -117,13 +163,21 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    /* Menu open/close */
+    /* Menu open/close (supports both LAUNCH elements) */
     const menu = document.getElementById("menu");
-    const openMenu = document.getElementById("openMenu");
+    const openMenuButtons = document.querySelectorAll('#openMenu, #openMenuAlt');
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenu.addEventListener("click", () => menu.classList.add("active"));
-    closeMenu.addEventListener("click", () => menu.classList.remove("active"));
+    openMenuButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        menu.classList.add("active");
+        menu.setAttribute('aria-hidden','false');
+      });
+    });
+    closeMenu.addEventListener("click", () => {
+      menu.classList.remove("active");
+      menu.setAttribute('aria-hidden','true');
+    });
 
     /* Wave pulse for social icons */
     const icons = document.querySelectorAll('.social-item');

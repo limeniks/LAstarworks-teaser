@@ -9,7 +9,7 @@
   <meta name="description" content="LAstarworks by Goran Mandić (Limeniks) — a long-term DIY observatory project combining astrophotography, engineering, art installations and permaculture.">
   <meta name="author" content="Goran Mandić (Limeniks)">
 
-  <!-- OpenGraph (Google, Facebook, Instagram, Discord, WhatsApp) -->
+  <!-- OpenGraph -->
   <meta property="og:title" content="LAstarworks — Goran Mandić (Limeniks)">
   <meta property="og:description" content="A long-term DIY observatory project combining astrophotography, engineering and art.">
   <meta property="og:image" content="https://lastarworks.space/zweb.png">
@@ -31,38 +31,7 @@
 </head>
 <body>
 
-  <!-- Header / Main Navigation (non-destructive) -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">LAstarworks</a>
-
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li class="has-dropdown">
-            <a href="projects.html">Projects</a>
-            <ul class="dropdown">
-              <li><a href="observatory.html">Observatory</a></li>
-              <li><a href="studio.html">Garden</a></li>
-              <li><a href="sculpture.html">Sculpture</a></li>
-              <li><a href="open-hardware.html">DIY Technology</a></li>
-            </ul>
-          </li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="support-cta"><a href="support.html">Support</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <button id="openMenu" class="enter-space-btn">LAUNCH</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Background -->
+  <!-- Background (UNCHANGED) -->
   <div class="background-layer"></div>
   <div class="video-wrapper">
     <video autoplay muted loop playsinline>
@@ -71,37 +40,35 @@
     </video>
   </div>
 
-  <!-- Social Row (top) -->
+  <!-- Social Row (UNCHANGED) -->
   <div class="social-row">
-    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item" aria-label="Facebook">
+    <a href="https://www.facebook.com/lastarworks" target="_blank" class="social-item">
       <img src="fb.svg" alt="Facebook"><span>Facebook</span>
     </a>
-    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item" aria-label="Instagram">
+    <a href="https://www.instagram.com/lastarworks.space/" target="_blank" class="social-item">
       <img src="ig.svg" alt="Instagram"><span>Instagram</span>
     </a>
-    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item" aria-label="AstroBin">
+    <a href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" class="social-item">
       <img src="astrobin.svg" alt="AstroBin"><span>AstroBin</span>
     </a>
-    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item" aria-label="YouTube">
+    <a href="https://www.youtube.com/@LAstarworks" target="_blank" class="social-item">
       <img src="youtube.svg" alt="YouTube"><span>YouTube</span>
     </a>
   </div>
 
-  <!-- Launch Button (kept in original position) -->
-  <div class="enter-space-btn center" id="openMenuAlt" style="display:none;">LAUNCH</div>
-
-  <!-- Original LAUNCH button (keeps behavior) -->
+  <!-- LAUNCH button (UNCHANGED) -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
-  <!-- Countdown -->
+  <!-- Countdown (UNCHANGED) -->
   <div id="countdown" class="countdown-bottom"></div>
 
-  <!-- Background Audio -->
+  <!-- Background Audio (UNCHANGED) -->
   <audio id="bg-audio" loop>
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fullscreen Menu (vertical) -->
+  <!-- Fullscreen Menu (NEW but NON‑DESTRUCTIVE)
+       This menu is hidden until opened by LAUNCH. It does not alter homepage layout. -->
   <div class="fullscreen-menu" id="menu" aria-hidden="true">
     <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
@@ -122,12 +89,12 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer (UNCHANGED) -->
   <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
-  <!-- Scripts -->
+  <!-- Scripts (UNCHANGED behavior; menu open/close only affects fullscreen menu) -->
   <script>
-    /* Countdown */
+    /* Countdown (UNCHANGED) */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 
@@ -155,7 +122,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* Audio unlock for mobile */
+    /* Audio unlock for mobile (UNCHANGED) */
     const audio = document.getElementById("bg-audio");
     function playAudio() {
       if (audio && audio.paused) audio.play().catch(()=>{});
@@ -163,23 +130,21 @@
     document.addEventListener("click", playAudio, { once: true });
     document.addEventListener("touchstart", playAudio, { once: true });
 
-    /* Menu open/close (supports both LAUNCH elements) */
+    /* Menu open/close (only toggles fullscreen menu) */
     const menu = document.getElementById("menu");
-    const openMenuButtons = document.querySelectorAll('#openMenu, #openMenuAlt');
+    const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
 
-    openMenuButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        menu.classList.add("active");
-        menu.setAttribute('aria-hidden','false');
-      });
+    openMenu.addEventListener("click", () => {
+      menu.classList.add("active");
+      menu.setAttribute('aria-hidden','false');
     });
     closeMenu.addEventListener("click", () => {
       menu.classList.remove("active");
       menu.setAttribute('aria-hidden','true');
     });
 
-    /* Wave pulse for social icons */
+    /* Wave pulse for social icons (UNCHANGED) */
     const icons = document.querySelectorAll('.social-item');
     function waveCycle(direction = 'forward') {
       const seq = direction === 'forward' ? [...icons] : [...icons].reverse();

@@ -146,7 +146,8 @@ footer {
 /* =========================
    FULLSCREEN MENU (non-destructive additions)
    - semi-transparent blur so homepage animation remains visible
-   - no support or bottom social links
+   - Support and bottom social removed
+   - Sculpture removed from Projects list
    ========================= */
 
 .fullscreen-menu {
@@ -256,7 +257,6 @@ footer {
    - allow about-bg to show through while keeping text readable
    ========================= */
 
-/* If a page uses .about-bg (fixed background image), make subpage panel semi-transparent */
 .subpage {
   background: rgba(0,0,0,0.42); /* semi-transparent so about-bg is visible */
   color: #e6e6e6;
@@ -268,7 +268,6 @@ footer {
   z-index: 10;
 }
 
-/* about-bg sits behind content but above video so it is visible */
 .about-bg {
   position: fixed;
   top: 0;

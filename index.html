@@ -59,7 +59,7 @@
   <!-- LAUNCH button (UNCHANGED) -->
   <div class="enter-space-btn" id="openMenu">LAUNCH</div>
 
-  <!-- Countdown (UNCHANGED) -->
+  <!-- Countdown (RESTORED CENTERED) -->
   <div id="countdown" class="countdown-bottom"></div>
 
   <!-- Background Audio (UNCHANGED) -->
@@ -68,7 +68,7 @@
   </audio>
 
   <!-- Fullscreen Menu (NEW but NON‑DESTRUCTIVE)
-       This menu is hidden until opened by LAUNCH. It does not alter homepage layout. -->
+       Hidden until opened by LAUNCH; does not alter homepage layout. -->
   <div class="fullscreen-menu" id="menu" aria-hidden="true">
     <div class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</div>
 
@@ -94,7 +94,7 @@
 
   <!-- Scripts (UNCHANGED behavior; menu open/close only affects fullscreen menu) -->
   <script>
-    /* Countdown (UNCHANGED) */
+    /* Countdown (RESTORED CENTERED) */
     const countdownElement = document.getElementById("countdown");
     const targetDate = new Date("2026-06-30T00:00:00").getTime();
 

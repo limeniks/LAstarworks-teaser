@@ -8,7 +8,7 @@
 }
 
 /* =========================
-   ORIGINAL HOMEPAGE STYLES (kept intact)
+   HOMEPAGE VISUALS (kept intact)
    ========================= */
 
 /* BACKGROUND */
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   background: black;
-  z-index: -2;
+  z-index: -3;
 }
 
 .video-wrapper {
@@ -29,7 +29,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  z-index: -1;
+  z-index: -2;
 }
 
 .video-wrapper video {
@@ -120,13 +120,11 @@
   animation: softpulse 2.6s ease-in-out infinite;
   transition: 0.25s ease;
 }
-
 .enter-space-btn:hover {
   color: white;
   border-color: white;
   background-color: rgba(255,255,255,0.1);
 }
-
 @keyframes softpulse {
   0%   { transform: translateX(-50%) scale(1); }
   50%  { transform: translateX(-50%) scale(1.08); }
@@ -146,15 +144,14 @@ footer {
 }
 
 /* =========================
-   FULLSCREEN MENU (ADDITIONS — non-destructive)
-   These styles only apply to the menu when it exists and is active.
-   They do not change homepage layout or existing elements.
+   FULLSCREEN MENU (non-destructive additions)
+   - semi-transparent blur so homepage animation remains visible
+   - no support or bottom social links
    ========================= */
 
 .fullscreen-menu {
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, rgba(2,2,6,0.96), rgba(8,8,12,0.98));
   z-index: 1300;
   display: none;
   align-items: center;
@@ -162,6 +159,11 @@ footer {
   flex-direction: column;
   padding: 40px 20px;
   transition: opacity .28s ease, transform .28s ease;
+  /* allow background to show through with blur */
+  background: rgba(6,6,8,0.35);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  box-shadow: inset 0 0 120px rgba(0,0,0,0.45);
   overflow: hidden;
 }
 
@@ -237,24 +239,6 @@ footer {
   margin: 6px 0 8px 6px;
 }
 
-/* support CTA */
-.fullscreen-menu .menu-item.support {
-  background: linear-gradient(90deg,#ffd36b,#ff6b6b);
-  color: #111;
-  font-weight: 700;
-  border: none;
-}
-
-/* menu social links (small, unobtrusive) */
-.fullscreen-menu .menu-social {
-  margin-top: 12px;
-  display: flex;
-  gap: 12px;
-  color: #ddd;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 13px;
-}
-
 /* ensure menu items are keyboard accessible and visible */
 .fullscreen-menu .menu-item:focus {
   outline: none;
@@ -265,6 +249,54 @@ footer {
 @media (max-width: 900px) {
   .fullscreen-menu .menu-item { font-size: 20px; padding: 14px 18px; width: 92%; }
   .fullscreen-menu .menu-items { max-height: 78vh; }
+}
+
+/* =========================
+   ABOUT / SUBPAGE FIX
+   - allow about-bg to show through while keeping text readable
+   ========================= */
+
+/* If a page uses .about-bg (fixed background image), make subpage panel semi-transparent */
+.subpage {
+  background: rgba(0,0,0,0.42); /* semi-transparent so about-bg is visible */
+  color: #e6e6e6;
+  padding: 40px;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+/* about-bg sits behind content but above video so it is visible */
+.about-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('about-bg.jpg') center/cover no-repeat;
+  filter: blur(10px) brightness(0.6) contrast(1.15);
+  opacity: 0.55;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* keep scanlines/noise subtle over about page */
+.subpage::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 9;
 }
 
 /* =========================

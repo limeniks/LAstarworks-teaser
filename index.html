@@ -13,19 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=107">
 
-  <!-- Favicon (tab icon) -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
-
-  <!-- Web App Manifest (Google/Chrome uses this) -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Theme colors (optional but recommended) -->
-  <meta name="theme-color" content="#000000">
-  <meta name="background-color" content="#000000">
 </head>
 <body>
 
-  <!-- BACKGROUND -->
+  <!-- BACKGROUND (unchanged) -->
   <div class="background-layer" aria-hidden="true"></div>
 
   <div class="video-wrapper" aria-hidden="true">
@@ -35,7 +28,7 @@
     </video>
   </div>
 
-  <!-- SOCIAL ROW -->
+  <!-- TOP SOCIAL ROW (unchanged) -->
   <div class="social-row" role="navigation" aria-label="Social links">
     <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener" aria-label="Facebook">
       <img src="fb.svg" alt=""><span>Facebook</span>
@@ -51,22 +44,23 @@
     </a>
   </div>
 
-  <!-- LAUNCH BUTTON -->
+  <!-- LAUNCH BUTTON (unchanged) -->
   <button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
 
-  <!-- COUNTDOWN -->
+  <!-- COUNTDOWN (unchanged) -->
   <div id="countdown" class="countdown-bottom" aria-live="polite"></div>
 
-  <!-- BACKGROUND AUDIO -->
+  <!-- BACKGROUND AUDIO (unchanged) -->
   <audio id="bg-audio" loop preload="none">
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FULLSCREEN MENU -->
+  <!-- FULLSCREEN MENU (responsive, non-destructive) -->
   <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <button class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</button>
 
     <div class="menu-inner">
+
       <nav class="menu-items" role="menu" aria-label="Site menu">
 
         <a class="menu-item" role="menuitem" href="about.html">ABOUT THE PROJECT</a>
@@ -85,32 +79,33 @@
         <a class="menu-item" role="menuitem" href="contact.html">CONTACT</a>
 
       </nav>
+
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (unchanged) -->
   <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
   <!-- SCRIPTS -->
   <script>
-    /* Countdown */
+    / Countdown (unchanged behavior) /
     (function(){
       const el = document.getElementById('countdown');
       const target = new Date('2026-06-30T00:00:00').getTime();
       function tick(){
         const now = Date.now();
         const d = Math.max(0, target - now);
-        const days = Math.floor(d / (1000*60*60*24));
-        const hours = Math.floor((d / (1000*60*60)) % 24);
+        const days = Math.floor(d / (10006060*24));
+        const hours = Math.floor((d / (10006060)) % 24);
         const mins = Math.floor((d / (1000*60)) % 60);
         const secs = Math.floor((d / 1000) % 60);
-        el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+        el.textContent = ${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')};
       }
       tick();
       setInterval(tick,1000);
     })();
 
-    /* Audio unlock */
+    / Audio unlock for mobile (unchanged) /
     (function(){
       const audio = document.getElementById('bg-audio');
       function unlock(){ if(audio && audio.paused) audio.play().catch(()=>{}); }
@@ -118,7 +113,7 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    /* Fullscreen menu */
+    / Fullscreen menu open/close + accessibility + responsive layout adjustments /
     (function(){
       const menu = document.getElementById('menu');
       const openBtn = document.getElementById('openMenu');
@@ -182,7 +177,7 @@
       adjustMenuForViewport();
     })();
 
-    /* Social icons wave */
+    / Social icons wave (unchanged) /
     (function(){
       const icons = document.querySelectorAll('.social-item');
       function wave(direction='forward'){

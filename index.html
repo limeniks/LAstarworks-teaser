@@ -13,12 +13,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=107">
 
-  <!-- Favicon -->
+  <!-- Favicon (tab icon) -->
   <link rel="icon" href="favicon.png" type="image/png">
+
+  <!-- Web App Manifest (Google/Chrome uses this) -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Theme colors (optional but recommended) -->
+  <meta name="theme-color" content="#000000">
+  <meta name="background-color" content="#000000">
 </head>
 <body>
 
-  <!-- BACKGROUND (unchanged) -->
+  <!-- BACKGROUND -->
   <div class="background-layer" aria-hidden="true"></div>
 
   <div class="video-wrapper" aria-hidden="true">
@@ -28,7 +35,7 @@
     </video>
   </div>
 
-  <!-- TOP SOCIAL ROW (unchanged) -->
+  <!-- SOCIAL ROW -->
   <div class="social-row" role="navigation" aria-label="Social links">
     <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener" aria-label="Facebook">
       <img src="fb.svg" alt=""><span>Facebook</span>
@@ -44,23 +51,22 @@
     </a>
   </div>
 
-  <!-- LAUNCH BUTTON (unchanged) -->
+  <!-- LAUNCH BUTTON -->
   <button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
 
-  <!-- COUNTDOWN (unchanged) -->
+  <!-- COUNTDOWN -->
   <div id="countdown" class="countdown-bottom" aria-live="polite"></div>
 
-  <!-- BACKGROUND AUDIO (unchanged) -->
+  <!-- BACKGROUND AUDIO -->
   <audio id="bg-audio" loop preload="none">
     <source src="ok.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FULLSCREEN MENU (responsive, non-destructive) -->
+  <!-- FULLSCREEN MENU -->
   <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <button class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</button>
 
     <div class="menu-inner">
-
       <nav class="menu-items" role="menu" aria-label="Site menu">
 
         <a class="menu-item" role="menuitem" href="about.html">ABOUT THE PROJECT</a>
@@ -79,16 +85,15 @@
         <a class="menu-item" role="menuitem" href="contact.html">CONTACT</a>
 
       </nav>
-
     </div>
   </div>
 
-  <!-- FOOTER (unchanged) -->
+  <!-- FOOTER -->
   <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
 
   <!-- SCRIPTS -->
   <script>
-    /* Countdown (unchanged behavior) */
+    /* Countdown */
     (function(){
       const el = document.getElementById('countdown');
       const target = new Date('2026-06-30T00:00:00').getTime();
@@ -105,7 +110,7 @@
       setInterval(tick,1000);
     })();
 
-    /* Audio unlock for mobile (unchanged) */
+    /* Audio unlock */
     (function(){
       const audio = document.getElementById('bg-audio');
       function unlock(){ if(audio && audio.paused) audio.play().catch(()=>{}); }
@@ -113,7 +118,7 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    /* Fullscreen menu open/close + accessibility + responsive layout adjustments */
+    /* Fullscreen menu */
     (function(){
       const menu = document.getElementById('menu');
       const openBtn = document.getElementById('openMenu');
@@ -177,7 +182,7 @@
       adjustMenuForViewport();
     })();
 
-    /* Social icons wave (unchanged) */
+    /* Social icons wave */
     (function(){
       const icons = document.querySelectorAll('.social-item');
       function wave(direction='forward'){

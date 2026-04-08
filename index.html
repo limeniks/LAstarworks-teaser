@@ -88,24 +88,24 @@
 
   <!-- SCRIPTS -->
   <script>
-    / Countdown (unchanged behavior) /
+    /* Countdown (unchanged behavior) */
     (function(){
       const el = document.getElementById('countdown');
       const target = new Date('2026-06-30T00:00:00').getTime();
       function tick(){
         const now = Date.now();
         const d = Math.max(0, target - now);
-        const days = Math.floor(d / (10006060*24));
-        const hours = Math.floor((d / (10006060)) % 24);
+        const days = Math.floor(d / (1000*60*60*24));
+        const hours = Math.floor((d / (1000*60*60)) % 24);
         const mins = Math.floor((d / (1000*60)) % 60);
         const secs = Math.floor((d / 1000) % 60);
-        el.textContent = ${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')};
+        el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
       }
       tick();
       setInterval(tick,1000);
     })();
 
-    / Audio unlock for mobile (unchanged) /
+    /* Audio unlock for mobile (unchanged) */
     (function(){
       const audio = document.getElementById('bg-audio');
       function unlock(){ if(audio && audio.paused) audio.play().catch(()=>{}); }
@@ -113,7 +113,7 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    / Fullscreen menu open/close + accessibility + responsive layout adjustments /
+    /* Fullscreen menu open/close + accessibility + responsive layout adjustments */
     (function(){
       const menu = document.getElementById('menu');
       const openBtn = document.getElementById('openMenu');
@@ -177,7 +177,7 @@
       adjustMenuForViewport();
     })();
 
-    / Social icons wave (unchanged) /
+    /* Social icons wave (unchanged) */
     (function(){
       const icons = document.querySelectorAll('.social-item');
       function wave(direction='forward'){

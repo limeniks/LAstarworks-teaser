@@ -1,37 +1,26 @@
 /* =========================
    style.css — Full site styles (v=107)
    Includes: homepage visuals, responsive fullscreen menu,
-   accessibility fixes, reduced motion fallback, touch targets.
+   about/contact panel with Helvetica readability patch.
    Paste entire file into your root and hard-refresh.
    ========================= */
 
-/* RESET */
+/ RESET /
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+html, body { height: 100%; }
 
-/* VARIABLES */
+/ VARIABLES /
 :root{
   --bg: #000;
   --panel: rgba(0,0,0,0.35);
-  --panel-strong: rgba(0,0,0,0.68);
+  --panel-strong: rgba(0,0,0,0.68); / used for subpage panels /
   --muted: rgba(255,255,255,0.12);
   --accent1: #ff6b6b;
   --accent2: #ff9a6b;
   --text: #e6e6e6;
   --mono: 'Share Tech Mono', monospace;
   --display: 'Orbitron', sans-serif;
-  --touch: 48px;
-  --gap: 12px;
-  --container-max: 1200px;
-}
-
-/* BASE TYPOGRAPHY */
-body {
-  font-family: var(--display), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.35;
-  font-size: 16px;
+  --touch: 48px; / recommended touch target /
 }
 
 /* =========================
@@ -51,7 +40,6 @@ body {
   width: 100vw;
   overflow: hidden;
   z-index: -2;
-  pointer-events: none;
 }
 
 .video-wrapper video {
@@ -60,8 +48,6 @@ body {
   object-fit: cover;
   animation: fadeInBg 1.6s ease-in-out forwards;
   opacity: 0;
-  will-change: opacity;
-  backface-visibility: hidden;
 }
 
 @keyframes fadeInBg { to { opacity: 1; } }
@@ -78,10 +64,7 @@ body {
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
-  gap: var(--gap);
   z-index: 999;
-  padding: 0 8px;
-  pointer-events: auto;
 }
 
 .social-item {
@@ -90,11 +73,7 @@ body {
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  transition: transform .28s ease, opacity .28s ease;
-  min-height: var(--touch);
-  min-width: var(--touch);
-  padding: 6px;
-  color: var(--text);
+  transition: transform .28s ease;
 }
 
 .social-item img {
@@ -107,11 +86,9 @@ body {
   color: var(--text);
   font-family: var(--mono);
   font-size: 14px;
-  line-height: 1;
-  white-space: nowrap;
 }
 
-/* WAVE PULSE */
+/ WAVE PULSE /
 .active-pulse {
   transform: scale(1.3);
   opacity: 1;
@@ -122,188 +99,3 @@ body {
    LAUNCH BUTTON
    ========================= */
 .enter-space-btn {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 28px;
-  background: linear-gradient(90deg,var(--accent1),var(--accent2));
-  color: #000;
-  border: none;
-  padding: 12px 20px;
-  font-family: var(--display);
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  border-radius: 6px;
-  z-index: 900;
-  min-height: var(--touch);
-  min-width: 140px;
-}
-
-.enter-space-btn:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.55); }
-.enter-space-btn:active { transform: translateX(-50%) translateY(0); }
-.enter-space-btn:focus { outline: 3px solid rgba(255,107,107,0.9); outline-offset: 3px; }
-
-/* =========================
-   COUNTDOWN
-   ========================= */
-.countdown-bottom {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  font-family: var(--mono);
-  color: var(--muted);
-  z-index: 900;
-  background: var(--panel);
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-/* =========================
-   FULLSCREEN MENU
-   ========================= */
-.fullscreen-menu {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0.98));
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 24px;
-}
-
-.fullscreen-menu.active {
-  display: flex;
-}
-
-.menu-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  background: transparent;
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-family: var(--mono);
-}
-.menu-close:focus { outline: 3px solid rgba(255,107,107,0.9); outline-offset: 3px; }
-
-.menu-inner {
-  width: min(92%, var(--container-max));
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-.menu-items {
-  display: grid;
-  gap: 12px;
-  align-items: start;
-}
-
-.menu-item {
-  display: inline-block;
-  color: var(--text);
-  text-decoration: none;
-  font-family: var(--display);
-  font-size: 20px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  transition: background .12s ease, transform .12s ease;
-  min-height: var(--touch);
-}
-.menu-item:hover { background: rgba(255,255,255,0.02); transform: translateY(-2px); }
-.menu-item:focus { outline: 3px solid rgba(255,107,107,0.9); outline-offset: 3px; }
-
-.menu-group { margin-top: 8px; }
-.menu-group-title {
-  color: var(--muted);
-  font-family: var(--mono);
-  margin-bottom: 6px;
-}
-
-/* Sub items */
-.menu-item.sub { font-size: 16px; padding-left: 18px; font-family: var(--mono); }
-
-/* =========================
-   FOOTER
-   ========================= */
-footer {
-  position: fixed;
-  left: 18px;
-  bottom: 18px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 13px;
-  z-index: 900;
-}
-
-/* =========================
-   ACCESSIBILITY & REDUCED MOTION
-   ========================= */
-a:focus, button:focus {
-  outline: 3px solid rgba(255,107,107,0.9);
-  outline-offset: 3px;
-}
-
-/* prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .video-wrapper video { animation: none !important; transition: none !important; }
-  .active-pulse { transition: none !important; transform: none !important; }
-  * { scroll-behavior: auto !important; }
-}
-
-/* =========================
-   RESPONSIVE TWEAKS
-   ========================= */
-@media (max-width: 920px) {
-  .menu-item { font-size: 18px; }
-  .enter-space-btn { min-width: 120px; padding: 10px 16px; }
-}
-
-@media (max-width: 720px) {
-  .social-row { top: 12px; }
-  .social-item span { display: none; } /* hide labels on small screens */
-  .social-item img { width: 28px; height: 28px; }
-  .menu-inner { padding: 12px; }
-  .menu-item { font-size: 18px; padding: 12px; }
-  .countdown-bottom { right: 12px; bottom: 12px; font-size: 13px; }
-}
-
-@media (max-width: 420px) {
-  .enter-space-btn { bottom: 16px; padding: 10px 14px; font-size: 15px; }
-  .footer { display: none; }
-}
-
-/* Landscape narrow screens */
-@media (orientation: landscape) and (max-height: 420px) {
-  .social-row { display: none; }
-  .enter-space-btn { bottom: 10px; }
-}
-
-/* =========================
-   UTILITIES
-   ========================= */
-.hidden { display: none !important; }
-.center { display: flex; align-items: center; justify-content: center; }
-
-/* =========================
-   SMALL PERFORMANCE HINTS
-   ========================= */
-/* Avoid heavy repaints on hover for many elements */
-.menu-item, .social-item, .enter-space-btn { will-change: transform, opacity; }
-
-/* =========================
-   DEBUG HELPERS (comment out in production)
-   ========================= */
-/*
-.debug-outline * { outline: 1px dashed rgba(255,255,255,0.06); }
-*/
-
-/* =========================
-   END OF FILE
-   ========================= */

@@ -240,6 +240,7 @@ footer {
 .section-bg {
   position: absolute;
   inset: 0;
+  background-image: url('about-bg.jpg');
   background-size: cover;
   background-position: center;
   opacity: 1;

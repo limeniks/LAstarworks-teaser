@@ -214,7 +214,6 @@ footer {
   font-size: 17px;
   padding-left: 28px;
 }
-
 /* SPA SECTIONS – LAYERING & ANIMACIJE */
 .spa-section {
   position: relative;
@@ -327,9 +326,100 @@ footer {
   letter-spacing: 1px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 520px) {
-  .enter-space-btn { font-size: 18px; bottom: 100px; }
-  .countdown-bottom { font-size: 20px; padding: 8px 14px; }
-  .menu-item { font-size: 18px; }
+/* PARALLAX SCROLL EFFECT */
+.spa-section.active .section-bg {
+  animation: bgZoom 18s ease-in-out infinite alternate,
+             bgFloat 12s ease-in-out infinite alternate;
 }
+
+@keyframes bgFloat {
+  0%   { transform: translateY(0) scale(1.05); }
+  100% { transform: translateY(-12px) scale(1.08); }
+}
+
+/* SMOOTH FADE-IN TEXT */
+.spa-section.active h1,
+.spa-section.active h2,
+.spa-section.active h3,
+.spa-section.active p,
+.spa-section.active li {
+  animation: fadeText 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeText {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+/* GLOW EFFECT FOR HEADERS */
+.spa-section.active h1 {
+  text-shadow: 0 0 8px rgba(255,255,255,0.35),
+               0 0 16px rgba(255,255,255,0.25);
+}
+
+/* SMOOTH UNDERLINE ANIMATION */
+.spa-section.active h1::after,
+.spa-section.active h2::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  margin-top: 6px;
+  transition: width 0.6s ease;
+}
+
+.spa-section.active h1:hover::after,
+.spa-section.active h2:hover::after {
+  width: 100%;
+}
+
+/* SECTION FADE-IN DELAY CASCADE */
+.spa-section.active h1 { animation-delay: 0.05s; }
+.spa-section.active h2 { animation-delay: 0.10s; }
+.spa-section.active h3 { animation-delay: 0.15s; }
+.spa-section.active p  { animation-delay: 0.20s; }
+.spa-section.active li { animation-delay: 0.25s; }
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 520px) {
+
+  .enter-space-btn {
+    font-size: 18px;
+    bottom: 100px;
+  }
+
+  .countdown-bottom {
+    font-size: 20px;
+    padding: 8px 14px;
+  }
+
+  .menu-item {
+    font-size: 18px;
+  }
+
+  .sub-header h1 {
+    font-size: 26px;
+  }
+
+  .section-inner h1 {
+    font-size: 26px;
+  }
+
+  .about-text p,
+  .about-text li {
+    font-size: 14px;
+  }
+}
+
+/* EXTRA SAFETY: PREVENT FLASHING */
+.spa-section {
+  background: transparent;
+}
+
+/* END OF STYLE.CSS v500 */

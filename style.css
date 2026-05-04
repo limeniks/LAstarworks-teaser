@@ -417,6 +417,26 @@ html {
 /* EXTRA SAFETY: PREVENT FLASHING */
 .spa-section {
   background: transparent;
+}/* FORCE VIDEO OFF WHEN SECTION IS OPEN */
+body.section-open .video-wrapper {
+  display: none !important;
+}
+
+/* MAKE JPG VISIBLE */
+.section-bg {
+  background-image: url('about-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1 !important;
+  filter: blur(6px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+/* MAKE OVERLAY TRANSPARENT ENOUGH */
+.section-overlay {
+  background: rgba(0,0,0,0.45) !important;
+  backdrop-filter: blur(10px);
 }
 
 /* END OF STYLE.CSS v500 */

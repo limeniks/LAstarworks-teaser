@@ -132,74 +132,74 @@
 <!-- ========================= -->
 
 <section id="observatory" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Observatory</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    This section will document the complete development of the LAstarworks observatory — from concept, CAD, mechanics, optics, electronics, to imaging workflow.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="garden" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Garden</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    A long-term ecological and technological project combining soil regeneration, hydroponics, permaculture and practical engineering.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="hardware" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>DIY Technology</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    Open hardware, 3D printing, electronics, sensors, automation and practical STEM tools developed for LAstarworks.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="multimedia" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Multimedia</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    Photography, video, timelapse, sound design and visual storytelling created throughout the LAstarworks journey.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="gallery" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Gallery</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    A curated selection of images, experiments and visual logs from the project.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="blog" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Blog Notes</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    Short notes, progress logs, thoughts and behind-the-scenes insights from the field and workshop.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="events" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Events</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    Public sessions, workshops, observations and community activities connected to LAstarworks.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
 <section id="contact" class="spa-section" style="display:none;">
+  <div class="section-bg" style="background-image:url('about-bg.jpg');"></div>
   <div class="section-overlay"></div>
   <h1>Contact</h1>
   <p style="margin-top:20px; font-size:18px; max-width:700px;">
-    Ways to reach out, collaborate or follow the project.  
-    <br><br><strong>UNDER CONSTRUCTION</strong>
+    UNDER CONSTRUCTION
   </p>
 </section>
 
@@ -277,9 +277,21 @@
 /* SPA SECTION SWITCHER */
 (function(){
   function showSection(id){
-    document.querySelectorAll('.spa-section').forEach(s => s.style.display = 'none');
+
+    /* Hide all sections */
+    document.querySelectorAll('.spa-section').forEach(s => {
+      s.style.display = 'none';
+      s.classList.remove('active');
+    });
+
+    /* Show selected section */
     const sec = document.getElementById(id);
-    if(sec) sec.style.display = 'block';
+    if(sec){
+      sec.style.display = 'block';
+      sec.classList.add('active');
+    }
+
+    /* Close menu */
     document.getElementById('menu').classList.remove('active');
   }
 

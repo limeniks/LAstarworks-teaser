@@ -242,8 +242,8 @@ footer {
   z-index: 10;
 }
 
-/* Background image inside SPA section */
-.spa-section .section-bg {
+/* Background image layer */
+.section-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -252,14 +252,25 @@ footer {
   z-index: 0;
 }
 
+/* Blur + darken overlay */
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1;
+}
+
+/* Foreground content */
 .spa-section > * {
   position: relative;
   z-index: 2;
 }
 
-/* ABOUT specific */
+/* ABOUT background */
 #about .section-bg {
-  background-image: url('about-bg.jpeg');
+  background-image: url('about-bg.jpg');
 }
 
 /* =========================

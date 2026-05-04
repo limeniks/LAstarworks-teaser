@@ -12,11 +12,14 @@
 <!-- Performance: Preconnect + Preload Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Preload CSS -->
 <link rel="preload" href="style.css?v=108" as="style" />
 <link rel="stylesheet" href="style.css?v=108" />
 
 <!-- Preload SVG icons -->
 <link rel="preload" href="fb.svg?v=2" as="image" />
+<link rel="preload" href="ig.svg?v=2" as="image" />
 <link rel="preload" href="astrobin.svg?v=2" as="image" />
 <link rel="preload" href="youtube.svg?v=2" as="image" />
 
@@ -29,112 +32,118 @@
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND VIDEO -->
 <div class="background-layer" aria-hidden="true"></div>
-
 <div class="video-wrapper" aria-hidden="true">
   <video muted loop playsinline preload="none" id="bgVideo"></video>
 </div>
 
-<!-- TOP SOCIAL ROW -->
+<!-- SOCIAL ROW -->
 <div class="social-row" role="navigation" aria-label="Social links">
-    <a class="social-item" href="https://www.facebook.com/LAstarworks" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="fb.svg?v=2" alt=""><span>Facebook</span>
-    </a>
-    <a class="social-item" href="https://www.instagram.com/LAstarworks.space" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="ig.svg?v=2" alt=""><span>Instagram</span>
-    </a>
-    <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space/gallery" target="_blank" rel="noopener" aria-label="AstroBin">
-        <img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
-    </a>
-    <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="youtube.svg?v=2" alt=""><span>YouTube</span>
-    </a>
+  <a class="social-item" href="https://www.facebook.com/LAstarworks" target="_blank"><img src="fb.svg?v=2"><span>Facebook</span></a>
+  <a class="social-item" href="https://www.instagram.com/LAstarworks.space" target="_blank"><img src="ig.svg?v=2"><span>Instagram</span></a>
+  <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space/gallery" target="_blank"><img src="astrobin.svg?v=2"><span>AstroBin</span></a>
+  <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg?v=2"><span>YouTube</span></a>
 </div>
 
 <!-- LAUNCH BUTTON -->
-<button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">ENTER SPACE</button>
+<button id="openMenu" class="enter-space-btn">ENTER SPACE</button>
 
 <!-- COUNTDOWN -->
-<div id="countdown" class="countdown-bottom" aria-live="polite"></div>
+<div id="countdown" class="countdown-bottom"></div>
 
-<!-- BACKGROUND AUDIO -->
+<!-- AUDIO -->
 <audio id="bg-audio" loop preload="none">
-    <source src="ok.mp3?v=2" type="audio/mpeg" />
+  <source src="ok.mp3?v=2" type="audio/mpeg" />
 </audio>
 
 <!-- FULLSCREEN MENU -->
-<div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-<button class="menu-close" id="closeMenu" aria-label="Close menu">CLOSE</button>
+<div id="menu" class="fullscreen-menu" aria-hidden="true">
+  <button class="menu-close" id="closeMenu">CLOSE</button>
 
-<div class="menu-inner">
-<nav class="menu-items" role="menu" aria-label="Site menu">
+  <div class="menu-inner">
+    <nav class="menu-items">
 
-    <a class="menu-item" data-section="about">ABOUT THE PROJECT</a>
+      <a class="menu-item" data-section="about">ABOUT THE PROJECT</a>
 
-    <div class="menu-group">
-      <div class="menu-group-title">PROJECTS</div>
-      <a class="menu-item sub" data-section="observatory">Observatory</a>
-      <a class="menu-item sub" data-section="garden">Garden</a>
-      <a class="menu-item sub" data-section="hardware">DIY Technology</a>
-      <a class="menu-item sub" data-section="multimedia">Multimedia</a>
-    </div>
+      <div class="menu-group">
+        <div class="menu-group-title">PROJECTS</div>
+        <a class="menu-item sub" data-section="observatory">Observatory</a>
+        <a class="menu-item sub" data-section="garden">Garden</a>
+        <a class="menu-item sub" data-section="hardware">DIY Technology</a>
+        <a class="menu-item sub" data-section="multimedia">Multimedia</a>
+      </div>
 
-    <a class="menu-item" data-section="gallery">GALLERY</a>
-    <a class="menu-item" data-section="blog">BLOG NOTES</a>
-    <a class="menu-item" data-section="events">EVENTS</a>
-    <a class="menu-item" data-section="contact">CONTACT</a>
+      <a class="menu-item" data-section="gallery">GALLERY</a>
+      <a class="menu-item" data-section="blog">BLOG NOTES</a>
+      <a class="menu-item" data-section="events">EVENTS</a>
+      <a class="menu-item" data-section="contact">CONTACT</a>
 
-</nav>
-</div>
+    </nav>
+  </div>
 </div>
 
 <!-- ========================= -->
-<!-- SPA SECTIONS START HERE  -->
+<!-- SPA SECTIONS -->
 <!-- ========================= -->
-
-<!-- HOME stays implicit (background + launch button) -->
 
 <!-- ABOUT SECTION -->
-<section id="about" class="spa-section" style="display:none;">
-  <header class="sub-header" style="margin-top:18px;">
-    <h1>About</h1>
-  </header>
+<section id="about" class="spa-section" style="display:none; position:relative;">
 
-  <main class="sub-content" style="max-width:980px;">
-    <section class="about-text">
+  <!-- BACKGROUND IMAGE -->
+  <div class="about-bg" style="
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image:url('about-bg.jpeg');
+    background-size:cover;
+    background-position:center;
+    opacity:0.25;
+    z-index:0;
+  "></div>
 
-      <h2>LAstarworks</h2>
+  <div style="position:relative; z-index:2;">
 
-      <p><strong>LAstarworks</strong> is a long term, fully independent creative and technical practice founded and run by <strong>Goran Mandić</strong>, who works under the name <strong>Limeniks</strong>. Born from years of experimental work under Limeniks Artworks, LAstarworks brings together visual storytelling, hands on engineering and curiosity. It is a one person laboratory for making, learning and sharing.</p>
+    <header class="sub-header" style="margin-top:18px;">
+      <h1>About</h1>
+    </header>
 
-      <p>Over more than a decade of photography, video, 3D printing, DIY technology and practical STEM work, one clear idea emerged: to gather a set of projects in one place that connect land and sky. LAstarworks is not a product or a hobby. It is a deliberate practice and a public record of a maker’s process, failures, iterations and discoveries.</p>
+    <main class="sub-content" style="max-width:980px;">
+      <section class="about-text">
 
-      <h3>What LAstarworks does</h3>
-      <ul>
-        <li>Builds and documents projects in the garden and landscape that connect ecology and technology.</li>
-        <li>Develops DIY technology and open source hardware for practical, reproducible projects.</li>
-        <li>Maintains an observatory as a long term platform for sky imaging and scientific documentation.</li>
-        <li>Produces multimedia work including photography, video, timelapse and sound.</li>
-        <li>Shares process and learning through tutorials, build logs and project documentation.</li>
-      </ul>
+        <h2>LAstarworks</h2>
 
-      <h3>Why it matters</h3>
-      <p>LAstarworks brings together the precision of scientific tools and the openness of artistic practice. The work creates a place where technology and ecology coexist. The observatory and the garden operate as functional systems and as public works that invite reflection on how people relate to the natural world.</p>
+        <p><strong>LAstarworks</strong> is a long term, fully independent creative and technical practice founded and run by <strong>Goran Mandić</strong>, who works under the name <strong>Limeniks</strong>. Born from years of experimental work under Limeniks Artworks, LAstarworks brings together visual storytelling, hands on engineering and curiosity. It is a one person laboratory for making, learning and sharing.</p>
 
-      <h3>Who makes it</h3>
-      <p>Every stage of LAstarworks, from concept and CAD to fabrication, electronics, imaging and presentation, is conceived and executed by one person. The project shows what a dedicated maker can achieve through curiosity, craft and persistence.</p>
+        <p>Over more than a decade of photography, video, 3D printing, DIY technology and practical STEM work, one clear idea emerged: to gather a set of projects in one place that connect land and sky. LAstarworks is not a product or a hobby. It is a deliberate practice and a public record of a maker’s process, failures, iterations and discoveries.</p>
 
-      <h3>Invitation</h3>
-      <p>LAstarworks documents the journey. If you are interested in DIY astronomy, practical STEM, permaculture or the meeting point of art and ecology, follow the project, explore the gallery and join the conversation.</p>
+        <h3>What LAstarworks does</h3>
+        <ul>
+          <li>Builds and documents projects in the garden and landscape that connect ecology and technology.</li>
+          <li>Develops DIY technology and open source hardware for practical, reproducible projects.</li>
+          <li>Maintains an observatory as a long term platform for sky imaging and scientific documentation.</li>
+          <li>Produces multimedia work including photography, video, timelapse and sound.</li>
+          <li>Shares process and learning through tutorials, build logs and project documentation.</li>
+        </ul>
 
-      <p class="signature" style="margin-top:28px; font-weight:600;">LAstarworks — Goran Mandić (Limeniks)</p>
+        <h3>Why it matters</h3>
+        <p>LAstarworks brings together the precision of scientific tools and the openness of artistic practice. The work creates a place where technology and ecology coexist. The observatory and the garden operate as functional systems and as public works that invite reflection on how people relate to the natural world.</p>
 
-    </section>
-  </main>
+        <h3>Who makes it</h3>
+        <p>Every stage of LAstarworks, from concept and CAD to fabrication, electronics, imaging and presentation, is conceived and executed by one person. The project shows what a dedicated maker can achieve through curiosity, craft and persistence.</p>
+
+        <h3>Invitation</h3>
+        <p>LAstarworks documents the journey. If you are interested in DIY astronomy, practical STEM, permaculture or the meeting point of art and ecology, follow the project, explore the gallery and join the conversation.</p>
+
+        <p class="signature" style="margin-top:28px; font-weight:600;">LAstarworks — Goran Mandić (Limeniks)</p>
+
+      </section>
+    </main>
+
+  </div>
 </section>
 
-<!-- EMPTY PLACEHOLDERS FOR OTHER SECTIONS -->
+<!-- PLACEHOLDERS -->
 <section id="observatory" class="spa-section" style="display:none;"><h1>Observatory</h1></section>
 <section id="garden" class="spa-section" style="display:none;"><h1>Garden</h1></section>
 <section id="hardware" class="spa-section" style="display:none;"><h1>DIY Technology</h1></section>
@@ -191,63 +200,14 @@
   const menu = document.getElementById('menu');
   const openBtn = document.getElementById('openMenu');
   const closeBtn = document.getElementById('closeMenu');
-  const focusableSelector = 'a[href], button:not([disabled])';
-  let lastFocused = null;
 
-  function openMenu(){
-    lastFocused = document.activeElement;
+  openBtn.addEventListener('click', ()=>{
     menu.classList.add('active');
-    menu.setAttribute('aria-hidden','false');
-    openBtn.setAttribute('aria-expanded','true');
-    const first = menu.querySelector('.menu-item');
-    if(first) first.focus();
-    document.addEventListener('focus', trapFocus, true);
-    document.addEventListener('keydown', onKeyDown);
-  }
+  });
 
-  function closeMenu(){
+  closeBtn.addEventListener('click', ()=>{
     menu.classList.remove('active');
-    menu.setAttribute('aria-hidden','true');
-    openBtn.setAttribute('aria-expanded','false');
-    if(lastFocused) lastFocused.focus();
-    document.removeEventListener('focus', trapFocus, true);
-    document.removeEventListener('keydown', onKeyDown);
-  }
-
-  function trapFocus(e){
-    if(!menu.contains(e.target)){
-      e.stopPropagation();
-      const focusables = Array.from(menu.querySelectorAll(focusableSelector));
-      if(focusables.length) focusables[0].focus();
-    }
-  }
-
-  function onKeyDown(e){
-    if(e.key === 'Escape') closeMenu();
-    if(e.key === 'Tab'){
-      const focusables = Array.from(menu.querySelectorAll(focusableSelector));
-      if(!focusables.length) return;
-      const idx = focusables.indexOf(document.activeElement);
-      if(e.shiftKey && idx === 0){ e.preventDefault(); focusables[focusables.length-1].focus(); }
-      else if(!e.shiftKey && idx === focusables.length-1){ e.preventDefault(); focusables[0].focus(); }
-    }
-  }
-
-  openBtn.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-
-  function adjustMenuForViewport(){
-    if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
-      menu.classList.add('mobile-layout');
-      menu.classList.remove('desktop-layout');
-    } else {
-      menu.classList.add('desktop-layout');
-      menu.classList.remove('mobile-layout');
-    }
-  }
-  window.addEventListener('resize', adjustMenuForViewport);
-  window.addEventListener('orientationchange', adjustMenuForViewport);
-  adjustMenuForViewport();
+  });
 })();
 
 /* Social icons wave */

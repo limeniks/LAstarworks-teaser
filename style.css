@@ -34,9 +34,8 @@ html, body { height: 100%; }
   transition: opacity 0.7s ease;
 }
 
-/* kad je sekcija otvorena – ugasi video */
-body.section-open .video-wrapper video {
-  opacity: 0;
+body.section-open .video-wrapper {
+  display: none !important;
 }
 
 /* SOCIAL ROW */
@@ -213,7 +212,7 @@ footer {
 .menu-item.sub {
   font-size: 17px;
   padding-left: 28px;
-}/* SPA SECTIONS – LAYERING & ANIMACIJE */
+}/* SPA SECTIONS */
 .spa-section {
   position: relative;
   min-height: 100vh;
@@ -234,7 +233,7 @@ footer {
   pointer-events: auto;
 }
 
-/* Background image layer */
+/* GLOBAL BACKGROUND FOR ALL SECTIONS */
 .section-bg {
   position: absolute;
   inset: 0;
@@ -242,7 +241,7 @@ footer {
   background-size: cover;
   background-position: center;
   opacity: 1;
-  filter: blur(8px);
+  filter: blur(6px);
   transform: scale(1.05);
   z-index: 0;
   animation: bgZoom 18s ease-in-out infinite alternate;
@@ -253,17 +252,17 @@ footer {
   100% { transform: scale(1.12); }
 }
 
-/* Blur + darken overlay */
+/* DARKEN + BLUR OVERLAY */
 .section-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 1;
 }
 
-/* Foreground content */
+/* FOREGROUND CONTENT */
 .spa-section > * {
   position: relative;
   z-index: 2;

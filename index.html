@@ -9,13 +9,22 @@
   <meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
   <meta name="author" content="Goran Mandić (Limeniks)">
 
-  <!-- Performance: Preconnect for Google Fonts -->
+  <!-- Performance: Preconnect + Preload Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Fonts + Styles -->
+  <!-- Preload CSS to avoid render-blocking -->
+  <link rel="preload" href="style.css?v=108" as="style">
+  <link rel="stylesheet" href="style.css?v=108">
+
+  <!-- Preload SVG icons (cache boost) -->
+  <link rel="preload" href="fb.svg?v=2" as="image">
+  <link rel="preload" href="ig.svg?v=2" as="image">
+  <link rel="preload" href="astrobin.svg?v=2" as="image">
+  <link rel="preload" href="youtube.svg?v=2" as="image">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=107">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
@@ -32,16 +41,16 @@
   <!-- TOP SOCIAL ROW -->
   <div class="social-row" role="navigation" aria-label="Social links">
     <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="fb.svg" alt=""><span>Facebook</span>
+      <img src="fb.svg?v=2" alt=""><span>Facebook</span>
     </a>
     <a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="ig.svg" alt=""><span>Instagram</span>
+      <img src="ig.svg?v=2" alt=""><span>Instagram</span>
     </a>
     <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener" aria-label="AstroBin">
-      <img src="astrobin.svg" alt=""><span>AstroBin</span>
+      <img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
     </a>
     <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener" aria-label="YouTube">
-      <img src="youtube.svg" alt=""><span>YouTube</span>
+      <img src="youtube.svg?v=2" alt=""><span>YouTube</span>
     </a>
   </div>
 
@@ -53,7 +62,7 @@
 
   <!-- BACKGROUND AUDIO -->
   <audio id="bg-audio" loop preload="none">
-    <source src="ok.mp3" type="audio/mpeg">
+    <source src="ok.mp3?v=2" type="audio/mpeg">
   </audio>
 
   <!-- FULLSCREEN MENU -->
@@ -94,9 +103,9 @@
       function tick(){
         const now = Date.now();
         const d = Math.max(0, target - now);
-        const days = Math.floor(d / (1000*60*60*24));
-        const hours = Math.floor((d / (1000*60*60)) % 24);
-        const mins = Math.floor((d / (1000*60)) % 60);
+        const days = Math.floor(d / 86400000);
+        const hours = Math.floor((d / 3600000) % 24);
+        const mins = Math.floor((d / 60000) % 60);
         const secs = Math.floor((d / 1000) % 60);
         el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
       }
@@ -112,14 +121,16 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    /* LAZY LOAD VIDEO — with your new compressed video */
+    /* LAZY LOAD VIDEO */
     (function(){
       const video = document.getElementById('bgVideo');
       const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
 
       window.addEventListener('load', () => {
-        video.src = src;
-        video.play().catch(()=>{});
+        requestAnimationFrame(() => {
+          video.src = src;
+          video.play().catch(()=>{});
+        });
       });
     })();
 

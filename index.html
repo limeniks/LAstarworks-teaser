@@ -26,9 +26,7 @@
   <div class="background-layer" aria-hidden="true"></div>
 
   <div class="video-wrapper" aria-hidden="true">
-    <video muted loop playsinline preload="none" id="bgVideo">
-      <!-- SRC SE DODAJE TEK KAD SE STRANICA UCITA (LAZY LOAD) -->
-    </video>
+    <video muted loop playsinline preload="none" id="bgVideo"></video>
   </div>
 
   <!-- TOP SOCIAL ROW -->
@@ -114,10 +112,10 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    /* LAZY LOAD VIDEO — 100% working for fullscreen background */
+    /* LAZY LOAD VIDEO — with your new compressed video */
     (function(){
       const video = document.getElementById('bgVideo');
-      const src = "https://ia601809.us.archive.org/7/items/test-1_202605/test%20(1).mp4";
+      const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
 
       window.addEventListener('load', () => {
         video.src = src;

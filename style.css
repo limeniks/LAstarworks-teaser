@@ -1,25 +1,15 @@
-/* =========================
-   GLOBAL RESET & VARIABLES
-   ========================= */
+/* RESET & VARS */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
 
 :root{
   --bg: #000;
-  --panel: rgba(0,0,0,0.35);
-  --panel-strong: rgba(0,0,0,0.68);
-  --muted: rgba(255,255,255,0.12);
-  --accent1: #ff6b6b;
-  --accent2: #ff9a6b;
   --text: #e6e6e6;
   --mono: 'Share Tech Mono', monospace;
   --display: 'Orbitron', sans-serif;
-  --touch: 48px;
 }
 
-/* =========================
-   BACKGROUND VIDEO LAYER
-   ========================= */
+/* BACKGROUND / VIDEO */
 .background-layer {
   position: fixed;
   inset: 0;
@@ -40,16 +30,16 @@ html, body { height: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  animation: fadeInBg 1.6s ease-in-out forwards;
-  will-change: opacity;
+  opacity: 1;
+  transition: opacity 0.7s ease;
 }
 
-@keyframes fadeInBg { to { opacity: 1; } }
+/* kad je sekcija otvorena – ugasi video */
+body.section-open .video-wrapper video {
+  opacity: 0;
+}
 
-/* =========================
-   SOCIAL ROW
-   ========================= */
+/* SOCIAL ROW */
 .social-row {
   position: fixed;
   top: 20px;
@@ -67,7 +57,7 @@ html, body { height: 100%; }
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  transition: transform .28s ease;
+  transition: transform .28s ease, opacity .28s ease;
 }
 
 .social-item img {
@@ -83,13 +73,9 @@ html, body { height: 100%; }
 
 .active-pulse {
   transform: scale(1.3);
-  opacity: 1;
-  transition: transform .3s ease, opacity .3s ease;
 }
 
-/* =========================
-   ENTER SPACE BUTTON
-   ========================= */
+/* ENTER SPACE */
 .enter-space-btn {
   position: fixed;
   bottom: 120px;
@@ -121,9 +107,7 @@ html, body { height: 100%; }
   100% { transform: translateX(-50%) scale(1); }
 }
 
-/* =========================
-   COUNTDOWN
-   ========================= */
+/* COUNTDOWN */
 .countdown-bottom {
   position: fixed;
   bottom: 40px;
@@ -139,9 +123,7 @@ html, body { height: 100%; }
   z-index: 999;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 footer {
   position: fixed;
   bottom: 10px;
@@ -153,9 +135,7 @@ footer {
   z-index: 999;
 }
 
-/* =========================
-   FULLSCREEN MENU
-   ========================= */
+/* FULLSCREEN MENU */
 .fullscreen-menu {
   position: fixed;
   inset: 0;
@@ -166,9 +146,14 @@ footer {
   padding: 20px;
   background: rgba(6,6,8,0.28);
   backdrop-filter: blur(10px) saturate(1.05);
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.fullscreen-menu.active { display: flex; }
+.fullscreen-menu.active {
+  display: flex;
+  opacity: 1;
+}
 
 .menu-close {
   position: absolute;
@@ -216,12 +201,13 @@ footer {
   font-family: var(--display);
   font-size: 20px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-  transition: transform .12s ease, background .12s ease;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
 }
 
 .menu-item:hover {
   transform: translateY(-4px);
   background: rgba(255,255,255,0.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
 
 .menu-item.sub {
@@ -229,9 +215,7 @@ footer {
   padding-left: 28px;
 }
 
-/* =========================
-   SPA SECTIONS
-   ========================= */
+/* SPA SECTIONS – LAYERING & ANIMACIJE */
 .spa-section {
   position: relative;
   min-height: 100vh;
@@ -240,6 +224,16 @@ footer {
   color: #fff;
   font-family: var(--mono);
   z-index: 10;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.spa-section.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Background image layer */
@@ -248,17 +242,25 @@ footer {
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.25;
+  opacity: 1;
+  filter: blur(8px);
+  transform: scale(1.05);
   z-index: 0;
+  animation: bgZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.12); }
 }
 
 /* Blur + darken overlay */
 .section-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   z-index: 1;
 }
 
@@ -268,14 +270,63 @@ footer {
   z-index: 2;
 }
 
-/* ABOUT background */
-#about .section-bg {
-  background-image: url('about-bg.jpg');
+/* ABOUT TYPO */
+.sub-header {
+  margin-bottom: 24px;
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
+.sub-header h1 {
+  font-family: var(--display);
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.sub-content {
+  max-width: 980px;
+}
+
+.about-text h2,
+.about-text h3 {
+  font-family: var(--display);
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.about-text p,
+.about-text li {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.about-text ul {
+  margin-left: 18px;
+}
+
+.signature {
+  margin-top: 28px;
+  font-weight: 600;
+}
+
+/* UNDER CONSTRUCTION SECTIONS */
+.section-inner {
+  max-width: 700px;
+}
+
+.section-inner h1 {
+  font-family: var(--display);
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.section-inner p {
+  font-family: var(--mono);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 520px) {
   .enter-space-btn { font-size: 18px; bottom: 100px; }
   .countdown-bottom { font-size: 20px; padding: 8px 14px; }

@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<link rel="preload" href="style.css?v=500" as="style" />
-<link rel="stylesheet" href="style.css?v=500" />
+<link rel="preload" href="style.css?v=501" as="style" />
+<link rel="stylesheet" href="style.css?v=501" />
 
 <link rel="preload" href="fb.svg?v=2" as="image" />
 <link rel="preload" href="ig.svg?v=2" as="image" />
@@ -99,29 +99,11 @@
 
       <p>Over more than a decade of photography, video, 3D printing, DIY technology and practical STEM work, one clear idea emerged: to gather a set of projects in one place that connect land and sky. LAstarworks is not a product or a hobby. It is a deliberate practice and a public record of a maker’s process, failures, iterations and discoveries.</p>
 
-      <h3>What LAstarworks does</h3>
-      <ul>
-        <li>Builds and documents projects in the garden and landscape that connect ecology and technology.</li>
-        <li>Develops DIY technology and open source hardware for practical, reproducible projects.</li>
-        <li>Maintains an observatory as a long term platform for sky imaging and scientific documentation.</li>
-        <li>Produces multimedia work including photography, video, timelapse and sound.</li>
-        <li>Shares process and learning through tutorials, build logs and project documentation.</li>
-      </ul>
-
-      <h3>Why it matters</h3>
-      <p>LAstarworks brings together the precision of scientific tools and the openness of artistic practice. The work creates a place where technology and ecology coexist. The observatory and the garden operate as functional systems and as public works that invite reflection on how people relate to the natural world.</p>
-
-      <h3>Who makes it</h3>
-      <p>Every stage of LAstarworks, from concept and CAD to fabrication, electronics, imaging and presentation, is conceived and executed by one person. The project shows what a dedicated maker can achieve through curiosity, craft and persistence.</p>
-
-      <h3>Invitation</h3>
-      <p>LAstarworks documents the journey. If you are interested in DIY astronomy, practical STEM, permaculture or the meeting point of art and ecology, follow the project, explore the gallery and join the conversation.</p>
-
-      <p class="signature">LAstarworks — Goran Mandić (Limeniks)</p>
-
     </section>
   </main>
-</section><!-- OBSERVATORY -->
+</section>
+
+<!-- OBSERVATORY -->
 <section id="observatory" class="spa-section" style="display:none;">
   <div class="section-bg"></div>
   <div class="section-overlay"></div>
@@ -204,7 +186,12 @@
 <!-- FOOTER -->
 <footer>
   © LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
-</footer><!-- SCRIPTS -->
+</footer>
+
+<!-- ========================= -->
+<!-- SCRIPTS -->
+<!-- ========================= -->
+
 <script>
 /* Countdown */
 (function(){
@@ -256,23 +243,6 @@
   closeBtn.addEventListener('click', ()=>{
     menu.classList.remove('active');
   });
-})();
-
-/* Social icons wave */
-(function(){
-  const icons = document.querySelectorAll('.social-item');
-  function wave(direction='forward'){
-    const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
-    seq.forEach((icon,i)=>{
-      setTimeout(()=>{
-        icon.classList.add('active-pulse');
-        setTimeout(()=>icon.classList.remove('active-pulse'),500);
-      }, i*200);
-    });
-    const total = seq.length*200 + 500;
-    setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
-  }
-  if(icons.length) wave('forward');
 })();
 
 /* SPA SECTION SWITCHER — FINAL */

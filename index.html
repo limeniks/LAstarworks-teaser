@@ -9,6 +9,10 @@
   <meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
   <meta name="author" content="Goran Mandić (Limeniks)">
 
+  <!-- Performance: Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Fonts + Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=107">
@@ -22,7 +26,7 @@
   <div class="background-layer" aria-hidden="true"></div>
 
   <div class="video-wrapper" aria-hidden="true">
-    <video muted loop playsinline preload="none" poster="fallback.jpg" id="bgVideo">
+    <video muted loop playsinline preload="none" id="bgVideo">
       <!-- SRC SE DODAJE TEK KAD SE STRANICA UCITA (LAZY LOAD) -->
     </video>
   </div>
@@ -110,7 +114,7 @@
       document.addEventListener('touchstart', unlock, { once:true });
     })();
 
-    /* LAZY LOAD VIDEO — RADI 100% NA FULLSCREEN BACKGROUND */
+    /* LAZY LOAD VIDEO — 100% working for fullscreen background */
     (function(){
       const video = document.getElementById('bgVideo');
       const src = "https://ia601809.us.archive.org/7/items/test-1_202605/test%20(1).mp4";

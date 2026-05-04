@@ -9,44 +9,40 @@
 <meta name="description" content="LAstarworks – DIY observatory, astrophotography, engineering and art." />
 <meta name="author" content="Goran Mandić (Limeniks)" />
 
-<!-- Performance: Preconnect + Preload Fonts -->
+<!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<!-- Preload CSS -->
-<link rel="preload" href="style.css?v=108" as="style" />
-<link rel="stylesheet" href="style.css?v=108" />
+<link rel="preload" href="style.css?v=200" as="style" />
+<link rel="stylesheet" href="style.css?v=200" />
 
-<!-- Preload SVG icons -->
 <link rel="preload" href="fb.svg?v=2" as="image" />
 <link rel="preload" href="ig.svg?v=2" as="image" />
 <link rel="preload" href="astrobin.svg?v=2" as="image" />
 <link rel="preload" href="youtube.svg?v=2" as="image" />
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
-<!-- Favicon -->
 <link rel="icon" href="favicon.png" type="image/png" />
 </head>
 
 <body>
 
 <!-- BACKGROUND VIDEO -->
-<div class="background-layer" aria-hidden="true"></div>
-<div class="video-wrapper" aria-hidden="true">
+<div class="background-layer"></div>
+<div class="video-wrapper">
   <video muted loop playsinline preload="none" id="bgVideo"></video>
 </div>
 
 <!-- SOCIAL ROW -->
-<div class="social-row" role="navigation" aria-label="Social links">
+<div class="social-row">
   <a class="social-item" href="https://www.facebook.com/LAstarworks" target="_blank"><img src="fb.svg?v=2"><span>Facebook</span></a>
   <a class="social-item" href="https://www.instagram.com/LAstarworks.space" target="_blank"><img src="ig.svg?v=2"><span>Instagram</span></a>
   <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space/gallery" target="_blank"><img src="astrobin.svg?v=2"><span>AstroBin</span></a>
   <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg?v=2"><span>YouTube</span></a>
 </div>
 
-<!-- LAUNCH BUTTON -->
+<!-- ENTER SPACE -->
 <button id="openMenu" class="enter-space-btn">ENTER SPACE</button>
 
 <!-- COUNTDOWN -->
@@ -58,7 +54,7 @@
 </audio>
 
 <!-- FULLSCREEN MENU -->
-<div id="menu" class="fullscreen-menu" aria-hidden="true">
+<div id="menu" class="fullscreen-menu">
   <button class="menu-close" id="closeMenu">CLOSE</button>
 
   <div class="menu-inner">
@@ -88,70 +84,61 @@
 <!-- ========================= -->
 
 <!-- ABOUT SECTION -->
-<section id="about" class="spa-section" style="display:none; position:relative;">
+<section id="about" class="spa-section" style="display:none;">
 
-  <!-- BACKGROUND IMAGE -->
-  <div class="about-bg" style="
-    position:absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background-image:url('about-bg.jpeg');
-    background-size:cover;
-    background-position:center;
-    opacity:0.25;
-    z-index:0;
-  "></div>
+  <!-- SECTION BACKGROUND -->
+  <div class="section-bg"></div>
 
-  <div style="position:relative; z-index:2;">
+  <!-- BLUR + DARKEN OVERLAY -->
+  <div class="section-overlay"></div>
 
-    <header class="sub-header" style="margin-top:18px;">
-      <h1>About</h1>
-    </header>
+  <header class="sub-header" style="margin-top:18px;">
+    <h1>About</h1>
+  </header>
 
-    <main class="sub-content" style="max-width:980px;">
-      <section class="about-text">
+  <main class="sub-content" style="max-width:980px;">
+    <section class="about-text">
 
-        <h2>LAstarworks</h2>
+      <h2>LAstarworks</h2>
 
-        <p><strong>LAstarworks</strong> is a long term, fully independent creative and technical practice founded and run by <strong>Goran Mandić</strong>, who works under the name <strong>Limeniks</strong>. Born from years of experimental work under Limeniks Artworks, LAstarworks brings together visual storytelling, hands on engineering and curiosity. It is a one person laboratory for making, learning and sharing.</p>
+      <p><strong>LAstarworks</strong> is a long term, fully independent creative and technical practice founded and run by <strong>Goran Mandić</strong>, who works under the name <strong>Limeniks</strong>. Born from years of experimental work under Limeniks Artworks, LAstarworks brings together visual storytelling, hands on engineering and curiosity. It is a one person laboratory for making, learning and sharing.</p>
 
-        <p>Over more than a decade of photography, video, 3D printing, DIY technology and practical STEM work, one clear idea emerged: to gather a set of projects in one place that connect land and sky. LAstarworks is not a product or a hobby. It is a deliberate practice and a public record of a maker’s process, failures, iterations and discoveries.</p>
+      <p>Over more than a decade of photography, video, 3D printing, DIY technology and practical STEM work, one clear idea emerged: to gather a set of projects in one place that connect land and sky. LAstarworks is not a product or a hobby. It is a deliberate practice and a public record of a maker’s process, failures, iterations and discoveries.</p>
 
-        <h3>What LAstarworks does</h3>
-        <ul>
-          <li>Builds and documents projects in the garden and landscape that connect ecology and technology.</li>
-          <li>Develops DIY technology and open source hardware for practical, reproducible projects.</li>
-          <li>Maintains an observatory as a long term platform for sky imaging and scientific documentation.</li>
-          <li>Produces multimedia work including photography, video, timelapse and sound.</li>
-          <li>Shares process and learning through tutorials, build logs and project documentation.</li>
-        </ul>
+      <h3>What LAstarworks does</h3>
+      <ul>
+        <li>Builds and documents projects in the garden and landscape that connect ecology and technology.</li>
+        <li>Develops DIY technology and open source hardware for practical, reproducible projects.</li>
+        <li>Maintains an observatory as a long term platform for sky imaging and scientific documentation.</li>
+        <li>Produces multimedia work including photography, video, timelapse and sound.</li>
+        <li>Shares process and learning through tutorials, build logs and project documentation.</li>
+      </ul>
 
-        <h3>Why it matters</h3>
-        <p>LAstarworks brings together the precision of scientific tools and the openness of artistic practice. The work creates a place where technology and ecology coexist. The observatory and the garden operate as functional systems and as public works that invite reflection on how people relate to the natural world.</p>
+      <h3>Why it matters</h3>
+      <p>LAstarworks brings together the precision of scientific tools and the openness of artistic practice. The work creates a place where technology and ecology coexist. The observatory and the garden operate as functional systems and as public works that invite reflection on how people relate to the natural world.</p>
 
-        <h3>Who makes it</h3>
-        <p>Every stage of LAstarworks, from concept and CAD to fabrication, electronics, imaging and presentation, is conceived and executed by one person. The project shows what a dedicated maker can achieve through curiosity, craft and persistence.</p>
+      <h3>Who makes it</h3>
+      <p>Every stage of LAstarworks, from concept and CAD to fabrication, electronics, imaging and presentation, is conceived and executed by one person. The project shows what a dedicated maker can achieve through curiosity, craft and persistence.</p>
 
-        <h3>Invitation</h3>
-        <p>LAstarworks documents the journey. If you are interested in DIY astronomy, practical STEM, permaculture or the meeting point of art and ecology, follow the project, explore the gallery and join the conversation.</p>
+      <h3>Invitation</h3>
+      <p>LAstarworks documents the journey. If you are interested in DIY astronomy, practical STEM, permaculture or the meeting point of art and ecology, follow the project, explore the gallery and join the conversation.</p>
 
-        <p class="signature" style="margin-top:28px; font-weight:600;">LAstarworks — Goran Mandić (Limeniks)</p>
+      <p class="signature" style="margin-top:28px; font-weight:600;">LAstarworks — Goran Mandić (Limeniks)</p>
 
-      </section>
-    </main>
+    </section>
+  </main>
 
-  </div>
 </section>
 
 <!-- PLACEHOLDERS -->
-<section id="observatory" class="spa-section" style="display:none;"><h1>Observatory</h1></section>
-<section id="garden" class="spa-section" style="display:none;"><h1>Garden</h1></section>
-<section id="hardware" class="spa-section" style="display:none;"><h1>DIY Technology</h1></section>
-<section id="multimedia" class="spa-section" style="display:none;"><h1>Multimedia</h1></section>
-<section id="gallery" class="spa-section" style="display:none;"><h1>Gallery</h1></section>
-<section id="blog" class="spa-section" style="display:none;"><h1>Blog</h1></section>
-<section id="events" class="spa-section" style="display:none;"><h1>Events</h1></section>
-<section id="contact" class="spa-section" style="display:none;"><h1>Contact</h1></section>
+<section id="observatory" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Observatory</h1></section>
+<section id="garden" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Garden</h1></section>
+<section id="hardware" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>DIY Technology</h1></section>
+<section id="multimedia" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Multimedia</h1></section>
+<section id="gallery" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Gallery</h1></section>
+<section id="blog" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Blog</h1></section>
+<section id="events" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Events</h1></section>
+<section id="contact" class="spa-section" style="display:none;"><div class="section-overlay"></div><h1>Contact</h1></section>
 
 <!-- FOOTER -->
 <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>

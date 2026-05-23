@@ -83,11 +83,10 @@
 
 <div class="menu-group">
 <div class="menu-group-title">PROJECTS</div>
-<a class="menu-item sub" href="observatory">Observatory</a>
+<a class="menu-item sub" href="bastion">Bastion Observatory</a>
 <a class="menu-item sub" href="garden">Garden</a>
 <a class="menu-item sub" href="diy">DIY Technology</a>
 <a class="menu-item sub" href="multimedia">Multimedia</a>
-<a class="menu-item sub" href="bastion">Bastion Observatory</a>
 </div>
 
 <a class="menu-item" href="gallery.html">GALLERY</a>
@@ -251,8 +250,11 @@ if(icons.length) wave('forward');
       e.preventDefault();
       const page = link.getAttribute('href');
 
-      if(page === 'observatory'){
-        openSPA(`<h1>Observatory</h1><p>UNDER CONSTRUCTION</p>`);
+      if(page === 'bastion'){
+        openSPA(`
+          <h1>Bastion Observatory</h1>
+          <p>UNDER CONSTRUCTION</p>
+        `);
       }
 
       if(page === 'garden'){
@@ -265,14 +267,6 @@ if(icons.length) wave('forward');
 
       if(page === 'multimedia'){
         openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
-      }
-
-      if(page === 'bastion'){
-        openSPA(`
-          <h1>Bastion Observatory</h1>
-          <p>60-segment 3D printed dome.</p>
-          <p>Original Reddit post: <a href="https://www.reddit.com/r/telescopes/comments/1d..." target="_blank">view here</a></p>
-        `);
       }
     });
   });

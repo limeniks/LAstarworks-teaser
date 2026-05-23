@@ -1,217 +1,283 @@
 <!doctype html>
 <html lang="hr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>LAstarworks — Goran Mandić (Limeniks)</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>LAstarworks — Goran Mandić (Limeniks)</title>
 
-  <!-- Meta -->
-  <meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
-  <meta name="author" content="Goran Mandić (Limeniks)">
+<!-- Meta -->
+<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
+<meta name="author" content="Goran Mandić (Limeniks)">
 
-  <!-- Performance: Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Bastion SEO -->
+<meta name="keywords" content="Bastion Observatory, Bastion Telescope, 3D printed observatory, 60 segment dome, DIY observatory, Limeniks, LAstarworks, Goran Mandic, Bastion dome">
+<meta property="og:title" content="Bastion Observatory — LAstarworks">
+<meta property="og:description" content="DIY 3D-printed astronomical observatory by Limeniks. 60-segment dome, custom telescope mount, engineering and astrophotography.">
+<meta property="og:image" content="https://lastar.space/bastion.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 
-  <!-- Preload CSS -->
-  <link rel="preload" href="style.css?v=108" as="style">
-  <link rel="stylesheet" href="style.css?v=108">
+<!-- Performance: Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Preload SVG icons -->
-  <link rel="preload" href="fb.svg?v=2" as="image">
-  <link rel="preload" href="ig.svg?v=2" as="image">
-  <link rel="preload" href="astrobin.svg?v=2" as="image">
-  <link rel="preload" href="youtube.svg?v=2" as="image">
+<!-- Preload CSS -->
+<link rel="preload" href="style.css?v=108" as="style">
+<link rel="stylesheet" href="style.css?v=108">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<!-- Preload SVG icons -->
+<link rel="preload" href="fb.svg?v=2" as="image">
+<link rel="preload" href="ig.svg?v=2" as="image">
+<link rel="preload" href="astrobin.svg?v=2" as="image">
+<link rel="preload" href="youtube.svg?v=2" as="image">
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.png" type="image/png">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
-  <!-- BACKGROUND -->
-  <div class="background-layer" aria-hidden="true"></div>
+<!-- BACKGROUND -->
+<div class="background-layer" aria-hidden="true"></div>
 
-  <div class="video-wrapper" aria-hidden="true">
-    <video muted loop playsinline preload="none" id="bgVideo"></video>
-  </div>
+<div class="video-wrapper" aria-hidden="true">
+<video muted loop playsinline preload="none" id="bgVideo"></video>
+</div>
 
-  <!-- SOCIAL -->
-  <div class="social-row" role="navigation" aria-label="Social links">
-    <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener">
-      <img src="fb.svg?v=2" alt=""><span>Facebook</span>
-    </a>
-    <a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener">
-      <img src="ig.svg?v=2" alt=""><span>Instagram</span>
-    </a>
-    <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener">
-      <img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
-    </a>
-    <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener">
-      <img src="youtube.svg?v=2" alt=""><span>YouTube</span>
-    </a>
-  </div>
+<!-- SOCIAL -->
+<div class="social-row" role="navigation" aria-label="Social links">
+<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener">
+<img src="fb.svg?v=2" alt=""><span>Facebook</span>
+</a>
+<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener">
+<img src="ig.svg?v=2" alt=""><span>Instagram</span>
+</a>
+<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener">
+<img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
+</a>
+<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener">
+<img src="youtube.svg?v=2" alt=""><span>YouTube</span>
+</a>
+</div>
 
-  <!-- LAUNCH -->
-  <button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
+<!-- LAUNCH -->
+<button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
 
-  <!-- COUNTDOWN -->
-  <div id="countdown" class="countdown-bottom" aria-live="polite"></div>
+<!-- COUNTDOWN -->
+<div id="countdown" class="countdown-bottom" aria-live="polite"></div>
 
-  <!-- AUDIO -->
-  <audio id="bg-audio" loop preload="none">
-    <source src="ok.mp3?v=2" type="audio/mpeg">
-  </audio>
+<!-- AUDIO -->
+<audio id="bg-audio" loop preload="none">
+<source src="ok.mp3?v=2" type="audio/mpeg">
+</audio>
 
-  <!-- MENU -->
-  <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-    <button class="menu-close" id="closeMenu">CLOSE</button>
+<!-- MENU -->
+<div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+<button class="menu-close" id="closeMenu">CLOSE</button>
 
-    <div class="menu-inner">
-      <nav class="menu-items" role="menu">
-        <a class="menu-item" href="about.html">ABOUT THE PROJECT</a>
+<div class="menu-inner">
+<nav class="menu-items" role="menu">
+<a class="menu-item" href="about.html">ABOUT THE PROJECT</a>
 
-        <div class="menu-group">
-          <div class="menu-group-title">PROJECTS</div>
-          <a class="menu-item sub" href="observatory.html">Observatory</a>
-          <a class="menu-item sub" href="studio.html">Garden</a>
-          <a class="menu-item sub" href="open-hardware.html">DIY Technology</a>
-          <a class="menu-item sub" href="multimedia.html">Multimedia</a>
-        </div>
+<div class="menu-group">
+<div class="menu-group-title">PROJECTS</div>
+<a class="menu-item sub" href="observatory">Observatory</a>
+<a class="menu-item sub" href="garden">Garden</a>
+<a class="menu-item sub" href="diy">DIY Technology</a>
+<a class="menu-item sub" href="multimedia">Multimedia</a>
+<a class="menu-item sub" href="bastion">Bastion Observatory</a>
+</div>
 
-        <a class="menu-item" href="gallery.html">GALLERY</a>
-        <a class="menu-item" href="blog.html">BLOG NOTES</a>
-        <a class="menu-item" href="events.html">EVENTS</a>
-        <a class="menu-item" href="contact.html">CONTACT</a>
-      </nav>
-    </div>
-  </div>
+<a class="menu-item" href="gallery.html">GALLERY</a>
+<a class="menu-item" href="blog.html">BLOG NOTES</a>
+<a class="menu-item" href="events.html">EVENTS</a>
+<a class="menu-item" href="contact.html">CONTACT</a>
+</nav>
+</div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
+<!-- SPA SECTION -->
+<div id="spa" class="spa-section" aria-hidden="true">
+  <div class="spa-bg"></div>
+  <div class="spa-overlay"></div>
+  <div class="spa-content"></div>
+</div>
 
-  <!-- SCRIPTS -->
-  <script>
-    /* Countdown */
-    (function(){
-      const el = document.getElementById('countdown');
-      const target = new Date('2026-06-30T00:00:00').getTime();
-      function tick(){
-        const now = Date.now();
-        const d = Math.max(0, target - now);
-        const days = Math.floor(d / 86400000);
-        const hours = Math.floor((d / 3600000) % 24);
-        const mins = Math.floor((d / 60000) % 60);
-        const secs = Math.floor((d / 1000) % 60);
-        el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+<!-- FOOTER -->
+<footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
+
+<!-- SCRIPTS -->
+<script>
+/* Countdown */
+(function(){
+const el = document.getElementById('countdown');
+const target = new Date('2026-06-30T00:00:00').getTime();
+function tick(){
+const now = Date.now();
+const d = Math.max(0, target - now);
+const days = Math.floor(d / 86400000);
+const hours = Math.floor((d / 3600000) % 24);
+const mins = Math.floor((d / 60000) % 60);
+const secs = Math.floor((d / 1000) % 60);
+el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+}
+tick();
+setInterval(tick,1000);
+})();
+
+/* Audio unlock */
+(function(){
+const audio = document.getElementById('bg-audio');
+function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
+document.addEventListener('click', unlock, { once:true });
+document.addEventListener('touchstart', unlock, { once:true });
+})();
+
+/* Lazy-load video */
+(function(){
+const video = document.getElementById('bgVideo');
+const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
+window.addEventListener('load', () => {
+requestAnimationFrame(() => {
+video.src = src;
+video.play().catch(()=>{});
+});
+});
+})();
+
+/* Menu */
+(function(){
+const menu = document.getElementById('menu');
+const openBtn = document.getElementById('openMenu');
+const closeBtn = document.getElementById('closeMenu');
+const focusableSelector = 'a[href], button:not([disabled])';
+let lastFocused = null;
+
+function openMenu(){
+lastFocused = document.activeElement;
+menu.classList.add('active');
+menu.setAttribute('aria-hidden','false');
+openBtn.setAttribute('aria-expanded','true');
+const first = menu.querySelector('.menu-item');
+if(first) first.focus();
+document.addEventListener('focus', trapFocus, true);
+document.addEventListener('keydown', onKeyDown);
+}
+
+function closeMenu(){
+menu.classList.remove('active');
+menu.setAttribute('aria-hidden','true');
+openBtn.setAttribute('aria-expanded','false');
+if(lastFocused) lastFocused.focus();
+document.removeEventListener('focus', trapFocus, true);
+document.removeEventListener('keydown', onKeyDown);
+}
+
+function trapFocus(e){
+if(!menu.contains(e.target)){
+e.stopPropagation();
+const focusables = [...menu.querySelectorAll(focusableSelector)];
+if(focusables.length) focusables[0].focus();
+}
+}
+
+function onKeyDown(e){
+if(e.key === 'Escape') closeMenu();
+if(e.key === 'Tab'){
+const focusables = [...menu.querySelectorAll(focusableSelector)];
+if(!focusables.length) return;
+const idx = focusables.indexOf(document.activeElement);
+if(e.shiftKey && idx === 0){ e.preventDefault(); focusables[focusables.length-1].focus(); }
+else if(!e.shiftKey && idx === focusables.length-1){ e.preventDefault(); focusables[0].focus(); }
+}
+}
+
+openBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
+
+function adjustMenuForViewport(){
+if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
+menu.classList.add('mobile-layout');
+menu.classList.remove('desktop-layout');
+} else {
+menu.classList.add('desktop-layout');
+menu.classList.remove('mobile-layout');
+}
+}
+window.addEventListener('resize', adjustMenuForViewport);
+window.addEventListener('orientationchange', adjustMenuForViewport);
+adjustMenuForViewport();
+})();
+
+/* Social icons wave */
+(function(){
+const icons = document.querySelectorAll('.social-item');
+function wave(direction='forward'){
+const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
+seq.forEach((icon,i)=>{
+setTimeout(()=>{
+icon.classList.add('active-pulse');
+setTimeout(()=>icon.classList.remove('active-pulse'),500);
+}, i*200);
+});
+const total = seq.length*200 + 500;
+setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
+}
+if(icons.length) wave('forward');
+})();
+
+/* SPA loader */
+(function(){
+  const spa = document.getElementById('spa');
+  const content = spa.querySelector('.spa-content');
+
+  function openSPA(html){
+    content.innerHTML = html;
+    spa.classList.add('active');
+  }
+
+  function closeSPA(){
+    spa.classList.remove('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeSPA();
+  });
+
+  document.querySelectorAll('.menu-item.sub').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const page = link.getAttribute('href');
+
+      if(page === 'observatory'){
+        openSPA(`<h1>Observatory</h1><p>UNDER CONSTRUCTION</p>`);
       }
-      tick();
-      setInterval(tick,1000);
-    })();
 
-    /* Audio unlock */
-    (function(){
-      const audio = document.getElementById('bg-audio');
-      function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
-      document.addEventListener('click', unlock, { once:true });
-      document.addEventListener('touchstart', unlock, { once:true });
-    })();
-
-    /* Lazy-load video */
-    (function(){
-      const video = document.getElementById('bgVideo');
-      const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
-      window.addEventListener('load', () => {
-        requestAnimationFrame(() => {
-          video.src = src;
-          video.play().catch(()=>{});
-        });
-      });
-    })();
-
-    /* Menu */
-    (function(){
-      const menu = document.getElementById('menu');
-      const openBtn = document.getElementById('openMenu');
-      const closeBtn = document.getElementById('closeMenu');
-      const focusableSelector = 'a[href], button:not([disabled])';
-      let lastFocused = null;
-
-      function openMenu(){
-        lastFocused = document.activeElement;
-        menu.classList.add('active');
-        menu.setAttribute('aria-hidden','false');
-        openBtn.setAttribute('aria-expanded','true');
-        const first = menu.querySelector('.menu-item');
-        if(first) first.focus();
-        document.addEventListener('focus', trapFocus, true);
-        document.addEventListener('keydown', onKeyDown);
+      if(page === 'garden'){
+        openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
       }
 
-      function closeMenu(){
-        menu.classList.remove('active');
-        menu.setAttribute('aria-hidden','true');
-        openBtn.setAttribute('aria-expanded','false');
-        if(lastFocused) lastFocused.focus();
-        document.removeEventListener('focus', trapFocus, true);
-        document.removeEventListener('keydown', onKeyDown);
+      if(page === 'diy'){
+        openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
       }
 
-      function trapFocus(e){
-        if(!menu.contains(e.target)){
-          e.stopPropagation();
-          const focusables = [...menu.querySelectorAll(focusableSelector)];
-          if(focusables.length) focusables[0].focus();
-        }
+      if(page === 'multimedia'){
+        openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
       }
 
-      function onKeyDown(e){
-        if(e.key === 'Escape') closeMenu();
-        if(e.key === 'Tab'){
-          const focusables = [...menu.querySelectorAll(focusableSelector)];
-          if(!focusables.length) return;
-          const idx = focusables.indexOf(document.activeElement);
-          if(e.shiftKey && idx === 0){ e.preventDefault(); focusables[focusables.length-1].focus(); }
-          else if(!e.shiftKey && idx === focusables.length-1){ e.preventDefault(); focusables[0].focus(); }
-        }
+      if(page === 'bastion'){
+        openSPA(`
+          <h1>Bastion Observatory</h1>
+          <p>60-segment 3D printed dome.</p>
+          <p>Original Reddit post: <a href="https://www.reddit.com/r/telescopes/comments/1d..." target="_blank">view here</a></p>
+        `);
       }
-
-      openBtn.addEventListener('click', openMenu);
-      closeBtn.addEventListener('click', closeMenu);
-
-      function adjustMenuForViewport(){
-        if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
-          menu.classList.add('mobile-layout');
-          menu.classList.remove('desktop-layout');
-        } else {
-          menu.classList.add('desktop-layout');
-          menu.classList.remove('mobile-layout');
-        }
-      }
-      window.addEventListener('resize', adjustMenuForViewport);
-      window.addEventListener('orientationchange', adjustMenuForViewport);
-      adjustMenuForViewport();
-    })();
-
-    /* Social icons wave */
-    (function(){
-      const icons = document.querySelectorAll('.social-item');
-      function wave(direction='forward'){
-        const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
-        seq.forEach((icon,i)=>{
-          setTimeout(()=>{ 
-            icon.classList.add('active-pulse'); 
-            setTimeout(()=>icon.classList.remove('active-pulse'),500); 
-          }, i*200);
-        });
-        const total = seq.length*200 + 500;
-        setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
-      }
-      if(icons.length) wave('forward');
-    })();
-  </script>
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

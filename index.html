@@ -1,3 +1,114 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>LAstarworks — Goran Mandić (Limeniks)</title>
+
+<!-- Meta -->
+<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
+<meta name="author" content="Goran Mandić (Limeniks)">
+
+<!-- Bastion SEO -->
+<meta name="keywords" content="Bastion Observatory, Bastion Telescope, 3D printed observatory, 60 segment dome, DIY observatory, Limeniks, LAstarworks, Goran Mandic, Bastion dome">
+<meta property="og:title" content="Bastion Observatory — LAstarworks">
+<meta property="og:description" content="DIY 3D-printed astronomical observatory by Limeniks. 60-segment dome, custom telescope mount, engineering and astrophotography.">
+<meta property="og:image" content="https://lastar.space/bastion.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Performance: Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload CSS -->
+<link rel="preload" href="style.css?v=108" as="style">
+<link rel="stylesheet" href="style.css?v=108">
+
+<!-- Preload SVG icons -->
+<link rel="preload" href="fb.svg?v=2" as="image">
+<link rel="preload" href="ig.svg?v=2" as="image">
+<link rel="preload" href="astrobin.svg?v=2" as="image">
+<link rel="preload" href="youtube.svg?v=2" as="image">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="background-layer" aria-hidden="true"></div>
+
+<div class="video-wrapper" aria-hidden="true">
+<video muted loop playsinline preload="none" id="bgVideo"></video>
+</div>
+
+<!-- SOCIAL -->
+<div class="social-row" role="navigation" aria-label="Social links">
+<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener">
+<img src="fb.svg?v=2" alt=""><span>Facebook</span>
+</a>
+<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener">
+<img src="ig.svg?v=2" alt=""><span>Instagram</span>
+</a>
+<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener">
+<img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
+</a>
+<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener">
+<img src="youtube.svg?v=2" alt=""><span>YouTube</span>
+</a>
+</div>
+
+<!-- LAUNCH -->
+<button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">LAUNCH</button>
+
+<!-- COUNTDOWN -->
+<div id="countdown" class="countdown-bottom" aria-live="polite"></div>
+
+<!-- AUDIO -->
+<audio id="bg-audio" loop preload="none">
+<source src="ok.mp3?v=2" type="audio/mpeg">
+</audio>
+
+<!-- MENU -->
+<div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+<button class="menu-close" id="closeMenu">CLOSE</button>
+
+<div class="menu-inner">
+<nav class="menu-items" role="menu">
+<a class="menu-item" href="about.html">ABOUT THE PROJECT</a>
+
+<div class="menu-group">
+<div class="menu-group-title">PROJECTS</div>
+<a class="menu-item sub" href="bastion">Bastion Observatory</a>
+<a class="menu-item sub" href="garden">Garden</a>
+<a class="menu-item sub" href="diy">DIY Technology</a>
+<a class="menu-item sub" href="multimedia">Multimedia</a>
+</div>
+
+<a class="menu-item" href="gallery.html">GALLERY</a>
+<a class="menu-item" href="blog.html">BLOG NOTES</a>
+<a class="menu-item" href="events.html">EVENTS</a>
+<a class="menu-item" href="contact.html">CONTACT</a>
+</nav>
+</div>
+</div>
+
+<!-- SPA SECTION -->
+<div id="spa" class="spa-section" aria-hidden="true">
+  <div class="spa-bg"></div>
+  <div class="spa-overlay"></div>
+  <div class="spa-content"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em></footer>
+
+<!-- SCRIPTS -->
+  <!-- SCRIPTS -->
 <script>
 /* Countdown */
 (function(){
@@ -36,7 +147,7 @@ video.play().catch(()=>{});
 });
 })();
 
-/* MENU */
+/* Menu */
 (function(){
 const menu = document.getElementById('menu');
 const openBtn = document.getElementById('openMenu');
@@ -116,37 +227,18 @@ setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
 }
 if(icons.length) wave('forward');
 })();
-
-/* SPA CONTENTS */
+  /* SPA CONTENT — MINIMAL VERSION */
 const SPA_CONTENT = {
   bastion: `
-    <h1>Bastion Observatory — DIY 3D‑Printed Telescope Dome</h1>
-
-    <p>
-      Bastion Observatory je moj <strong>DIY 3D‑printed astronomical observatory</strong> 
-      sastavljen od <strong>60 PETG segmenata</strong>. Projekt uključuje 
-      <strong>Bastion Telescope</strong>, prilagođenu GoTo montažu, IMX astrokameru 
-      i <strong>3D‑printanu kupolu</strong> dizajniranu za dugoročno korištenje na otvorenom.
-    </p>
-
-    <p>
-      Projekt je dobio veliku pažnju na Redditu:
-    </p>
-
+    <h1>Bastion Observatory</h1>
+    <p>DIY 3D‑printed observatory project with a 60‑segment PETG dome.</p>
+    <p>This is the minimal SEO version containing the key tags:</p>
     <ul>
-      <li><strong>Backyard starlapse that made me start building my own observatory</strong> — top 4 na r/Astronomy</li>
-      <li><strong>My DIY 3D‑printed observatory — BASTION (60‑segment dome)</strong> — 26.9k pregleda, 599 upvoteova</li>
+      <li>Bastion Observatory</li>
+      <li>Bastion Telescope</li>
+      <li>3D‑printed observatory</li>
+      <li>60‑segment dome</li>
     </ul>
-
-    <p>
-      Bastion dokumentiram kako bi pomogao drugima koji žele izgraditi vlastitu 
-      <strong>3D‑printed observatory dome</strong> konstrukciju. 
-      Sve faze gradnje objavljujem ovdje.
-    </p>
-
-    <div class="keywords">
-      <p>Tags: Bastion Observatory, Bastion Telescope, DIY Observatory, 3D Printed Observatory, 60 Segment Dome, Limeniks, LAstarworks</p>
-    </div>
   `,
   garden: `<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`,
   diy: `<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`,
@@ -180,3 +272,7 @@ const SPA_CONTENT = {
   });
 })();
 </script>
+
+</body>
+</html>
+  

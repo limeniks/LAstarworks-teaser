@@ -144,6 +144,49 @@ video.play().catch(()=>{});
 });
 });
 })();
+      <li>Bastion Telescope</li>
+      <li>3D‑printed observatory</li>
+      <li>60‑segment dome</li>
+    </ul>
+  `,
+  garden: `<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`,
+  diy: `<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`,
+  multimedia: `<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`
+};
+
+/* SPA loader */
+(function(){
+  const spa = document.getElementById('spa');
+  const content = spa.querySelector('.spa-content');
+
+  function openSPA(html){
+    content.innerHTML = html;
+    spa.classList.add('active');
+  }
+
+  function closeSPA(){
+    spa.classList.remove('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeSPA();
+  });
+
+  // osiguraj da su linkovi u DOM-u
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.menu-item.sub').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const page = link.getAttribute('href').replace('#','');
+        openSPA(SPA_CONTENT[page] || "<h1>Unknown</h1>");
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html> 
 /* Menu */
 (function(){
 const menu = document.getElementById('menu');
@@ -235,7 +278,6 @@ const SPA_CONTENT = {
   bastion: `
     <h1>Bastion Observatory</h1>
     <p>DIY 3D‑printed observatory project with a 60‑segment PETG dome.</p>
-    <p>Key SEO tags included:</p>
     <ul>
       <li>Bastion Observatory</li>
       <li>Bastion Telescope</li>
@@ -266,7 +308,7 @@ const SPA_CONTENT = {
     if(e.key === 'Escape') closeSPA();
   });
 
-  // osiguraj da su linkovi u DOM-u
+  // FIX: ensure links exist before attaching listeners
   window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.menu-item.sub').forEach(link => {
       link.addEventListener('click', e => {
@@ -280,4 +322,4 @@ const SPA_CONTENT = {
 </script>
 
 </body>
-</html> 
+</html>

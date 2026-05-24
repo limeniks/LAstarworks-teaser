@@ -227,12 +227,12 @@ setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
 }
 if(icons.length) wave('forward');
 })();
-  /* SPA CONTENT — MINIMAL VERSION */
+/* SPA CONTENT — MINIMAL VERSION */
 const SPA_CONTENT = {
   bastion: `
     <h1>Bastion Observatory</h1>
     <p>DIY 3D‑printed observatory project with a 60‑segment PETG dome.</p>
-    <p>This is the minimal SEO version containing the key tags:</p>
+    <p>Key SEO tags included:</p>
     <ul>
       <li>Bastion Observatory</li>
       <li>Bastion Telescope</li>
@@ -266,7 +266,10 @@ const SPA_CONTENT = {
   document.querySelectorAll('.menu-item.sub').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const page = link.getAttribute('href');
+
+      // FIX: remove # from href
+      const page = link.getAttribute('href').replace('#','');
+
       openSPA(SPA_CONTENT[page] || "<h1>Unknown</h1>");
     });
   });
@@ -275,4 +278,3 @@ const SPA_CONTENT = {
 
 </body>
 </html>
-  

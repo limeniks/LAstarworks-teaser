@@ -144,7 +144,6 @@ video.play().catch(()=>{});
 });
 });
 })();
-
 /* Menu */
 (function(){
 const menu = document.getElementById('menu');
@@ -154,55 +153,60 @@ const focusableSelector = 'a[href], button:not([disabled])';
 let lastFocused = null;
 
 function openMenu(){
-lastFocused = document.activeElement;
-menu.classList.add('active');
-menu.setAttribute('aria-hidden','false');
-openBtn.setAttribute('aria-expanded','true');
-const first = menu.querySelector('.menu-item');
-if(first) first.focus();
-document.addEventListener('focus', trapFocus, true);
-document.addEventListener('keydown', onKeyDown);
+  lastFocused = document.activeElement;
+  menu.classList.add('active');
+  menu.setAttribute('aria-hidden','false');
+  openBtn.setAttribute('aria-expanded','true');
+  const first = menu.querySelector('.menu-item');
+  if(first) first.focus();
+  document.addEventListener('focus', trapFocus, true);
+  document.addEventListener('keydown', onKeyDown);
 }
 
 function closeMenu(){
-menu.classList.remove('active');
-menu.setAttribute('aria-hidden','true');
-openBtn.setAttribute('aria-expanded','false');
-if(lastFocused) lastFocused.focus();
-document.removeEventListener('focus', trapFocus, true);
-document.removeEventListener('keydown', onKeyDown);
+  menu.classList.remove('active');
+  menu.setAttribute('aria-hidden','true');
+  openBtn.setAttribute('aria-expanded','false');
+  if(lastFocused) lastFocused.focus();
+  document.removeEventListener('focus', trapFocus, true);
+  document.removeEventListener('keydown', onKeyDown);
 }
 
 function trapFocus(e){
-if(!menu.contains(e.target)){
-e.stopPropagation();
-const focusables = [...menu.querySelectorAll(focusableSelector)];
-if(focusables.length) focusables[0].focus();
-}
+  if(!menu.contains(e.target)){
+    e.stopPropagation();
+    const focusables = [...menu.querySelectorAll(focusableSelector)];
+    if(focusables.length) focusables[0].focus();
+  }
 }
 
 function onKeyDown(e){
-if(e.key === 'Escape') closeMenu();
-if(e.key === 'Tab'){
-const focusables = [...menu.querySelectorAll(focusableSelector)];
-if(!focusables.length) return;
-const idx = focusables.indexOf(document.activeElement);
-if(e.shiftKey && idx === 0){ e.preventDefault(); focusables[focusables.length-1].focus(); }
-else if(!e.shiftKey && idx === focusables.length-1){ e.preventDefault(); focusables[0].focus(); }
-}
+  if(e.key === 'Escape') closeMenu();
+  if(e.key === 'Tab'){
+    const focusables = [...menu.querySelectorAll(focusableSelector)];
+    if(!focusables.length) return;
+    const idx = focusables.indexOf(document.activeElement);
+    if(e.shiftKey && idx === 0){
+      e.preventDefault();
+      focusables[focusables.length-1].focus();
+    } else if(!e.shiftKey && idx === focusables.length-1){
+      e.preventDefault();
+      focusables[0].focus();
+    }
+  }
 }
 
 openBtn.addEventListener('click', openMenu);
 closeBtn.addEventListener('click', closeMenu);
 
 function adjustMenuForViewport(){
-if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
-menu.classList.add('mobile-layout');
-menu.classList.remove('desktop-layout');
-} else {
-menu.classList.add('desktop-layout');
-menu.classList.remove('mobile-layout');
-}
+  if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
+    menu.classList.add('mobile-layout');
+    menu.classList.remove('desktop-layout');
+  } else {
+    menu.classList.add('desktop-layout');
+    menu.classList.remove('mobile-layout');
+  }
 }
 window.addEventListener('resize', adjustMenuForViewport);
 window.addEventListener('orientationchange', adjustMenuForViewport);
@@ -213,18 +217,20 @@ adjustMenuForViewport();
 (function(){
 const icons = document.querySelectorAll('.social-item');
 function wave(direction='forward'){
-const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
-seq.forEach((icon,i)=>{
-setTimeout(()=>{
-icon.classList.add('active-pulse');
-setTimeout(()=>icon.classList.remove('active-pulse'),500);
-}, i*200);
-});
-const total = seq.length*200 + 500;
-setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
+  const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
+  seq.forEach((icon,i)=>{
+    setTimeout(()=>{
+      icon.classList.add('active-pulse');
+      setTimeout(()=>icon.classList.remove('active-pulse'),500);
+    }, i*200);
+  });
+  const total = seq.length*200 + 500;
+  setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
 }
 if(icons.length) wave('forward');
-})();/* SPA CONTENT — MINIMAL VERSION */
+})();
+
+/* SPA CONTENT — MINIMAL VERSION */
 const SPA_CONTENT = {
   bastion: `
     <h1>Bastion Observatory</h1>
@@ -260,18 +266,18 @@ const SPA_CONTENT = {
     if(e.key === 'Escape') closeSPA();
   });
 
-  document.querySelectorAll('.menu-item.sub').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-
-      // FIX: remove # from href
-      const page = link.getAttribute('href').replace('#','');
-
-      openSPA(SPA_CONTENT[page] || "<h1>Unknown</h1>");
+  // osiguraj da su linkovi u DOM-u
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.menu-item.sub').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const page = link.getAttribute('href').replace('#','');
+        openSPA(SPA_CONTENT[page] || "<h1>Unknown</h1>");
+      });
     });
   });
 })();
 </script>
 
 </body>
-</html>
+</html> 

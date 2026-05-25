@@ -93,7 +93,6 @@ html, body { height: 100%; }
   opacity: 1;
   transition: transform .3s ease, opacity .3s ease;
 }
-
 /* =========================
    LAUNCH BUTTON
    ========================= */
@@ -297,7 +296,6 @@ footer {
   background: rgba(255,255,255,0.06);
   border-radius: 8px;
 }
-
 /* =========================
    ABOUT / CONTACT SUBPAGE
    ========================= */
@@ -458,8 +456,6 @@ footer {
 .social-item {
   -webkit-tap-highlight-color: rgba(255,255,255,0.04);
 }
-
-.menu-item { touch-action: manipulation; }
 /* =========================
    SPA OVERLAY (FIXED + LAYERED)
    ========================= */
@@ -503,6 +499,7 @@ footer {
   font-size: 18px;
   line-height: 1.6;
 }
+
 /* =========================
    SPA READABILITY UPGRADE
    ========================= */
@@ -540,4 +537,47 @@ footer {
 .spa-content li {
   margin-bottom: 0.6rem;
 }
-/* END OF OPTIMIZED style.css (v108) */
+
+/* =========================
+   PATCH — STICKY CLOSE BUTTON
+   ========================= */
+
+.spa-close {
+  position: sticky;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 8px 14px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
+/* =========================
+   PATCH — BLUR MAIN UI WHEN SPA IS OPEN
+   ========================= */
+
+body.spa-open .enter-space-btn,
+body.spa-open .countdown-bottom,
+body.spa-open footer,
+body.spa-open .social-row {
+  filter: blur(10px) brightness(0.6);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* =========================
+   PATCH — SPA SCROLL FIX
+   ========================= */
+
+#spa {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+.menu-item { touch-action: manipulation; } 

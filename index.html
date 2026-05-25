@@ -34,6 +34,7 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <!-- Favicon -->
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
@@ -74,6 +75,7 @@
 <audio id="bg-audio" loop preload="none">
   <source src="ok.mp3?v=2" type="audio/mpeg">
 </audio>
+
 <!-- MENU -->
 <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
   <button class="menu-close" id="closeMenu">CLOSE</button>
@@ -98,6 +100,8 @@
       <a class="menu-item" href="blog.html">BLOG NOTES</a>
       <a class="menu-item" href="events.html">EVENTS</a>
 
+      <!-- CONTACT now SPA -->
+      <a class="menu-item spa-link" data-page="contact">CONTACT</a>
       <!-- CONTACT now SPA -->
       <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
@@ -214,20 +218,6 @@
   openBtn.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
 
-  function adjustMenuForViewport(){
-    if(window.innerWidth <= 520 || (window.innerWidth < window.innerHeight && window.innerWidth <= 720)){
-      menu.classList.add('mobile-layout');
-      menu.classList.remove('desktop-layout');
-    } else {
-      menu.classList.add('desktop-layout');
-      menu.classList.remove('mobile-layout');
-    }
-  }
-
-  window.addEventListener('resize', adjustMenuForViewport);
-  window.addEventListener('orientationchange', adjustMenuForViewport);
-  adjustMenuForViewport();
-
   window.closeMenu = closeMenu;
 })();
 
@@ -250,19 +240,26 @@
   if(icons.length) wave('forward');
 })();
 
-/* SPA loader */
+/* SPA loader — MODERNIZED */
 (function(){
   const spa = document.getElementById('spa');
   const content = spa.querySelector('.spa-content');
 
   function openSPA(html){
-    content.innerHTML = html;
+    content.innerHTML = `
+      <button class="spa-close" onclick="closeSPA()">CLOSE</button>
+      ${html}
+    `;
     spa.classList.add('active');
+    document.body.classList.add("spa-open");
   }
 
   function closeSPA(){
     spa.classList.remove('active');
+    document.body.classList.remove("spa-open");
   }
+
+  window.closeSPA = closeSPA;
 
   document.addEventListener('keydown', e => {
     if(e.key === 'Escape') closeSPA();
@@ -330,7 +327,7 @@
     });
   });
 
-  /* PROJECT SUBPAGES */
+  /* PROJECT SUBPAGES + FULL BIO */
   document.querySelectorAll('.menu-item.sub').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -350,9 +347,50 @@
       if(page === 'multimedia'){
         openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
       }
+
+      /* FULL BIO */
+      if(page === 'bio'){
+        openSPA(`
+          <h1>Goran Mandić (Limeniks) — Full Biography</h1>
+
+          <p>Goran Mandić, known online as <strong>Limeniks</strong>, is a Croatian multidisciplinary artist, musician, filmmaker, and independent maker whose work bridges underground culture, DIY engineering, and astrophotography.</p>
+
+          <p>Originally from Sisak, Croatia, and currently based in the rural village of Piljenice (population ~300), Mandić has developed a distinctive creative practice rooted in experimentation, self-reliance, and hands-on creation.</p>
+
+          <p>He operates through two core identities: <strong>Limeniks Artworks</strong>, his original visual and production platform, and <strong>LAstarworks</strong>, his astronomy and engineering project. Together, they form a continuous evolution of the same idea — building things from scratch, whether sound, image, or systems, driven by curiosity and the joy of making.</p>
+
+          <p>Through Limeniks Artworks, Mandić established his visual language within the Croatian underground music scene, producing music videos and visual content characterized by raw aesthetics, natural environments, and minimal production approaches. His work emphasized authenticity over polish, reflecting a strong DIY philosophy.</p>
+
+          <p>As a musician, he performed in several underground bands including <strong>Šarena Pojava</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Blankets</strong>, contributing to the alternative and punk scene both musically and visually. This period shaped a mindset that continues to define his work: experimentation over perfection, and expression over limitation.</p>
+
+          <p>Over time, his focus shifted toward astronomy, where he founded <strong>LAstarworks</strong> — a platform combining astrophotography, engineering, and visual storytelling. Working under dark rural skies, he began capturing wide-field nightscapes and deep-space imagery under the concept “the sky is a canvas.”</p>
+
+          <p>Rather than building a single observatory, Mandić developed a broader idea: a small, self-built astropark integrated into a permaculture garden. This evolving environment merges astronomy, sustainable living, and DIY design into a unified space where natural and mechanical systems coexist.</p>
+
+          <h2>BASTION Observatory</h2>
+
+          <p>At the center of this project is <strong>BASTION Observatory</strong>, a fully custom-built, backyard observatory constructed using 3D printing, recycled hardware, and experimental engineering methods.</p>
+
+          <p>Its most distinctive feature is a <strong>60-segment, fully 3D-printed dome</strong> made from durable PETG material, designed with a futuristic, helmet-like form that sets it apart from traditional observatories.</p>
+
+          <p>The system itself is built from repurposed components, including parts from a decommissioned 3D printer, combined with custom tracking solutions and modified mechanical systems. Developed without a fixed blueprint, the observatory evolved through continuous iteration and hands-on problem solving.</p>
+
+          <p>The setup supports deep-space imaging using adapted equipment, including vintage optics such as a <strong>Carl Zeiss Jena 180mm f/2.8</strong> lens, reflecting a hybrid approach that combines old and new technologies.</p>
+
+          <p>Mandić documents his work through online platforms, where his projects have gained attention within astronomy and DIY communities. His approach emphasizes transparency, sharing not only results but also failures, costs, and development processes.</p>
+
+          <p>Across all his work, a consistent philosophy remains: build with available resources, embrace experimentation, and maintain a sense of play. This mindset is often summarized in the idea that <em>no blueprint survives first contact with reality</em>.</p>
+
+          <p>Through LAstarworks, he continues to develop the BASTION Observatory, the surrounding astropark, and his astrophotography archive, while working toward a central platform for documentation, open-source sharing, and visual storytelling.</p>
+
+          <p>His work exists between disciplines — part engineering, part art, part astronomy, and part personal exploration — forming a continuous practice of building and observing, from underground music culture to the night sky above a small rural landscape.</p>
+        `);
+      }
+
     });
   });
 })();
 </script>
+
 </body>
 </html>

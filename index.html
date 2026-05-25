@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>LAstarworks — Goran Mandić (Limeniks)</title>
+<title>LAstarworks — Limeniks — Bastion Observatory</title>
 
 <!-- Meta -->
-<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art.">
+<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art by Limeniks. Creator of the viral Reddit project 'My DIY 3D-printed observatory – BASTION (60-segment dome)'.">
 <meta name="author" content="Goran Mandić (Limeniks)">
 
 <!-- Bastion SEO -->
-<meta name="keywords" content="Bastion Observatory, Bastion Telescope, 3D printed observatory, 60 segment dome, DIY observatory, Limeniks, LAstarworks, Goran Mandic, Bastion dome">
-<meta property="og:title" content="Bastion Observatory — LAstarworks">
-<meta property="og:description" content="DIY 3D-printed astronomical observatory by Limeniks. 60-segment dome, custom telescope mount, engineering and astrophotography.">
+<meta name="keywords" content="Limeniks, LAstarworks, Bastion Observatory, Bastion Telescope, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory, Goran Mandic">
+<meta property="og:title" content="My DIY 3D-printed observatory – BASTION (60-segment dome)">
+<meta property="og:description" content="The viral Reddit observatory project by Limeniks — a 3D-printed astronomical installation built in Piljenice.">
 <meta property="og:image" content="https://lastar.space/bastion.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -81,7 +81,8 @@
   <div class="menu-inner">
     <nav class="menu-items" role="menu">
 
-      <a class="menu-item" href="about.html">ABOUT THE PROJECT</a>
+      <!-- ABOUT now SPA -->
+      <a class="menu-item spa-link" data-page="about">ABOUT THE PROJECT</a>
 
       <div class="menu-group">
         <div class="menu-group-title">PROJECTS</div>
@@ -96,7 +97,9 @@
       <a class="menu-item" href="gallery.html">GALLERY</a>
       <a class="menu-item" href="blog.html">BLOG NOTES</a>
       <a class="menu-item" href="events.html">EVENTS</a>
-      <a class="menu-item" href="contact.html">CONTACT</a>
+
+      <!-- CONTACT now SPA -->
+      <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
     </nav>
   </div>
@@ -225,7 +228,6 @@
   window.addEventListener('orientationchange', adjustMenuForViewport);
   adjustMenuForViewport();
 
-  /* expose closeMenu globally for SPA */
   window.closeMenu = closeMenu;
 })();
 
@@ -266,30 +268,85 @@
     if(e.key === 'Escape') closeSPA();
   });
 
+  /* ABOUT + CONTACT SPA LINKS */
+  document.querySelectorAll('.spa-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      closeMenu();
+
+      const page = link.dataset.page;
+
+      if(page === 'about'){
+        openSPA(`
+          <h1>About LAstarworks</h1>
+
+          <p><strong>LAstarworks</strong> is a long-term personal project created by <strong>Goran Mandić — Limeniks</strong>. 
+          It connects astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
+
+          <p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand, piece by piece.</p>
+
+          <h2>Bastion Observatory</h2>
+          <p>The Bastion Observatory is a unique 3D-printed astronomical installation combining engineering, art, and real astrophotography hardware. 
+          It became widely recognized after the viral Reddit post <em>“My DIY 3D-printed observatory – BASTION (60-segment dome)”</em>.</p>
+
+          <h2>Bastion Telescope</h2>
+          <p>Inside the installation sits the Bastion Telescope, powered by an OpenAstroTracker system — an open-source GoTo mount capable of precise celestial tracking. 
+          This fusion of open hardware and artistic design represents the core philosophy of LAstarworks: science as a creative journey.</p>
+
+          <h2>The 3D-Printed Astronaut Helmet</h2>
+          <p>A full-scale 3D-printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually, 
+          it serves as both a sculpture and a functional housing for astronomical equipment.</p>
+
+          <h2>A Science-Art Installation in Piljenice</h2>
+          <p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science-art environment where technology, nature, and imagination coexist under the stars.</p>
+
+          <ul>
+            <li>a symbolic landmark of exploration</li>
+            <li>a functional astronomical instrument</li>
+            <li>a STEM educational piece</li>
+            <li>an artistic sculpture illuminated by the night sky</li>
+          </ul>
+
+          <h2>Open Hardware, Open Sky</h2>
+          <p>LAstarworks embraces open-source tools, modular engineering, and accessible technology. 
+          The project demonstrates that advanced astronomical equipment can be built at home with creativity, patience, and experimentation.</p>
+
+          <p>Thank you for visiting this corner of the universe called LAstarworks.</p>
+        `);
+      }
+
+      if(page === 'contact'){
+        openSPA(`
+          <h1>Contact</h1>
+          <p>You can reach me through:</p>
+          <ul>
+            <li>Email: <strong>lastarworks@gmail.com</strong></li>
+            <li>Instagram: <strong>@lastarworks.space</strong></li>
+            <li>YouTube: <strong>LAstarworks</strong></li>
+            <li>AstroBin: <strong>LAstarworks.space</strong></li>
+          </ul>
+        `);
+      }
+    });
+  });
+
+  /* PROJECT SUBPAGES */
   document.querySelectorAll('.menu-item.sub').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-
-      /* FIX: close menu BEFORE opening SPA */
       closeMenu();
 
       const page = link.getAttribute('href');
 
       if(page === 'bastion'){
-        openSPA(`
-          <h1>Bastion Observatory</h1>
-          <p>UNDER CONSTRUCTION</p>
-        `);
+        openSPA(`<h1>Bastion Observatory</h1><p>UNDER CONSTRUCTION</p>`);
       }
-
       if(page === 'garden'){
         openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
       }
-
       if(page === 'diy'){
         openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
       }
-
       if(page === 'multimedia'){
         openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
       }

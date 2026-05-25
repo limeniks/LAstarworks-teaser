@@ -1,93 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="hr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAstarworks — Limeniks</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>LAstarworks — Limeniks — Bastion Observatory</title>
 
+<!-- Meta -->
+<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art by Limeniks. Creator of the viral Reddit project 'My DIY 3D-printed observatory – BASTION (60-segment dome)'.">
+<meta name="author" content="Goran Mandić (Limeniks)">
+
+<!-- Bastion SEO -->
+<meta name="keywords" content="Limeniks, LAstarworks, Bastion Observatory, Bastion Telescope, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory, Goran Mandic">
+<meta property="og:title" content="My DIY 3D-printed observatory – BASTION (60-segment dome)">
+<meta property="og:description" content="The viral Reddit observatory project by Limeniks — a 3D-printed astronomical installation built in Piljenice.">
+<meta property="og:image" content="https://lastar.space/bastion.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- CSS -->
+<link rel="preload" href="style.css?v=108" as="style">
+<link rel="stylesheet" href="style.css?v=108">
+
+<!-- Icons -->
+<link rel="preload" href="fb.svg?v=2" as="image">
+<link rel="preload" href="ig.svg?v=2" as="image">
+<link rel="preload" href="astrobin.svg?v=2" as="image">
+<link rel="preload" href="youtube.svg?v=2" as="image">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" type="image/png">
+</head>
 <body>
 
 <!-- BACKGROUND -->
-<div class="background-layer"></div>
-<div class="video-wrapper">
-  <video id="bgVideo" autoplay muted loop playsinline></video>
+<div class="background-layer" aria-hidden="true"></div>
+
+<div class="video-wrapper" aria-hidden="true">
+  <video muted loop playsinline preload="none" id="bgVideo"></video>
 </div>
 
-<!-- SOCIAL ROW -->
-<div class="social-row">
-  <a class="social-item" href="https://youtube.com/@LAstarworks" target="_blank">
-    <img src="icons/youtube.svg"><span>YouTube</span>
+<!-- SOCIAL -->
+<div class="social-row" role="navigation" aria-label="Social links">
+  <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener">
+    <img src="fb.svg?v=2" alt=""><span>Facebook</span>
   </a>
-  <a class="social-item" href="https://instagram.com/lastarworks.space" target="_blank">
-    <img src="icons/instagram.svg"><span>Instagram</span>
+  <a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener">
+    <img src="ig.svg?v=2" alt=""><span>Instagram</span>
   </a>
-  <a class="social-item" href="https://facebook.com/lastarworks" target="_blank">
-    <img src="icons/facebook.svg"><span>Facebook</span>
+  <a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener">
+    <img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
   </a>
-  <a class="social-item" href="mailto:limeniks.artworks@gmail.com">
-    <img src="icons/mail.svg"><span>Email</span>
+  <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener">
+    <img src="youtube.svg?v=2" alt=""><span>YouTube</span>
   </a>
 </div>
 
-<!-- LAUNCH BUTTON -->
-<button class="enter-space-btn" id="openMenu">LAUNCH</button>
+<!-- LAUNCH -->
+<button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+  LAUNCH
+</button>
 
 <!-- COUNTDOWN -->
-<div class="countdown-bottom" id="countdown">00:00:00:00</div>
+<div id="countdown" class="countdown-bottom" aria-live="polite"></div>
 
-<!-- FOOTER -->
-<footer>© LAstarworks.space — Project by Goran Mandić — Limeniks</footer>
+<!-- AUDIO -->
+<audio id="bg-audio" loop preload="none">
+  <source src="ok.mp3?v=2" type="audio/mpeg">
+</audio>
 
-<!-- FULLSCREEN MENU -->
-<div class="fullscreen-menu" id="menu" aria-hidden="true">
-  <div class="menu-close" id="closeMenu">CLOSE</div>
+<!-- MENU -->
+<div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+  <button class="menu-close" id="closeMenu">CLOSE</button>
+
   <div class="menu-inner">
-    <div class="menu-items">
+    <nav class="menu-items" role="menu">
 
-      <!-- BIO (SPA) — umjesto MULTIMEDIA -->
-      <a class="menu-item spa-link" data-page="bio">BIO</a>
-
-      <!-- ABOUT ostaje kakav je -->
+      <!-- ABOUT now SPA -->
       <a class="menu-item spa-link" data-page="about">ABOUT THE PROJECT</a>
 
       <div class="menu-group">
         <div class="menu-group-title">PROJECTS</div>
+
+        <!-- SPA LINKS -->
         <a class="menu-item sub" href="bastion">Bastion Observatory</a>
         <a class="menu-item sub" href="garden">Garden</a>
         <a class="menu-item sub" href="diy">DIY Technology</a>
+        <a class="menu-item sub" href="multimedia">Multimedia</a>
       </div>
 
       <a class="menu-item" href="gallery.html">GALLERY</a>
       <a class="menu-item" href="blog.html">BLOG NOTES</a>
       <a class="menu-item" href="events.html">EVENTS</a>
 
-      <!-- CONTACT (SPA) — samo jedan -->
+      <!-- CONTACT now SPA -->
+      <a class="menu-item spa-link" data-page="contact">CONTACT</a>
+      <!-- CONTACT now SPA -->
       <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
-    </div>
+    </nav>
   </div>
 </div>
 
-<!-- SPA OVERLAY -->
-<div id="spa">
+<!-- SPA SECTION (FULLSCREEN OVERLAY) -->
+<div id="spa" class="spa-section" aria-hidden="true">
   <div class="spa-bg"></div>
   <div class="spa-overlay"></div>
   <div class="spa-content"></div>
 </div>
 
-<!-- AUDIO -->
-<audio id="bg-audio" loop>
-  <source src="audio/bg.mp3" type="audio/mpeg">
-</audio>
-
+<!-- FOOTER -->
+<footer>
+  © LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
+</footer>
 <!-- SCRIPTS -->
 <script>
 /* Countdown */
 (function(){
   const el = document.getElementById('countdown');
   const target = new Date('2026-06-30T00:00:00').getTime();
+
   function tick(){
     const now = Date.now();
     const d = Math.max(0, target - now);
@@ -97,6 +136,7 @@
     const secs = Math.floor((d / 1000) % 60);
     el.textContent = `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
   }
+
   tick();
   setInterval(tick,1000);
 })();
@@ -112,7 +152,8 @@
 /* Lazy-load video */
 (function(){
   const video = document.getElementById('bgVideo');
-  const src = "video/bg.mp4";
+  const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
+
   window.addEventListener('load', () => {
     requestAnimationFrame(() => {
       video.src = src;
@@ -126,88 +167,226 @@
   const menu = document.getElementById('menu');
   const openBtn = document.getElementById('openMenu');
   const closeBtn = document.getElementById('closeMenu');
+  const focusableSelector = 'a[href], button:not([disabled])';
+  let lastFocused = null;
 
-  openBtn.onclick = () => menu.classList.add('active');
-  closeBtn.onclick = () => menu.classList.remove('active');
+  function openMenu(){
+    lastFocused = document.activeElement;
+    menu.classList.add('active');
+    menu.setAttribute('aria-hidden','false');
+    openBtn.setAttribute('aria-expanded','true');
+    const first = menu.querySelector('.menu-item');
+    if(first) first.focus();
+    document.addEventListener('focus', trapFocus, true);
+    document.addEventListener('keydown', onKeyDown);
+  }
+
+  function closeMenu(){
+    menu.classList.remove('active');
+    menu.setAttribute('aria-hidden','true');
+    openBtn.setAttribute('aria-expanded','false');
+    if(lastFocused) lastFocused.focus();
+    document.removeEventListener('focus', trapFocus, true);
+    document.removeEventListener('keydown', onKeyDown);
+  }
+
+  function trapFocus(e){
+    if(!menu.contains(e.target)){
+      e.stopPropagation();
+      const focusables = [...menu.querySelectorAll(focusableSelector)];
+      if(focusables.length) focusables[0].focus();
+    }
+  }
+
+  function onKeyDown(e){
+    if(e.key === 'Escape') closeMenu();
+    if(e.key === 'Tab'){
+      const focusables = [...menu.querySelectorAll(focusableSelector)];
+      if(!focusables.length) return;
+      const idx = focusables.indexOf(document.activeElement);
+      if(e.shiftKey && idx === 0){
+        e.preventDefault();
+        focusables[focusables.length-1].focus();
+      }
+      else if(!e.shiftKey && idx === focusables.length-1){
+        e.preventDefault();
+        focusables[0].focus();
+      }
+    }
+  }
+
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  window.closeMenu = closeMenu;
 })();
 
-/* SPA LOADER */
+/* Social icons wave */
+(function(){
+  const icons = document.querySelectorAll('.social-item');
+
+  function wave(direction='forward'){
+    const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
+    seq.forEach((icon,i)=>{
+      setTimeout(()=>{
+        icon.classList.add('active-pulse');
+        setTimeout(()=>icon.classList.remove('active-pulse'),500);
+      }, i*200);
+    });
+    const total = seq.length*200 + 500;
+    setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
+  }
+
+  if(icons.length) wave('forward');
+})();
+
+/* SPA loader — MODERNIZED */
 (function(){
   const spa = document.getElementById('spa');
   const content = spa.querySelector('.spa-content');
 
-  const pages = {
-
-    /* ABOUT ostaje kakav je */
-    about: `
-      <button class="spa-close" onclick="closeSPA()">← BACK</button>
-      <h1>About LAstarworks</h1>
-      <p>LAstarworks is a long-term personal project created by Goran Mandić — Limeniks...</p>
-      <p>Located in the quiet rural village of Piljenice...</p>
-      <h2>Bastion Observatory</h2>
-      <p>The Bastion Observatory is a unique 3D-printed astronomical installation...</p>
-      <h2>Bastion Telescope</h2>
-      <p>Inside the installation sits the Bastion Telescope...</p>
-      <h2>The 3D-Printed Astronaut Helmet</h2>
-      <p>A full-scale 3D-printed astronaut helmet forms the outer shell...</p>
-      <h2>A Science-Art Installation in Piljenice</h2>
-      <p>The Bastion installation will become the central outdoor piece...</p>
-      <h2>Open Hardware, Open Sky</h2>
-      <p>LAstarworks embraces open-source tools, modular engineering...</p>
-    `,
-
-    /* BIO — dugačka verzija */
-    bio: `
-      <button class="spa-close" onclick="closeSPA()">← BACK</button>
-      <h1>BIO — Goran Mandić (Limeniks)</h1>
-
-      <p><strong>Goran Mandić</strong>, poznat kao <strong>Limeniks</strong>, multidisciplinarni je umjetnik, glazbenik, fotograf, inženjer‑maker i autor vizualnih instalacija. Njegov rad spaja astronomiju, 3D printanje, DIY elektroniku, glazbu i filozofiju stvaranja.</p>
-
-      <p>Rođen u Sisku, danas živi i stvara u Piljenicama — malom selu s minimalnim svjetlosnim onečišćenjem, gdje gradi svoj dugoročni projekt <strong>LAstarworks</strong>: spoj znanosti, umjetnosti i osobne slobode.</p>
-
-      <h2>Limeniks Artworks</h2>
-      <p>Pod imenom Limeniks Artworks djeluje kao vizualni umjetnik, fotograf i video autor. Njegovi radovi uključuju glazbene spotove, eksperimentalne kratke filmove, vizualne instalacije i dokumentiranje procesa izgradnje Bastiona.</p>
-
-      <h2>BASTION Observatory</h2>
-      <p>Najpoznatiji projekt — <strong>BASTION</strong> — 3D printana astronomska instalacija u obliku astronautske kacige, sastavljena od 60 PETG segmenata. Unutra se nalazi OpenAstroTracker GoTo sustav, vintage optika i moderni senzori.</p>
-
-      <h2>Filozofija rada</h2>
-      <blockquote>“No blueprint survives first contact with reality.”</blockquote>
-      <p>Njegov pristup je iterativan, intuitivan i eksperimentalan. Svaki projekt je proces učenja, a svaka greška dio puta.</p>
-
-      <h2>Glazba</h2>
-      <p>17 godina svirao je bas gitaru u bendovima Blankets, Pištolj na gumene metke i Šarena pojava. Glazba i danas ostaje temeljni dio njegovog identiteta.</p>
-
-      <h2>Permakultura i samodostatnost</h2>
-      <p>Uz umjetnost i astronomiju, gradi mali samodostatni sustav: vrt, glistenjak, kokoši, hidroponiku, solarne sustave i radionicu.</p>
-
-      <h2>Zaključak</h2>
-      <p>Limeniks je spoj inženjera, umjetnika, filozofa i praktičara. LAstarworks je njegov životni projekt — prostor gdje se tehnologija, priroda i kreativnost susreću pod zvijezdama.</p>
-    `,
-
-    contact: `
-      <button class="spa-close" onclick="closeSPA()">← BACK</button>
-      <h1>CONTACT</h1>
-      <p>Email: <strong>limeniks.artworks@gmail.com</strong></p>
-      <p>Instagram: <strong>@lastarworks.space</strong></p>
-      <p>YouTube: <strong>@LAstarworks</strong></p>
-    `
-  };
-
-  function openSPA(page){
-    content.innerHTML = pages[page] || "<p>Page not found.</p>";
-    spa.classList.add("active");
+  function openSPA(html){
+    content.innerHTML = `
+      <button class="spa-close" onclick="closeSPA()">CLOSE</button>
+      ${html}
+    `;
+    spa.classList.add('active');
     document.body.classList.add("spa-open");
   }
 
-  window.closeSPA = function(){
-    spa.classList.remove("active");
+  function closeSPA(){
+    spa.classList.remove('active');
     document.body.classList.remove("spa-open");
-  };
+  }
 
-  document.querySelectorAll('.spa-link').forEach(a=>{
-    a.addEventListener('click', ()=>{
-      openSPA(a.dataset.page);
+  window.closeSPA = closeSPA;
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeSPA();
+  });
+
+  /* ABOUT + CONTACT SPA LINKS */
+  document.querySelectorAll('.spa-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      closeMenu();
+
+      const page = link.dataset.page;
+
+      if(page === 'about'){
+        openSPA(`
+          <h1>About LAstarworks</h1>
+
+          <p><strong>LAstarworks</strong> is a long-term personal project created by <strong>Goran Mandić — Limeniks</strong>. 
+          It connects astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
+
+          <p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand, piece by piece.</p>
+
+          <h2>Bastion Observatory</h2>
+          <p>The Bastion Observatory is a unique 3D-printed astronomical installation combining engineering, art, and real astrophotography hardware. 
+          It became widely recognized after the viral Reddit post <em>“My DIY 3D-printed observatory – BASTION (60-segment dome)”</em>.</p>
+
+          <h2>Bastion Telescope</h2>
+          <p>Inside the installation sits the Bastion Telescope, powered by an OpenAstroTracker system — an open-source GoTo mount capable of precise celestial tracking. 
+          This fusion of open hardware and artistic design represents the core philosophy of LAstarworks: science as a creative journey.</p>
+
+          <h2>The 3D-Printed Astronaut Helmet</h2>
+          <p>A full-scale 3D-printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually, 
+          it serves as both a sculpture and a functional housing for astronomical equipment.</p>
+
+          <h2>A Science-Art Installation in Piljenice</h2>
+          <p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science-art environment where technology, nature, and imagination coexist under the stars.</p>
+
+          <ul>
+            <li>a symbolic landmark of exploration</li>
+            <li>a functional astronomical instrument</li>
+            <li>a STEM educational piece</li>
+            <li>an artistic sculpture illuminated by the night sky</li>
+          </ul>
+
+          <h2>Open Hardware, Open Sky</h2>
+          <p>LAstarworks embraces open-source tools, modular engineering, and accessible technology. 
+          The project demonstrates that advanced astronomical equipment can be built at home with creativity, patience, and experimentation.</p>
+
+          <p>Thank you for visiting this corner of the universe called LAstarworks.</p>
+        `);
+      }
+
+      if(page === 'contact'){
+        openSPA(`
+          <h1>Contact</h1>
+          <p>You can reach me through:</p>
+          <ul>
+            <li>Email: <strong>lastarworks@gmail.com</strong></li>
+            <li>Instagram: <strong>@lastarworks.space</strong></li>
+            <li>YouTube: <strong>LAstarworks</strong></li>
+            <li>AstroBin: <strong>LAstarworks.space</strong></li>
+          </ul>
+        `);
+      }
+    });
+  });
+
+  /* PROJECT SUBPAGES + FULL BIO */
+  document.querySelectorAll('.menu-item.sub').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      closeMenu();
+
+      const page = link.getAttribute('href');
+
+      if(page === 'bastion'){
+        openSPA(`<h1>Bastion Observatory</h1><p>UNDER CONSTRUCTION</p>`);
+      }
+      if(page === 'garden'){
+        openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
+      }
+      if(page === 'diy'){
+        openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
+      }
+      if(page === 'multimedia'){
+        openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
+      }
+
+      /* FULL BIO */
+      if(page === 'bio'){
+        openSPA(`
+          <h1>Goran Mandić (Limeniks) — Full Biography</h1>
+
+          <p>Goran Mandić, known online as <strong>Limeniks</strong>, is a Croatian multidisciplinary artist, musician, filmmaker, and independent maker whose work bridges underground culture, DIY engineering, and astrophotography.</p>
+
+          <p>Originally from Sisak, Croatia, and currently based in the rural village of Piljenice (population ~300), Mandić has developed a distinctive creative practice rooted in experimentation, self-reliance, and hands-on creation.</p>
+
+          <p>He operates through two core identities: <strong>Limeniks Artworks</strong>, his original visual and production platform, and <strong>LAstarworks</strong>, his astronomy and engineering project. Together, they form a continuous evolution of the same idea — building things from scratch, whether sound, image, or systems, driven by curiosity and the joy of making.</p>
+
+          <p>Through Limeniks Artworks, Mandić established his visual language within the Croatian underground music scene, producing music videos and visual content characterized by raw aesthetics, natural environments, and minimal production approaches. His work emphasized authenticity over polish, reflecting a strong DIY philosophy.</p>
+
+          <p>As a musician, he performed in several underground bands including <strong>Šarena Pojava</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Blankets</strong>, contributing to the alternative and punk scene both musically and visually. This period shaped a mindset that continues to define his work: experimentation over perfection, and expression over limitation.</p>
+
+          <p>Over time, his focus shifted toward astronomy, where he founded <strong>LAstarworks</strong> — a platform combining astrophotography, engineering, and visual storytelling. Working under dark rural skies, he began capturing wide-field nightscapes and deep-space imagery under the concept “the sky is a canvas.”</p>
+
+          <p>Rather than building a single observatory, Mandić developed a broader idea: a small, self-built astropark integrated into a permaculture garden. This evolving environment merges astronomy, sustainable living, and DIY design into a unified space where natural and mechanical systems coexist.</p>
+
+          <h2>BASTION Observatory</h2>
+
+          <p>At the center of this project is <strong>BASTION Observatory</strong>, a fully custom-built, backyard observatory constructed using 3D printing, recycled hardware, and experimental engineering methods.</p>
+
+          <p>Its most distinctive feature is a <strong>60-segment, fully 3D-printed dome</strong> made from durable PETG material, designed with a futuristic, helmet-like form that sets it apart from traditional observatories.</p>
+
+          <p>The system itself is built from repurposed components, including parts from a decommissioned 3D printer, combined with custom tracking solutions and modified mechanical systems. Developed without a fixed blueprint, the observatory evolved through continuous iteration and hands-on problem solving.</p>
+
+          <p>The setup supports deep-space imaging using adapted equipment, including vintage optics such as a <strong>Carl Zeiss Jena 180mm f/2.8</strong> lens, reflecting a hybrid approach that combines old and new technologies.</p>
+
+          <p>Mandić documents his work through online platforms, where his projects have gained attention within astronomy and DIY communities. His approach emphasizes transparency, sharing not only results but also failures, costs, and development processes.</p>
+
+          <p>Across all his work, a consistent philosophy remains: build with available resources, embrace experimentation, and maintain a sense of play. This mindset is often summarized in the idea that <em>no blueprint survives first contact with reality</em>.</p>
+
+          <p>Through LAstarworks, he continues to develop the BASTION Observatory, the surrounding astropark, and his astrophotography archive, while working toward a central platform for documentation, open-source sharing, and visual storytelling.</p>
+
+          <p>His work exists between disciplines — part engineering, part art, part astronomy, and part personal exploration — forming a continuous practice of building and observing, from underground music culture to the night sky above a small rural landscape.</p>
+        `);
+      }
+
     });
   });
 })();

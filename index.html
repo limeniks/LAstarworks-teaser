@@ -19,17 +19,19 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css?v=200">
+<link rel="stylesheet" href="style.css?v=201">
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
+<!-- BACKGROUND -->
 <div class="background-layer"></div>
 
 <div class="video-wrapper">
   <video muted loop playsinline preload="none" id="bgVideo"></video>
 </div>
 
+<!-- SOCIAL -->
 <div class="social-row">
   <a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank"><img src="fb.svg"><span>Facebook</span></a>
   <a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank"><img src="ig.svg"><span>Instagram</span></a>
@@ -37,10 +39,13 @@
   <a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg"><span>YouTube</span></a>
 </div>
 
+<!-- LAUNCH -->
 <button id="openMenu" class="enter-space-btn">LAUNCH</button>
 
+<!-- COUNTDOWN -->
 <div id="countdown" class="countdown-bottom"></div>
 
+<!-- AUDIO -->
 <audio id="bg-audio" loop preload="none">
   <source src="ok.mp3?v=2" type="audio/mpeg">
 </audio>
@@ -80,12 +85,13 @@
   <div class="spa-content"></div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   © LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
 </footer>
 
 <script>
-/* Countdown */
+/* COUNTDOWN */
 (function(){
   const el = document.getElementById('countdown');
   const target = new Date('2026-06-30T00:00:00').getTime();
@@ -100,14 +106,14 @@
   tick(); setInterval(tick,1000);
 })();
 
-/* Audio unlock */
+/* AUDIO UNLOCK */
 (function(){
   const audio = document.getElementById('bg-audio');
   function unlock(){ audio.play().catch(()=>{}); }
   document.addEventListener('click', unlock, { once:true });
 })();
 
-/* Lazy video */
+/* LAZY VIDEO */
 (function(){
   const video = document.getElementById('bgVideo');
   const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
@@ -116,7 +122,7 @@
   });
 })();
 
-/* Menu */
+/* MENU */
 (function(){
   const menu = document.getElementById('menu');
   const openBtn = document.getElementById('openMenu');
@@ -131,7 +137,7 @@
   window.closeMenu = closeMenu;
 })();
 
-/* SPA */
+/* SPA SYSTEM */
 (function(){
   const spa = document.getElementById('spa');
   const content = spa.querySelector('.spa-content');

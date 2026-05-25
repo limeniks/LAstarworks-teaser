@@ -540,4 +540,61 @@ footer {
 .spa-content li {
   margin-bottom: 0.6rem;
 }
+/* =========================
+   FINAL SPA SCROLL FIX
+   ========================= */
+
+#spa {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+  z-index: 9999;
+}
+
+#spa.active {
+  display: block !important;
+}
+
+.spa-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 80px auto !important;
+  padding: 50px 40px 180px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.85 !important;
+  color: #f5f5f5;
+}
+
+.spa-close {
+  position: sticky;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 8px 14px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+}
+
+/* Landscape fix */
+@media (max-height: 480px) {
+  .spa-content {
+    margin: 20px auto !important;
+    padding: 20px 20px 220px !important;
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+  }
+}
 /* END OF OPTIMIZED style.css (v108) */

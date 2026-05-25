@@ -460,5 +460,47 @@ footer {
 }
 
 .menu-item { touch-action: manipulation; }
+/* =========================
+   SPA OVERLAY (FIXED + LAYERED)
+   ========================= */
 
+#spa {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* skriven dok nije aktivan */
+  z-index: 900; /* iznad videa, ispod menija */
+}
+
+#spa.active {
+  display: block;
+}
+
+.spa-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.spa-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.spa-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px;
+  color: #fff;
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.6;
+}
 /* END OF OPTIMIZED style.css (v108) */

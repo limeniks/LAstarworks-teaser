@@ -44,6 +44,7 @@
 <audio id="bg-audio" loop preload="none">
   <source src="ok.mp3?v=2" type="audio/mpeg">
 </audio>
+
 <!-- MENU -->
 <div id="menu" class="fullscreen-menu" aria-hidden="true">
   <button class="menu-close" id="closeMenu">CLOSE</button>
@@ -82,6 +83,7 @@
 <footer>
   © LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
 </footer>
+
 <script>
 /* Countdown */
 (function(){
@@ -136,6 +138,7 @@
 
   function closeSPA(){
     spa.classList.remove('active');
+    document.body.classList.remove("spa-open");
     window.scrollTo(0,0);
   }
 
@@ -145,11 +148,12 @@
       ${html}
     `;
     spa.classList.add('active');
+    document.body.classList.add("spa-open");
   }
 
   window.closeSPA = closeSPA;
 
-  /* ABOUT */
+  /* ABOUT + CONTACT */
   document.querySelectorAll('.spa-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -254,5 +258,6 @@
   });
 })();
 </script>
+
 </body>
 </html>

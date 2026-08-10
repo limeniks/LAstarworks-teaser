@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>LAstarworks — Limeniks — Bastion Observatory</title>
+<title>LAstarworks — Bastion Observatory</title>
 
 <!-- Meta -->
-<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art by Limeniks. Creator of the viral Reddit project 'My DIY 3D-printed observatory – BASTION (60-segment dome)'.">
-<meta name="author" content="Goran Mandić (Limeniks)">
+<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art. Creator of the viral Reddit project 'My DIY 3D-printed observatory – BASTION (60-segment dome)'.">
+<meta name="author" content="LAstarworks">
 
 <!-- Bastion SEO -->
-<meta name="keywords" content="Limeniks, LAstarworks, Bastion Observatory, Bastion Telescope, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory, Goran Mandic">
+<meta name="keywords" content="LAstarworks, Bastion Observatory, Bastion Garden, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory">
 <meta property="og:title" content="My DIY 3D-printed observatory – BASTION (60-segment dome)">
-<meta property="og:description" content="The viral Reddit observatory project by Limeniks — a 3D-printed astronomical installation built in Piljenice.">
+<meta property="og:description" content="The viral Reddit observatory project — a 3D-printed astronomical installation built in Piljenice.">
 <meta property="og:image" content="https://lastar.space/bastion.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -72,7 +72,6 @@ LAUNCH
 <audio id="bg-audio" loop preload="none">
 <source src="ok.mp3?v=2" type="audio/mpeg">
 </audio>
-
 <!-- MENU -->
 <div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
 <button class="menu-close" id="closeMenu">CLOSE</button>
@@ -86,7 +85,7 @@ LAUNCH
 <div class="menu-group-title">PROJECTS</div>
 
 <a class="menu-item spa-link" data-page="bastion">Bastion Observatory</a>
-<a class="menu-item spa-link" data-page="garden">Garden</a>
+<a class="menu-item spa-link" data-page="garden">Bastion Garden</a>
 <a class="menu-item spa-link" data-page="diy">DIY Technology</a>
 <a class="menu-item spa-link" data-page="multimedia">Multimedia</a>
 </div>
@@ -110,8 +109,9 @@ LAUNCH
 
 <!-- FOOTER -->
 <footer>
-© LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
+© LAstarworks.space — Project by LAstarworks
 </footer>
+
 <script>
 
 /* Audio unlock */
@@ -211,8 +211,7 @@ setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
 
 if(icons.length) wave('forward');
 })();
-
-/* SPA loader — ALL PAGES SPA */
+   /* SPA loader — ALL PAGES SPA */
 (function(){
 const spa = document.getElementById('spa');
 const content = spa.querySelector('.spa-content');
@@ -242,30 +241,32 @@ closeMenu();
 
 const page = link.dataset.page;
 
-/* ABOUT — FULL ORIGINAL TEXT */
+/* ABOUT — NEW TEXT */
 if(page === 'about'){
 openSPA(`
 <h1>About LAstarworks</h1>
 
-<p><strong>LAstarworks</strong> is a long-term personal project created by <strong>Goran Mandić — Limeniks</strong>.
-It connects astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
+<p><strong>LAstarworks</strong> is a long-term personal project combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
 
 <p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand, piece by piece.</p>
+`);
+}
 
-<h2>Bastion Observatory</h2>
-<p>The Bastion Observatory is a unique 3D-printed astronomical installation combining engineering, art, and real astrophotography hardware.
-It became widely recognized after the viral Reddit post <em>“My DIY 3D-printed observatory – BASTION (60-segment dome)”</em>.</p>
+/* BASTION OBSERVATORY — NEW TEXT */
+if(page === 'bastion'){
+openSPA(`
+<h1>Bastion Observatory</h1>
+
+<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware. It became widely recognized after the viral Reddit post <em>“My DIY 3D‑printed observatory – BASTION (60‑segment dome)”</em>.</p>
 
 <h2>Bastion Telescope</h2>
-<p>Inside the installation sits the Bastion Telescope, powered by an OpenAstroTracker system — an open-source GoTo mount capable of precise celestial tracking.
-This fusion of open hardware and artistic design represents the core philosophy of LAstarworks: science as a creative journey.</p>
+<p>Inside the installation sits the <strong>Bastion Telescope</strong>, powered by an <strong>OpenAstroTracker</strong> system — an open‑source GoTo mount capable of precise celestial tracking.</p>
 
-<h2>The 3D-Printed Astronaut Helmet</h2>
-<p>A full-scale 3D-printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually,
-it serves as both a sculpture and a functional housing for astronomical equipment.</p>
+<h2>The 3D‑Printed Astronaut Helmet</h2>
+<p>A full‑scale 3D‑printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually, it serves as both a sculpture and a functional housing for astronomical equipment.</p>
 
-<h2>A Science-Art Installation in Piljenice</h2>
-<p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science-art environment where technology, nature, and imagination coexist under the stars.</p>
+<h2>A Science‑Art Installation in Piljenice</h2>
+<p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science‑art environment where technology, nature, and imagination coexist under the stars.</p>
 
 <ul>
 <li>a symbolic landmark of exploration</li>
@@ -275,10 +276,47 @@ it serves as both a sculpture and a functional housing for astronomical equipmen
 </ul>
 
 <h2>Open Hardware, Open Sky</h2>
-<p>LAstarworks embraces open-source tools, modular engineering, and accessible technology.
-The project demonstrates that advanced astronomical equipment can be built at home with creativity, patience, and experimentation.</p>
+<p>LAstarworks embraces open‑source tools, modular engineering, and accessible technology.</p>
+`);
+}
 
-<p>Thank you for visiting this corner of the universe called LAstarworks.</p>
+/* BASTION GARDEN — NEW TEXT */
+if(page === 'garden'){
+openSPA(`
+<h1>Bastion Garden</h1>
+
+<p><strong>Bastion Garden</strong> is a dual‑zone experimental garden combining classical planting, permaculture, hydroponics, automation, and sustainable micro‑ecosystems.</p>
+
+<h2>Hydroponic Systems</h2>
+<p>Two prototype hydroponic towers are currently in development — one fully functional, producing lettuce and tomatoes. Future systems will include:</p>
+
+<ul>
+<li>hydroponic towers</li>
+<li>NFT systems</li>
+<li>Dutch bucket systems</li>
+<li>modular vertical units</li>
+</ul>
+
+<h2>Permaculture Zone</h2>
+<p>The small garden zone uses classical planting with permaculture principles — soil regeneration, companion planting, and low‑resource maintenance.</p>
+
+<h2>Automated Chicken Coop</h2>
+<p>The garden includes an automated coop with six hens producing daily eggs and organic fertilizer. Waste is processed through composters and a vermiculture system, returning nutrients to the permaculture bed.</p>
+
+<h2>Large Garden Zone</h2>
+<p>The large garden combines traditional planting with hydroponics, including 3D‑printed tower prototypes.</p>
+
+<h2>Modular Greenhouse</h2>
+<p>A future greenhouse will include:</p>
+
+<ul>
+<li>solar‑powered pumps</li>
+<li>automated irrigation</li>
+<li>hydroponic test modules</li>
+<li>alternative growing methods</li>
+</ul>
+
+<p>Bastion Garden is part of the broader LAstarworks vision — building autonomous, sustainable, and experimental environments.</p>
 `);
 }
 
@@ -321,18 +359,20 @@ openSPA(`
 `);
 }
 
-/* PROJECTS */
-if(page === 'bastion'){
-openSPA(`<h1>Bastion Observatory</h1><p>UNDER CONSTRUCTION</p>`);
-}
-if(page === 'garden'){
-openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
-}
+/* DIY */
 if(page === 'diy'){
-openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
+openSPA(`
+<h1>DIY Technology</h1>
+<p>DIY engineering projects will be added here.</p>
+`);
 }
+
+/* MULTIMEDIA */
 if(page === 'multimedia'){
-openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
+openSPA(`
+<h1>Multimedia</h1>
+<p>Multimedia archive is being prepared.</p>
+`);
 }
 
 });
@@ -342,4 +382,4 @@ openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
 </script>
 
 </body>
-</html> 
+</html>

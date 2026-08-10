@@ -238,15 +238,20 @@ Goran Mandić — LAstarworks — Limeniks — Bastion Observatory
             const page = link.dataset.page;
 
             /* ABOUT */
-            if(page === 'about'){
-                openSPA(`
+          if(page === 'about'){
+    openSPA(`
 <h1>About LAstarworks</h1>
 
-<p><strong>LAstarworks</strong> is a long-term personal project of <strong>Goran Mandić — Limeniks</strong>, combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story.</p>
+<p><strong>LAstarworks</strong> is a long-term personal project...</p>
 
-<p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
-                `);
-            }
+<div class="about-photo-grid">
+    <img src="obser.png" alt="Observatory">
+    <img src="hidro.png" alt="Hydroponics">
+</div>
+
+<p>Located in Piljenice...</p>
+    `);
+          }
 
             /* BASTION OBSERVATORY */
             if(page === 'bastion'){

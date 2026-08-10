@@ -1,12 +1,20 @@
 /* =========================
-   style.css — Optimized Full Version (v108)
-   Cleaned, improved, GPU‑hinted, performance‑patched.
-   Visual output identical to original.
+   style.css — FULL CLEAN (v109)
    ========================= */
 
 /* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
+
+/* GLOBAL DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  pointer-events: none;
+  z-index: 1;
+}
 
 /* VARIABLES */
 :root{
@@ -64,7 +72,7 @@ html, body { height: 100%; }
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
-  z-index: 999;
+  z-index: 2;
 }
 
 .social-item {
@@ -93,6 +101,7 @@ html, body { height: 100%; }
   opacity: 1;
   transition: transform .3s ease, opacity .3s ease;
 }
+
 /* =========================
    LAUNCH BUTTON
    ========================= */
@@ -110,7 +119,7 @@ html, body { height: 100%; }
   letter-spacing: 3px;
   font-family: var(--display);
   cursor: pointer;
-  z-index: 999;
+  z-index: 2;
   animation: softpulse 2.6s ease-in-out infinite;
   transition: 0.25s ease;
 }
@@ -126,24 +135,6 @@ html, body { height: 100%; }
 }
 
 /* =========================
-   COUNTDOWN
-   ========================= */
-.countdown-bottom {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  padding: 10px 20px;
-  border: 2px solid #fff;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  font-family: var(--mono);
-  z-index: 999;
-}
-
-/* =========================
    FOOTER
    ========================= */
 footer {
@@ -154,7 +145,7 @@ footer {
   font-size: 12px;
   color: var(--text);
   font-family: var(--mono);
-  z-index: 999;
+  z-index: 2;
 }
 
 /* =========================
@@ -287,177 +278,11 @@ footer {
 
 @media (max-width: 360px) {
   .fullscreen-menu .menu-item { font-size: 16px; padding: 14px 14px; }
-  .countdown-bottom { font-size: 20px; padding: 8px 14px; }
   .enter-space-btn { font-size: 18px; padding: 8px 18px; bottom: 100px; }
 }
 
-.fullscreen-menu .menu-items::-webkit-scrollbar { width: 8px; height: 8px; }
-.fullscreen-menu .menu-items::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-}
 /* =========================
-   ABOUT / CONTACT SUBPAGE
-   ========================= */
-.subpage {
-  background: var(--panel-strong);
-  color: #e6e6e6;
-  padding: 40px;
-  font-family: var(--display);
-  line-height: 1.7;
-  position: relative;
-  overflow-x: hidden;
-  z-index: 10;
-  border-radius: 8px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-  contain: layout paint style;
-}
-
-.about-bg {
-  position: fixed;
-  inset: 0;
-  background: url('about-bg.jpg') center/cover no-repeat;
-  filter: blur(10px) brightness(0.55) contrast(1.12);
-  opacity: 0.7;
-  z-index: -1;
-  pointer-events: none;
-  image-rendering: optimizeQuality;
-}
-
-.subpage::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.01) 0px,
-    rgba(255,255,255,0.01) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  z-index: 9;
-}
-
-.subpage input,
-.subpage textarea,
-.subpage select {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  color: #fff;
-  padding: 10px;
-  border-radius: 6px;
-  font-family: var(--mono);
-}
-
-/* =========================
-   READABILITY PATCH
-   ========================= */
-.subpage,
-.subpage p,
-.subpage li,
-.subpage blockquote {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  color: #f3f3f3;
-  line-height: 1.65;
-  font-size: 16px;
-}
-
-.subpage h1,
-.subpage h2,
-.subpage h3,
-.subpage h4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  color: #ffffff;
-  margin-top: 1.4rem;
-  margin-bottom: 0.6rem;
-  line-height: 1.15;
-  letter-spacing: 0.2px;
-}
-
-.subpage h1 {
-  font-size: 28px;
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.subpage h2 { font-size: 20px; }
-.subpage h3 { font-size: 18px; }
-
-.subpage p { margin-bottom: 1.05rem; }
-
-.subpage ul,
-.subpage ol {
-  margin: 0 0 1.05rem 1.25rem;
-}
-
-.subpage blockquote {
-  border-left: 3px solid rgba(255,255,255,0.06);
-  padding: 10px 14px;
-  margin: 1rem 0;
-  background: rgba(255,255,255,0.02);
-  color: #eaeaea;
-  font-style: italic;
-}
-
-.subpage input,
-.subpage textarea,
-.subpage select {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-@media (max-width: 520px) {
-  .subpage,
-  .subpage p,
-  .subpage li {
-    font-size: 17px;
-    line-height: 1.7;
-  }
-  .subpage h1 { font-size: 26px; }
-  .subpage h2 { font-size: 22px; }
-}
-
-/* =========================
-   DROPDOWN
-   ========================= */
-.has-dropdown .dropdown {
-  min-width: 220px;
-  padding: 10px 6px;
-  border-radius: 8px;
-  background: rgba(6,6,8,0.92);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.04);
-  display: none;
-}
-
-.has-dropdown:hover .dropdown { display: block; }
-
-.has-dropdown .dropdown a {
-  padding: 10px 12px;
-  font-size: 13px;
-  color: #e9e9e9;
-  display: block;
-}
-
-.has-dropdown .dropdown a:hover {
-  background: rgba(255,255,255,0.03);
-  transform: translateX(4px);
-}
-
-/* =========================
-   ACCESSIBILITY / TOUCH
-   ========================= */
-.menu-item,
-.enter-space-btn,
-.social-item {
-  -webkit-tap-highlight-color: rgba(255,255,255,0.04);
-}
-/* =========================
-   SPA OVERLAY (FIXED + LAYERED)
+   SPA OVERLAY
    ========================= */
 
 #spa {
@@ -465,8 +290,10 @@ footer {
   inset: 0;
   width: 100%;
   height: 100%;
-  display: none; /* skriven dok nije aktivan */
-  z-index: 900; /* iznad videa, ispod menija */
+  display: none;
+  z-index: 900;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 #spa.active {
@@ -490,42 +317,28 @@ footer {
 
 .spa-content {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   max-width: 900px;
   margin: 80px auto;
-  padding: 40px;
-  color: #fff;
-  font-family: var(--display);
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* =========================
-   SPA READABILITY UPGRADE
-   ========================= */
-
-.spa-content {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 18px !important;
-  line-height: 1.85 !important;
-  letter-spacing: 0.2px;
+  padding: 50px 40px;
   color: #f5f5f5;
-  padding: 50px 40px !important;
-  max-width: 900px;
-  margin: 80px auto !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.85;
+  letter-spacing: 0.2px;
 }
 
 .spa-content p {
-  margin-bottom: 1.4rem !important;
+  margin-bottom: 1.4rem;
 }
 
 .spa-content h1,
 .spa-content h2,
 .spa-content h3 {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  margin-top: 2.2rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
   color: #ffffff;
 }
 
@@ -539,7 +352,7 @@ footer {
 }
 
 /* =========================
-   PATCH — STICKY CLOSE BUTTON
+   SPA CLOSE BUTTON
    ========================= */
 
 .spa-close {
@@ -560,11 +373,10 @@ footer {
 }
 
 /* =========================
-   PATCH — BLUR MAIN UI WHEN SPA IS OPEN
+   BLUR MAIN UI WHEN SPA OPEN
    ========================= */
 
 body.spa-open .enter-space-btn,
-body.spa-open .countdown-bottom,
 body.spa-open footer,
 body.spa-open .social-row {
   filter: blur(10px) brightness(0.6);
@@ -573,11 +385,13 @@ body.spa-open .social-row {
 }
 
 /* =========================
-   PATCH — SPA SCROLL FIX
+   TOUCH
    ========================= */
 
-#spa {
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch;
+.menu-item,
+.enter-space-btn,
+.social-item {
+  -webkit-tap-highlight-color: rgba(255,255,255,0.04);
 }
-.menu-item { touch-action: manipulation; } 
+
+.menu-item { touch-action: manipulation; }

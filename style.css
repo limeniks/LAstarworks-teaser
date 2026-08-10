@@ -1,5 +1,5 @@
 /* =========================
-   style.css — FULL CLEAN (v112)
+   style.css — FULL CLEAN (v113)
    ========================= */
 
 /* RESET */
@@ -110,7 +110,7 @@ body::before {
   font-size: 14px;
 }
 
-/* ORIGINAL PULSE (NE DIRAMO) */
+/* ORIGINAL PULSE */
 .active-pulse {
   transform: scale(1.3);
   opacity: 1;
@@ -118,29 +118,29 @@ body::before {
 }
 
 /* =========================
-   LAUNCH BUTTON — NEON GLOW XXL
+   LAUNCH BUTTON — NEON GLOW (HALF SIZE)
    ========================= */
 .enter-space-btn {
   position: fixed;
   bottom: 140px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 18px 42px;
-  border: 2px solid rgba(255,255,255,0.55);
+  padding: 9px 21px; /* HALF SIZE */
+  border: 1px solid rgba(255,255,255,0.55);
   border-radius: 10px;
   background: rgba(0,0,0,0.45);
   color: #fff;
-  font-size: 34px;
-  letter-spacing: 4px;
+  font-size: 17px; /* HALF SIZE */
+  letter-spacing: 3px;
   font-family: var(--display);
   cursor: pointer;
   z-index: 2;
 
   /* NEON GLOW */
   box-shadow:
-    0 0 14px rgba(255,255,255,0.35),
-    0 0 28px rgba(255,255,255,0.25),
-    inset 0 0 12px rgba(255,255,255,0.15);
+    0 0 10px rgba(255,255,255,0.35),
+    0 0 20px rgba(255,255,255,0.25),
+    inset 0 0 8px rgba(255,255,255,0.15);
 
   animation: launchPulse 3.2s ease-in-out infinite;
   transition: 0.25s ease;
@@ -150,9 +150,9 @@ body::before {
   border-color: #fff;
   background: rgba(255,255,255,0.08);
   box-shadow:
-    0 0 20px rgba(255,255,255,0.55),
-    0 0 40px rgba(255,255,255,0.35),
-    inset 0 0 16px rgba(255,255,255,0.25);
+    0 0 16px rgba(255,255,255,0.55),
+    0 0 32px rgba(255,255,255,0.35),
+    inset 0 0 12px rgba(255,255,255,0.25);
   transform: translateX(-50%) scale(1.06);
 }
 
@@ -160,23 +160,23 @@ body::before {
   0% {
     transform: translateX(-50%) scale(1);
     box-shadow:
-      0 0 14px rgba(255,255,255,0.35),
-      0 0 28px rgba(255,255,255,0.25),
-      inset 0 0 12px rgba(255,255,255,0.15);
+      0 0 10px rgba(255,255,255,0.35),
+      0 0 20px rgba(255,255,255,0.25),
+      inset 0 0 8px rgba(255,255,255,0.15);
   }
   50% {
-    transform: translateX(-50%) scale(1.12);
+    transform: translateX(-50%) scale(1.08);
     box-shadow:
-      0 0 26px rgba(255,255,255,0.55),
-      0 0 48px rgba(255,255,255,0.45),
-      inset 0 0 18px rgba(255,255,255,0.25);
+      0 0 18px rgba(255,255,255,0.55),
+      0 0 36px rgba(255,255,255,0.45),
+      inset 0 0 12px rgba(255,255,255,0.25);
   }
   100% {
     transform: translateX(-50%) scale(1);
     box-shadow:
-      0 0 14px rgba(255,255,255,0.35),
-      0 0 28px rgba(255,255,255,0.25),
-      inset 0 0 12px rgba(255,255,255,0.15);
+      0 0 10px rgba(255,255,255,0.35),
+      0 0 20px rgba(255,255,255,0.25),
+      inset 0 0 8px rgba(255,255,255,0.15);
   }
 }
 

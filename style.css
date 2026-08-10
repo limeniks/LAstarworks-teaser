@@ -103,37 +103,68 @@ body::before {
 }
 
 /* =========================
-   LAUNCH BUTTON
+   LAUNCH BUTTON — NEON GLOW XXL
    ========================= */
 .enter-space-btn {
   position: fixed;
-  bottom: 120px;
+  bottom: 140px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 8px 22px;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 6px;
-  background: rgba(0,0,0,0.35);
-  color: rgba(255,255,255,0.85);
-  font-size: 22px;
-  letter-spacing: 3px;
+  padding: 18px 42px; /* DUPO VEĆE */
+  border: 2px solid rgba(255,255,255,0.55);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 34px; /* DUPO VEĆE */
+  letter-spacing: 4px;
   font-family: var(--display);
   cursor: pointer;
   z-index: 2;
-  animation: softpulse 2.6s ease-in-out infinite;
+
+  /* NEON GLOW */
+  box-shadow:
+    0 0 14px rgba(255,255,255,0.35),
+    0 0 28px rgba(255,255,255,0.25),
+    inset 0 0 12px rgba(255,255,255,0.15);
+
+  /* PULSE ANIMACIJA */
+  animation: launchPulse 3.2s ease-in-out infinite;
   transition: 0.25s ease;
 }
+
 .enter-space-btn:hover {
-  color: #fff;
   border-color: #fff;
-  background-color: rgba(255,255,255,0.06);
-}
-@keyframes softpulse {
-  0%   { transform: translateX(-50%) scale(1); }
-  50%  { transform: translateX(-50%) scale(1.08); }
-  100% { transform: translateX(-50%) scale(1); }
+  background: rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.55),
+    0 0 40px rgba(255,255,255,0.35),
+    inset 0 0 16px rgba(255,255,255,0.25);
+  transform: translateX(-50%) scale(1.06);
 }
 
+@keyframes launchPulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    box-shadow:
+      0 0 14px rgba(255,255,255,0.35),
+      0 0 28px rgba(255,255,255,0.25),
+      inset 0 0 12px rgba(255,255,255,0.15);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.12);
+    box-shadow:
+      0 0 26px rgba(255,255,255,0.55),
+      0 0 48px rgba(255,255,255,0.45),
+      inset 0 0 18px rgba(255,255,255,0.25);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow:
+      0 0 14px rgba(255,255,255,0.35),
+      0 0 28px rgba(255,255,255,0.25),
+      inset 0 0 12px rgba(255,255,255,0.15);
+  }
+}
 /* =========================
    FOOTER
    ========================= */

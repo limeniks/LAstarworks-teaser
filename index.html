@@ -63,7 +63,7 @@
 <div class="spa-content"></div>
 </div>
 
-<footer>© LAstarworks.space — Project by LAstarworks</footer>
+<footer>© LAstarworks.space — Project by Goran Mandić — Limeniks</footer>
 
 <script>/* Audio unlock */
 (function(){
@@ -143,7 +143,7 @@
     closeBtn.addEventListener('click', closeMenu);
 
     window.closeMenu = closeMenu;
-})();/* Social icons wave — FIXED */
+})();/* Social icons wave */
 (function(){
     const icons = document.querySelectorAll('.social-item');
 
@@ -162,7 +162,7 @@
     if(icons.length) wave('forward');
 })();
 
-/* SPA loader — ALL PAGES SPA */
+/* SPA loader */
 (function(){
     const spa = document.getElementById('spa');
     const content = spa.querySelector('.spa-content');
@@ -184,7 +184,6 @@
         if(e.key === 'Escape') closeSPA();
     });
 
-    /* ALL SPA LINKS */
     document.querySelectorAll('.spa-link').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
@@ -197,7 +196,7 @@
                 openSPA(`
 <h1>About LAstarworks</h1>
 
-<p><strong>LAstarworks</strong> is a long-term personal project combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
+<p><strong>LAstarworks</strong> is a long-term personal project of <strong>Goran Mandić — Limeniks</strong>, combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story.</p>
 
 <p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
                 `);
@@ -218,7 +217,7 @@ if(page === 'bastion'){
     `);
 }
 
-/* BASTION GARDEN — FULL VERSION */
+/* BASTION GARDEN — FULL */
 if(page === 'garden'){
     openSPA(`
 <h1>Bastion Garden</h1>
@@ -310,29 +309,23 @@ if(page === 'limeniks'){
     openSPA(`
 <h1>Goran Mandić — Limeniks</h1>
 
-<p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work has evolved across music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
+<p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work spans music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
 
-<p>The name Limeniks originated from the combination of two personal nicknames, Limeni and Iks, and gradually developed from a personal nickname into Mandić's long-term artistic and creative identity.</p>
+<p>The name Limeniks originated from the combination of two personal nicknames, Limeni and Iks, and gradually developed into Mandić's long-term artistic identity.</p>
 
 <h2>Music Background</h2>
-<p>As a bassist, Mandić was active on the Sisak music scene and performed with several local bands, including <strong>Blankets</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Šarena pojava</strong>.</p>
+<p>As a bassist, Mandić performed with several Sisak-based bands including <strong>Blankets</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Šarena pojava</strong>.</p>
 
 <h2>Photography & Video Production</h2>
-<p>His involvement in music expanded into photography and video production, particularly through the creation of music videos and visual material for musicians and bands.</p>
-
-<p>He worked across filming, directing, editing, and visual development.</p>
-
-<p>Documented collaborations include work with <strong>Bad Mushrooms</strong> on the music videos <em>Demoni</em>, <em>Vrijeme promjena</em>, and <em>Sanjam da si tu</em>, as well as the video for <em>Mrtvi Sisak</em> by Šarena pojava.</p>
+<p>His creative work expanded into photography and video production, including music videos for <strong>Bad Mushrooms</strong> (<em>Demoni</em>, <em>Vrijeme promjena</em>, <em>Sanjam da si tu</em>) and <em>Mrtvi Sisak</em> by Šarena pojava.</p>
 
 <h2>Limeniks Artworks</h2>
-<p>This transition from musician to visual creator led to the development of <strong>Limeniks Artworks</strong>, the creative identity under which Mandić has worked in video production, photography, digital art, and other visual projects.</p>
+<p>This transition led to <strong>Limeniks Artworks</strong>, the identity under which Mandić produced visual and digital work.</p>
 
 <h2>LAstarworks — Current Focus</h2>
 <p><strong>LAstarworks</strong> is an independent experimental project focused on smart-home systems, automation, open technology, intelligent environmental systems, agriculture, astronomy, astrophotography, engineering, and creative experimentation.</p>
 
 <h2>Smart Living & Experimental Agriculture</h2>
-<p>The project explores how automation, sensors, electronics, software, renewable energy, and connected devices can merge with traditional agricultural practices.</p>
-
 <ul>
 <li>automated irrigation</li>
 <li>hydroponic systems</li>
@@ -346,26 +339,26 @@ if(page === 'limeniks'){
 </ul>
 
 <h2>Bastion Observatory</h2>
-<p><strong>Bastion Observatory</strong> is a custom-built smart astronomical observatory and art installation combining astronomy, astrophotography, smart-home technology, open-source hardware, 3D printing, engineering, and sculpture.</p>
+<p>A custom-built smart astronomical observatory combining astronomy, astrophotography, smart-home technology, open-source hardware, 3D printing, engineering, and sculpture.</p>
 
 <h2>Astro Garden</h2>
-<p>The <strong>Astro Garden</strong> merges astronomy, technology, nature, and experimentation.</p>
+<p>A fusion of astronomy, technology, nature, and experimentation.</p>
 
 <h2>Bastion Garden</h2>
-<p><strong>Bastion Garden</strong> focuses on experimental agriculture, combining permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
+<p>An experimental agricultural zone combining permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
 
 <h2>Technology as Part of Life</h2>
-<p>LAstarworks explores how smart technology can become a natural part of everyday life — connecting home, garden, greenhouse, observatory, workshop, and energy systems into one ecosystem.</p>
+<p>LAstarworks connects home, garden, greenhouse, observatory, workshop, and energy systems into one ecosystem.</p>
 
 <h2>Astronomy & Astrophotography</h2>
-<p>Astronomy and astrophotography are central motivations behind LAstarworks.</p>
+<p>Central motivations behind LAstarworks.</p>
 
 <h2>Art, Engineering & Making</h2>
-<p>LAstarworks remains fundamentally personal and creative — designing, building, modifying, experimenting, repairing, printing, programming, photographing, and finding new uses for technology.</p>
+<p>LAstarworks remains fundamentally personal — designing, building, modifying, experimenting, repairing, printing, programming, photographing, and creating.</p>
 
 <h2>The LAstarworks Vision</h2>
 <p>Limeniks is the creative identity.<br>
-Limeniks Artworks represents the earlier visual and production work.<br>
+Limeniks Artworks represents earlier visual work.<br>
 LAstarworks is the current main project — an evolving ecosystem of smart technology, experimental agriculture, astronomy, astrophotography, engineering, and art.</p>
     `);
 }

@@ -5,86 +5,40 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>LAstarworks — Bastion Observatory</title>
 
-<!-- Meta -->
-<meta name="description" content="LAstarworks — DIY observatory, astrophotography, engineering and art. Creator of the viral Reddit project 'My DIY 3D-printed observatory – BASTION (60-segment dome)'.">
-<meta name="author" content="LAstarworks">
-
-<!-- Bastion SEO -->
-<meta name="keywords" content="LAstarworks, Bastion Observatory, Bastion Garden, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory, Goran Mandic, Limeniks">
-<meta property="og:title" content="My DIY 3D-printed observatory – BASTION (60-segment dome)">
-<meta property="og:description" content="The viral Reddit observatory project — a 3D-printed astronomical installation built in Piljenice.">
-<meta property="og:image" content="https://lastar.space/bastion.jpg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-
-<!-- Performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- CSS -->
-<link rel="preload" href="style.css?v=109" as="style">
 <link rel="stylesheet" href="style.css?v=109">
-
-<!-- Icons -->
-<link rel="preload" href="fb.svg?v=2" as="image">
-<link rel="preload" href="ig.svg?v=2" as="image">
-<link rel="preload" href="astrobin.svg?v=2" as="image">
-<link rel="preload" href="youtube.svg?v=2" as="image">
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Favicon -->
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
-<!-- BACKGROUND -->
-<div class="background-layer" aria-hidden="true"></div>
+<div class="background-layer"></div>
 
-<div class="video-wrapper" aria-hidden="true">
+<div class="video-wrapper">
 <video muted loop playsinline preload="none" id="bgVideo"></video>
 </div>
 
-<!-- SOCIAL -->
-<div class="social-row" role="navigation" aria-label="Social links">
-<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank" rel="noopener">
-<img src="fb.svg?v=2" alt=""><span>Facebook</span>
-</a>
-<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank" rel="noopener">
-<img src="ig.svg?v=2" alt=""><span>Instagram</span>
-</a>
-<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank" rel="noopener">
-<img src="astrobin.svg?v=2" alt=""><span>AstroBin</span>
-</a>
-<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank" rel="noopener">
-<img src="youtube.svg?v=2" alt=""><span>YouTube</span>
-</a>
+<div class="social-row">
+<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank"><img src="fb.svg?v=2"><span>Facebook</span></a>
+<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank"><img src="ig.svg?v=2"><span>Instagram</span></a>
+<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank"><img src="astrobin.svg?v=2"><span>AstroBin</span></a>
+<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg?v=2"><span>YouTube</span></a>
 </div>
 
-<!-- LAUNCH -->
-<button id="openMenu" class="enter-space-btn" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
-LAUNCH
-</button>
+<button id="openMenu" class="enter-space-btn">LAUNCH</button>
 
-<!-- AUDIO -->
 <audio id="bg-audio" loop preload="none">
 <source src="ok.mp3?v=2" type="audio/mpeg">
 </audio>
 
-<!-- MENU -->
-<div id="menu" class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+<div id="menu" class="fullscreen-menu" aria-hidden="true">
 <button class="menu-close" id="closeMenu">CLOSE</button>
 
 <div class="menu-inner">
-<nav class="menu-items" role="menu">
+<nav class="menu-items">
 
 <a class="menu-item spa-link" data-page="about">ABOUT THE PROJECT</a>
 
 <div class="menu-group">
 <div class="menu-group-title">PROJECTS</div>
-
 <a class="menu-item spa-link" data-page="bastion">Bastion Observatory</a>
 <a class="menu-item spa-link" data-page="garden">Bastion Garden</a>
 <a class="menu-item spa-link" data-page="diy">DIY Technology</a>
@@ -94,170 +48,162 @@ LAUNCH
 <a class="menu-item spa-link" data-page="gallery">GALLERY</a>
 <a class="menu-item spa-link" data-page="blog">BLOG NOTES</a>
 <a class="menu-item spa-link" data-page="events">EVENTS</a>
-
 <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
-<!-- TVOJA NOVA STAVKA — ŠIROKI GUMB -->
+<!-- ŠIROKI GUMB -->
 <a class="menu-item spa-link wide-button" data-page="limeniks">Goran Mandić — Limeniks</a>
 
 </nav>
 </div>
 </div>
 
-<!-- SPA SECTION -->
-<div id="spa" class="spa-section" aria-hidden="true">
+<div id="spa" class="spa-section">
 <div class="spa-bg"></div>
 <div class="spa-overlay"></div>
 <div class="spa-content"></div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-© LAstarworks.space — Project by LAstarworks
-</footer>
+<footer>© LAstarworks.space — Project by LAstarworks</footer>
 
-<script>
-/* Audio unlock */
+<script>/* Audio unlock */
 (function(){
-const audio = document.getElementById('bg-audio');
-function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
-document.addEventListener('click', unlock, { once:true });
-document.addEventListener('touchstart', unlock, { once:true });
+    const audio = document.getElementById('bg-audio');
+    function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
+    document.addEventListener('click', unlock, { once:true });
+    document.addEventListener('touchstart', unlock, { once:true });
 })();
 
 /* Lazy-load video */
 (function(){
-const video = document.getElementById('bgVideo');
-const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
+    const video = document.getElementById('bgVideo');
+    const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
 
-window.addEventListener('load', () => {
-requestAnimationFrame(() => {
-video.src = src;
-video.play().catch(()=>{});
-});
-});
+    window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
+            video.src = src;
+            video.play().catch(()=>{});
+        });
+    });
 })();
 
 /* Menu */
 (function(){
-const menu = document.getElementById('menu');
-const openBtn = document.getElementById('openMenu');
-const closeBtn = document.getElementById('closeMenu');
-const focusableSelector = 'a[href], button:not([disabled])';
-let lastFocused = null;
+    const menu = document.getElementById('menu');
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const focusableSelector = 'a[href], button:not([disabled])';
+    let lastFocused = null;
 
-function openMenu(){
-lastFocused = document.activeElement;
-menu.classList.add('active');
-menu.setAttribute('aria-hidden','false');
-openBtn.setAttribute('aria-expanded','true');
-const first = menu.querySelector('.menu-item');
-if(first) first.focus();
-document.addEventListener('focus', trapFocus, true);
-document.addEventListener('keydown', onKeyDown);
-}
+    function openMenu(){
+        lastFocused = document.activeElement;
+        menu.classList.add('active');
+        menu.setAttribute('aria-hidden','false');
+        openBtn.setAttribute('aria-expanded','true');
+        const first = menu.querySelector('.menu-item');
+        if(first) first.focus();
+        document.addEventListener('focus', trapFocus, true);
+        document.addEventListener('keydown', onKeyDown);
+    }
 
-function closeMenu(){
-menu.classList.remove('active');
-menu.setAttribute('aria-hidden','true');
-openBtn.setAttribute('aria-expanded','false');
-if(lastFocused) lastFocused.focus();
-document.removeEventListener('focus', trapFocus, true);
-document.removeEventListener('keydown', onKeyDown);
-}
+    function closeMenu(){
+        menu.classList.remove('active');
+        menu.setAttribute('aria-hidden','true');
+        openBtn.setAttribute('aria-expanded','false');
+        if(lastFocused) lastFocused.focus();
+        document.removeEventListener('focus', trapFocus, true);
+        document.removeEventListener('keydown', onKeyDown);
+    }
 
-function trapFocus(e){
-if(!menu.contains(e.target)){
-e.stopPropagation();
-const focusables = [...menu.querySelectorAll(focusableSelector)];
-if(focusables.length) focusables[0].focus();
-}
-}
+    function trapFocus(e){
+        if(!menu.contains(e.target)){
+            e.stopPropagation();
+            const focusables = [...menu.querySelectorAll(focusableSelector)];
+            if(focusables.length) focusables[0].focus();
+        }
+    }
 
-function onKeyDown(e){
-if(e.key === 'Escape') closeMenu();
-if(e.key === 'Tab'){
-const focusables = [...menu.querySelectorAll(focusableSelector)];
-if(!focusables.length) return;
-const idx = focusables.indexOf(document.activeElement);
-if(e.shiftKey && idx === 0){
-e.preventDefault();
-focusables[focusables.length-1].focus();
-}
-else if(!e.shiftKey && idx === focusables.length-1){
-e.preventDefault();
-focusables[0].focus();
-}
-}
-}
+    function onKeyDown(e){
+        if(e.key === 'Escape') closeMenu();
+        if(e.key === 'Tab'){
+            const focusables = [...menu.querySelectorAll(focusableSelector)];
+            if(!focusables.length) return;
+            const idx = focusables.indexOf(document.activeElement);
+            if(e.shiftKey && idx === 0){
+                e.preventDefault();
+                focusables[focusables.length-1].focus();
+            }
+            else if(!e.shiftKey && idx === focusables.length-1){
+                e.preventDefault();
+                focusables[0].focus();
+            }
+        }
+    }
 
-openBtn.addEventListener('click', openMenu);
-closeBtn.addEventListener('click', closeMenu);
+    openBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
 
-window.closeMenu = closeMenu;
-})();
-   /* Social icons wave — FIXED */
+    window.closeMenu = closeMenu;
+})();/* Social icons wave — FIXED */
 (function(){
-const icons = document.querySelectorAll('.social-item');
+    const icons = document.querySelectorAll('.social-item');
 
-function wave(direction='forward'){
-const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
-seq.forEach((icon,i)=>{
-setTimeout(()=>{
-icon.classList.add('active-pulse');
-setTimeout(()=>icon.classList.remove('active-pulse'),500);
-}, i * 200);
-});
-const total = seq.length * 200 + 500;
-setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
-}
+    function wave(direction='forward'){
+        const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
+        seq.forEach((icon,i)=>{
+            setTimeout(()=>{
+                icon.classList.add('active-pulse');
+                setTimeout(()=>icon.classList.remove('active-pulse'),500);
+            }, i * 200);
+        });
+        const total = seq.length * 200 + 500;
+        setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
+    }
 
-if(icons.length) wave('forward');
+    if(icons.length) wave('forward');
 })();
 
 /* SPA loader — ALL PAGES SPA */
 (function(){
-const spa = document.getElementById('spa');
-const content = spa.querySelector('.spa-content');
+    const spa = document.getElementById('spa');
+    const content = spa.querySelector('.spa-content');
 
-function openSPA(html){
-content.innerHTML = `<button class="spa-close" onclick="closeSPA()">CLOSE</button>` + html;
-spa.classList.add('active');
-document.body.classList.add("spa-open");
-}
+    function openSPA(html){
+        content.innerHTML = `<button class="spa-close" onclick="closeSPA()">CLOSE</button>` + html;
+        spa.classList.add('active');
+        document.body.classList.add("spa-open");
+    }
 
-function closeSPA(){
-spa.classList.remove('active');
-document.body.classList.remove("spa-open");
-}
+    function closeSPA(){
+        spa.classList.remove('active');
+        document.body.classList.remove("spa-open");
+    }
 
-window.closeSPA = closeSPA;
+    window.closeSPA = closeSPA;
 
-document.addEventListener('keydown', e => {
-if(e.key === 'Escape') closeSPA();
-});
+    document.addEventListener('keydown', e => {
+        if(e.key === 'Escape') closeSPA();
+    });
 
-/* ALL SPA LINKS */
-document.querySelectorAll('.spa-link').forEach(link => {
-link.addEventListener('click', e => {
-e.preventDefault();
-closeMenu();
+    /* ALL SPA LINKS */
+    document.querySelectorAll('.spa-link').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            closeMenu();
 
-const page = link.dataset.page;
+            const page = link.dataset.page;
 
-/* ABOUT */
-if(page === 'about'){
-openSPA(`
+            /* ABOUT */
+            if(page === 'about'){
+                openSPA(`
 <h1>About LAstarworks</h1>
 
 <p><strong>LAstarworks</strong> is a long-term personal project combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
 
 <p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
-`);
-}
-   /* BASTION OBSERVATORY */
+                `);
+            }/* BASTION OBSERVATORY */
 if(page === 'bastion'){
-openSPA(`
+    openSPA(`
 <h1>Bastion Observatory</h1>
 
 <p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware.</p>
@@ -269,12 +215,12 @@ openSPA(`
 
 <h2>3D‑Printed Astronaut Helmet</h2>
 <p>The exterior is a full-scale 3D‑printed astronaut-inspired structure made from PETG segments.</p>
-`);
+    `);
 }
 
 /* BASTION GARDEN — FULL VERSION */
 if(page === 'garden'){
-openSPA(`
+    openSPA(`
 <h1>Bastion Garden</h1>
 
 <p><strong>Bastion Garden</strong> focuses specifically on experimental agriculture and sustainable systems.</p>
@@ -301,12 +247,12 @@ openSPA(`
 <p>An automated chicken coop forms another component of the system. Six hens provide eggs as well as organic material that can be processed through composting and vermiculture and returned to the garden.</p>
 
 <p>The intention is to experiment with small-scale circular systems, where outputs from one part of the environment can become inputs for another.</p>
-`);
+    `);
 }
 
 /* CONTACT */
 if(page === 'contact'){
-openSPA(`
+    openSPA(`
 <h1>Contact</h1>
 <ul>
 <li>Email: <strong>lastarworks@gmail.com</strong></li>
@@ -314,54 +260,54 @@ openSPA(`
 <li>YouTube: <strong>LAstarworks</strong></li>
 <li>AstroBin: <strong>LAstarworks.space</strong></li>
 </ul>
-`);
+    `);
 }
 
 /* GALLERY */
 if(page === 'gallery'){
-openSPA(`
+    openSPA(`
 <h1>Gallery</h1>
 <p>Photo gallery is being migrated into SPA mode.</p>
 <p>Full astrophotography archive coming soon.</p>
-`);
+    `);
 }
 
 /* BLOG */
 if(page === 'blog'){
-openSPA(`
+    openSPA(`
 <h1>Blog Notes</h1>
 <p>Blog entries will be displayed here.</p>
 <p>System is being upgraded to SPA format.</p>
-`);
+    `);
 }
 
 /* EVENTS */
 if(page === 'events'){
-openSPA(`
+    openSPA(`
 <h1>Events</h1>
 <p>Upcoming events, workshops and public nights will appear here.</p>
-`);
+    `);
 }
 
 /* DIY */
 if(page === 'diy'){
-openSPA(`
+    openSPA(`
 <h1>DIY Technology</h1>
 <p>DIY engineering projects will be added here.</p>
-`);
+    `);
 }
 
 /* MULTIMEDIA */
 if(page === 'multimedia'){
-openSPA(`
+    openSPA(`
 <h1>Multimedia</h1>
 <p>Multimedia archive is being prepared.</p>
-`);
+    `);
 }
 
 /* LIMENIKS — FULL BIO */
 if(page === 'limeniks'){
-openSPA(`
+    openSPA(`
 <h1>Goran Mandić — Limeniks</h1>
 
 <p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work has evolved across music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
@@ -419,4 +365,15 @@ openSPA(`
 
 <h2>The LAstarworks Vision</h2>
 <p>Limeniks is the creative identity.<br>
-L
+Limeniks Artworks represents the earlier visual and production work.<br>
+LAstarworks is the current main project — an evolving ecosystem of smart technology, experimental agriculture, astronomy, astrophotography, engineering, and art.</p>
+    `);
+}
+
+        });
+    });
+})();
+</script>
+
+</body>
+</html>

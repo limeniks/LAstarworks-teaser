@@ -1,372 +1,472 @@
-<!doctype html>
-<html lang="hr">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>LAstarworks — Bastion Observatory</title>
+/* =========================
+   style.css — FULL CLEAN (v114)
+   ========================= */
 
-<link rel="stylesheet" href="style.css?v=109">
-<link rel="icon" href="favicon.png" type="image/png">
-</head>
-<body>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 
-<div class="background-layer"></div>
-
-<div class="video-wrapper">
-<video muted loop playsinline preload="none" id="bgVideo"></video>
-</div>
-
-<div class="social-row">
-<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank"><img src="fb.svg?v=2"><span>Facebook</span></a>
-<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank"><img src="ig.svg?v=2"><span>Instagram</span></a>
-<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank"><img src="astrobin.svg?v=2"><span>AstroBin</span></a>
-<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg?v=2"><span>YouTube</span></a>
-</div>
-
-<button id="openMenu" class="enter-space-btn">LAUNCH</button>
-
-<audio id="bg-audio" loop preload="none">
-<source src="ok.mp3?v=2" type="audio/mpeg">
-</audio>
-
-<div id="menu" class="fullscreen-menu" aria-hidden="true">
-<button class="menu-close" id="closeMenu">CLOSE</button>
-
-<div class="menu-inner">
-<nav class="menu-items">
-
-<a class="menu-item spa-link" data-page="about">ABOUT THE PROJECT</a>
-
-<div class="menu-group">
-<div class="menu-group-title">PROJECTS</div>
-<a class="menu-item spa-link" data-page="bastion">Bastion Observatory</a>
-<a class="menu-item spa-link" data-page="garden">Bastion Garden</a>
-<a class="menu-item spa-link" data-page="diy">DIY Technology</a>
-<a class="menu-item spa-link" data-page="multimedia">Multimedia</a>
-</div>
-
-<a class="menu-item spa-link" data-page="gallery">GALLERY</a>
-<a class="menu-item spa-link" data-page="blog">BLOG NOTES</a>
-<a class="menu-item spa-link" data-page="events">EVENTS</a>
-<a class="menu-item spa-link" data-page="contact">CONTACT</a>
-
-<!-- ŠIROKI GUMB -->
-<a class="menu-item spa-link wide-button" data-page="limeniks">Goran Mandić — Limeniks</a>
-
-</nav>
-</div>
-</div>
-
-<div id="spa" class="spa-section">
-<div class="spa-bg"></div>
-<div class="spa-overlay"></div>
-<div class="spa-content"></div>
-</div>
-
-<footer>© LAstarworks.space — Project by Goran Mandić — Limeniks</footer>
-
-<script>/* Audio unlock */
-(function(){
-    const audio = document.getElementById('bg-audio');
-    function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
-    document.addEventListener('click', unlock, { once:true });
-    document.addEventListener('touchstart', unlock, { once:true });
-})();
-
-/* Lazy-load video */
-(function(){
-    const video = document.getElementById('bgVideo');
-    const src = "https://ia600802.us.archive.org/16/items/test-1-1_202605/test%20(1)%20(1).mp4";
-
-    window.addEventListener('load', () => {
-        requestAnimationFrame(() => {
-            video.src = src;
-            video.play().catch(()=>{});
-        });
-    });
-})();
-
-/* Menu */
-(function(){
-    const menu = document.getElementById('menu');
-    const openBtn = document.getElementById('openMenu');
-    const closeBtn = document.getElementById('closeMenu');
-    const focusableSelector = 'a[href], button:not([disabled])';
-    let lastFocused = null;
-
-    function openMenu(){
-        lastFocused = document.activeElement;
-        menu.classList.add('active');
-        menu.setAttribute('aria-hidden','false');
-        openBtn.setAttribute('aria-expanded','true');
-        const first = menu.querySelector('.menu-item');
-        if(first) first.focus();
-        document.addEventListener('focus', trapFocus, true);
-        document.addEventListener('keydown', onKeyDown);
-    }
-
-    function closeMenu(){
-        menu.classList.remove('active');
-        menu.setAttribute('aria-hidden','true');
-        openBtn.setAttribute('aria-expanded','false');
-        if(lastFocused) lastFocused.focus();
-        document.removeEventListener('focus', trapFocus, true);
-        document.removeEventListener('keydown', onKeyDown);
-    }
-
-    function trapFocus(e){
-        if(!menu.contains(e.target)){
-            e.stopPropagation();
-            const focusables = [...menu.querySelectorAll(focusableSelector)];
-            if(focusables.length) focusables[0].focus();
-        }
-    }
-
-    function onKeyDown(e){
-        if(e.key === 'Escape') closeMenu();
-        if(e.key === 'Tab'){
-            const focusables = [...menu.querySelectorAll(focusableSelector)];
-            if(!focusables.length) return;
-            const idx = focusables.indexOf(document.activeElement);
-            if(e.shiftKey && idx === 0){
-                e.preventDefault();
-                focusables[focusables.length-1].focus();
-            }
-            else if(!e.shiftKey && idx === focusables.length-1){
-                e.preventDefault();
-                focusables[0].focus();
-            }
-        }
-    }
-
-    openBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-
-    window.closeMenu = closeMenu;
-})();/* Social icons wave */
-(function(){
-    const icons = document.querySelectorAll('.social-item');
-
-    function wave(direction='forward'){
-        const seq = direction === 'forward' ? [...icons] : [...icons].reverse();
-        seq.forEach((icon,i)=>{
-            setTimeout(()=>{
-                icon.classList.add('active-pulse');
-                setTimeout(()=>icon.classList.remove('active-pulse'),500);
-            }, i * 200);
-        });
-        const total = seq.length * 200 + 500;
-        setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
-    }
-
-    if(icons.length) wave('forward');
-})();
-
-/* SPA loader */
-(function(){
-    const spa = document.getElementById('spa');
-    const content = spa.querySelector('.spa-content');
-
-    function openSPA(html){
-        content.innerHTML = `<button class="spa-close" onclick="closeSPA()">CLOSE</button>` + html;
-        spa.classList.add('active');
-        document.body.classList.add("spa-open");
-    }
-
-    function closeSPA(){
-        spa.classList.remove('active');
-        document.body.classList.remove("spa-open");
-    }
-
-    window.closeSPA = closeSPA;
-
-    document.addEventListener('keydown', e => {
-        if(e.key === 'Escape') closeSPA();
-    });
-
-    document.querySelectorAll('.spa-link').forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            closeMenu();
-
-            const page = link.dataset.page;
-
-            /* ABOUT */
-            if(page === 'about'){
-                openSPA(`
-<h1>About LAstarworks</h1>
-
-<p><strong>LAstarworks</strong> is a long-term personal project of <strong>Goran Mandić — Limeniks</strong>, combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story.</p>
-
-<p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
-                `);
-            }/* BASTION OBSERVATORY */
-if(page === 'bastion'){
-    openSPA(`
-<h1>Bastion Observatory</h1>
-
-<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware.</p>
-
-<p>It became widely recognized after the viral Reddit post “My DIY 3D‑printed observatory – BASTION (60‑segment dome)”.</p>
-
-<h2>Bastion Telescope</h2>
-<p>The observatory houses the <strong>Bastion Telescope</strong> powered by an <strong>OpenAstroTracker</strong> GoTo system.</p>
-
-<h2>3D‑Printed Astronaut Helmet</h2>
-<p>The exterior is a full-scale 3D‑printed astronaut-inspired structure made from PETG segments.</p>
-    `);
+/* GLOBAL DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* BASTION GARDEN — FULL */
-if(page === 'garden'){
-    openSPA(`
-<h1>Bastion Garden</h1>
-
-<p><strong>Bastion Garden</strong> focuses specifically on experimental agriculture and sustainable systems.</p>
-
-<p>The garden combines conventional growing methods with permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
-
-<p>Several experimental hydroponic systems are being developed, including vertical towers and other modular growing systems. One existing prototype is already functional and has been used for growing crops such as lettuce and tomatoes.</p>
-
-<h2>Future development includes:</h2>
-<ul>
-<li>hydroponic towers</li>
-<li>NFT systems</li>
-<li>Dutch bucket systems</li>
-<li>modular vertical growing units</li>
-<li>automated irrigation</li>
-<li>environmental sensors</li>
-<li>solar-powered pumps</li>
-<li>smart greenhouse systems</li>
-<li>alternative growing methods</li>
-</ul>
-
-<p>The project also incorporates a small permaculture-oriented growing area, where soil regeneration, companion planting, and low-resource maintenance are explored alongside more technological approaches.</p>
-
-<p>An automated chicken coop forms another component of the system. Six hens provide eggs as well as organic material that can be processed through composting and vermiculture and returned to the garden.</p>
-
-<p>The intention is to experiment with small-scale circular systems, where outputs from one part of the environment can become inputs for another.</p>
-    `);
+/* VARIABLES */
+:root{
+  --bg: #000;
+  --panel: rgba(0,0,0,0.35);
+  --panel-strong: rgba(0,0,0,0.68);
+  --muted: rgba(255,255,255,0.12);
+  --accent1: #ff6b6b;
+  --accent2: #ff9a6b;
+  --text: #e6e6e6;
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Orbitron', sans-serif;
+  --touch: 48px;
 }
 
-/* CONTACT */
-if(page === 'contact'){
-    openSPA(`
-<h1>Contact</h1>
-<ul>
-<li>Email: <strong>lastarworks@gmail.com</strong></li>
-<li>Instagram: <strong>@lastarworks.space</strong></li>
-<li>YouTube: <strong>LAstarworks</strong></li>
-<li>AstroBin: <strong>LAstarworks.space</strong></li>
-</ul>
-    `);
+/* =========================
+   SEO HIDDEN H1
+   ========================= */
+.seo-h1 {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
 }
 
-/* GALLERY */
-if(page === 'gallery'){
-    openSPA(`
-<h1>Gallery</h1>
-<p>Photo gallery is being migrated into SPA mode.</p>
-<p>Full astrophotography archive coming soon.</p>
-    `);
+/* =========================
+   BACKGROUND / VIDEO
+   ========================= */
+.background-layer {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: -3;
 }
 
-/* BLOG */
-if(page === 'blog'){
-    openSPA(`
-<h1>Blog Notes</h1>
-<p>Blog entries will be displayed here.</p>
-<p>System is being upgraded to SPA format.</p>
-    `);
+.video-wrapper {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -2;
 }
 
-/* EVENTS */
-if(page === 'events'){
-    openSPA(`
-<h1>Events</h1>
-<p>Upcoming events, workshops and public nights will appear here.</p>
-    `);
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeInBg 1.6s ease-in-out forwards;
+  opacity: 0;
+  will-change: opacity, transform;
 }
 
-/* DIY */
-if(page === 'diy'){
-    openSPA(`
-<h1>DIY Technology</h1>
-<p>DIY engineering projects will be added here.</p>
-    `);
+@keyframes fadeInBg { to { opacity: 1; } }
+
+/* =========================
+   TOP SOCIAL ROW — NEON GLOW
+   ========================= */
+.social-row {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  z-index: 2;
 }
 
-/* MULTIMEDIA */
-if(page === 'multimedia'){
-    openSPA(`
-<h1>Multimedia</h1>
-<p>Multimedia archive is being prepared.</p>
-    `);
+.social-item,
+.social-item:hover,
+.social-item:focus {
+  text-decoration: none !important;
+  outline: none !important;
 }
 
-/* LIMENIKS — FULL BIO */
-if(page === 'limeniks'){
-    openSPA(`
-<h1>Goran Mandić — Limeniks</h1>
-
-<p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work spans music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
-
-<p>The name Limeniks originated from the combination of two personal nicknames, Limeni and Iks, and gradually developed into Mandić's long-term artistic identity.</p>
-
-<h2>Music Background</h2>
-<p>As a bassist, Mandić performed with several Sisak-based bands including <strong>Blankets</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Šarena pojava</strong>.</p>
-
-<h2>Photography & Video Production</h2>
-<p>His creative work expanded into photography and video production, including music videos for <strong>Bad Mushrooms</strong> (<em>Demoni</em>, <em>Vrijeme promjena</em>, <em>Sanjam da si tu</em>) and <em>Mrtvi Sisak</em> by Šarena pojava.</p>
-
-<h2>Limeniks Artworks</h2>
-<p>This transition led to <strong>Limeniks Artworks</strong>, the identity under which Mandić produced visual and digital work.</p>
-
-<h2>LAstarworks — Current Focus</h2>
-<p><strong>LAstarworks</strong> is an independent experimental project focused on smart-home systems, automation, open technology, intelligent environmental systems, agriculture, astronomy, astrophotography, engineering, and creative experimentation.</p>
-
-<h2>Smart Living & Experimental Agriculture</h2>
-<ul>
-<li>automated irrigation</li>
-<li>hydroponic systems</li>
-<li>environmental monitoring</li>
-<li>smart greenhouse systems</li>
-<li>energy & water automation</li>
-<li>sensor networks</li>
-<li>open-source hardware</li>
-<li>3D-printed components</li>
-<li>modular automation</li>
-</ul>
-
-<h2>Bastion Observatory</h2>
-<p>A custom-built smart astronomical observatory combining astronomy, astrophotography, smart-home technology, open-source hardware, 3D printing, engineering, and sculpture.</p>
-
-<h2>Astro Garden</h2>
-<p>A fusion of astronomy, technology, nature, and experimentation.</p>
-
-<h2>Bastion Garden</h2>
-<p>An experimental agricultural zone combining permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
-
-<h2>Technology as Part of Life</h2>
-<p>LAstarworks connects home, garden, greenhouse, observatory, workshop, and energy systems into one ecosystem.</p>
-
-<h2>Astronomy & Astrophotography</h2>
-<p>Central motivations behind LAstarworks.</p>
-
-<h2>Art, Engineering & Making</h2>
-<p>LAstarworks remains fundamentally personal — designing, building, modifying, experimenting, repairing, printing, programming, photographing, and creating.</p>
-
-<h2>The LAstarworks Vision</h2>
-<p>Limeniks is the creative identity.<br>
-Limeniks Artworks represents earlier visual work.<br>
-LAstarworks is the current main project — an evolving ecosystem of smart technology, experimental agriculture, astronomy, astrophotography, engineering, and art.</p>
-    `);
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform .28s ease;
 }
 
-        });
-    });
-})();
-</script>
+.social-item img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
+  transition: filter .28s ease, transform .28s ease;
+}
 
-</body>
-</html>
+.social-item:hover img {
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.65));
+  transform: scale(1.18);
+}
+
+.social-item span {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+/* ORIGINAL PULSE */
+.active-pulse {
+  transform: scale(1.3);
+  opacity: 1;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* =========================
+   LAUNCH BUTTON — NEON GLOW (HALF SIZE)
+   ========================= */
+.enter-space-btn {
+  position: fixed;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 9px 21px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 17px;
+  letter-spacing: 3px;
+  font-family: var(--display);
+  cursor: pointer;
+  z-index: 2;
+
+  box-shadow:
+    0 0 10px rgba(255,255,255,0.35),
+    0 0 20px rgba(255,255,255,0.25),
+    inset 0 0 8px rgba(255,255,255,0.15);
+
+  animation: launchPulse 3.2s ease-in-out infinite;
+  transition: 0.25s ease;
+}
+
+.enter-space-btn:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 16px rgba(255,255,255,0.55),
+    0 0 32px rgba(255,255,255,0.35),
+    inset 0 0 12px rgba(255,255,255,0.25);
+  transform: translateX(-50%) scale(1.06);
+}
+
+@keyframes launchPulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.35),
+      0 0 20px rgba(255,255,255,0.25),
+      inset 0 0 8px rgba(255,255,255,0.15);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow:
+      0 0 18px rgba(255,255,255,0.55),
+      0 0 36px rgba(255,255,255,0.45),
+      inset 0 0 12px rgba(255,255,255,0.25);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.35),
+      0 0 20px rgba(255,255,255,0.25),
+      inset 0 0 8px rgba(255,255,255,0.15);
+  }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text);
+  font-family: var(--mono);
+  z-index: 2;
+}
+
+/* =========================
+   FULLSCREEN MENU
+   ========================= */
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  background: rgba(6,6,8,0.28);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  content-visibility: auto;
+}
+
+.fullscreen-menu.active { display: flex; opacity: 1; }
+
+.fullscreen-menu .menu-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: #fff;
+  font-family: var(--mono);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  z-index: 1310;
+}
+
+.fullscreen-menu .menu-inner {
+  width: 100%;
+  max-width: 1100px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-menu .menu-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-height: 76vh;
+  overflow: auto;
+  padding: 8px 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fullscreen-menu .menu-item {
+  display: inline-block;
+  width: calc(100% - 24px);
+  max-width: 720px;
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  transition: transform .12s ease, background .12s ease;
+  min-height: var(--touch);
+  line-height: var(--touch);
+}
+
+.fullscreen-menu .menu-item:hover,
+.fullscreen-menu .menu-item:active {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.03);
+}
+
+.fullscreen-menu .menu-item.sub {
+  font-size: 17px;
+  padding-left: 28px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.fullscreen-menu .menu-group {
+  width: 100%;
+  max-width: 720px;
+  text-align: left;
+  margin-top: 6px;
+}
+
+.fullscreen-menu .menu-group-title {
+  color: #dcdcdc;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 6px 0 8px 6px;
+}
+
+.fullscreen-menu .menu-item:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(255,107,107,0.06);
+}
+
+@media (min-width: 720px) {
+  .fullscreen-menu .menu-inner { padding: 20px; }
+  .fullscreen-menu .menu-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 18px 28px;
+    align-items: start;
+    justify-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 12px 18px;
+  }
+  .fullscreen-menu .menu-group { grid-column: 1 / -1; }
+  .fullscreen-menu .menu-item { width: 100%; text-align: left; padding: 14px 20px; }
+  .fullscreen-menu .menu-item.sub { padding-left: 36px; }
+}
+
+@media (max-width: 520px) and (orientation: landscape) {
+  .fullscreen-menu .menu-items { gap: 14px; padding: 12px 10px; max-height: 84vh; }
+  .fullscreen-menu .menu-item { font-size: 18px; padding: 12px 16px; }
+}
+
+@media (max-width: 360px) {
+  .fullscreen-menu .menu-item { font-size: 16px; padding: 14px 14px; }
+  .enter-space-btn { font-size: 18px; padding: 8px 18px; bottom: 100px; }
+}
+
+/* =========================
+   SPA OVERLAY
+   ========================= */
+
+#spa {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 900;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+#spa.active {
+  display: block;
+}
+
+.spa-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.spa-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.spa-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 50px 40px;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.85;
+  letter-spacing: 0.2px;
+}
+
+.spa-content p {
+  margin-bottom: 1.4rem;
+}
+
+.spa-content h1,
+.spa-content h2,
+.spa-content h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.spa-content ul {
+  margin: 1.2rem 0 1.6rem 1.4rem;
+  line-height: 1.9;
+}
+
+.spa-content li {
+  margin-bottom: 0.6rem;
+}
+
+/* =========================
+   SPA CLOSE BUTTON — NEON PULSE
+   ========================= */
+
+.spa-close {
+  position: sticky;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 10px 18px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: var(--mono);
+  letter-spacing: 1px;
+  transition: 0.25s ease;
+  animation: spaPulse 2.8s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(255,255,255,0.18);
+}
+
+.spa-close:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: #fff;
+  box-shadow:
+    0 0 18px rgba(255,255,255,0.35),
+    0 0 32px rgba(255,255,255,0.45),
+    inset 0 0 14px rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes spaPulse {
+  0%   { transform: scale(1); box-shadow: 0 0 12px rgba(255,255,255,0.18); }
+  50%  { transform: scale(1.06); box-shadow: 0 0 22px rgba(255,255,255,0.32); }
+  100% { transform: scale(1); box-shadow: 0 0 12px rgba(255,255,255,0.18); }
+}
+
+/* =========================
+   BLUR MAIN UI WHEN SPA OPEN
+   ========================= */
+
+body.spa-open .enter-space-btn,
+body.spa-open footer,
+body.spa-open .social-row {
+  filter: blur(10px) brightness(0.6);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* =========================
+   TOUCH
+   ========================= */
+
+.menu-item,
+.enter-space-btn,
+.social-item {
+  -webkit-tap-highlight-color: rgba(255,255,255,0.04);
+}
+
+.menu-item { touch-action: manipulation; }

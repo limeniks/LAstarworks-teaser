@@ -61,27 +61,16 @@ body::before {
 @keyframes fadeInBg { to { opacity: 1; } }
 
 /* =========================
-   TOP SOCIAL ROW — NEON GLOW
+   TOP SOCIAL ROW — NEON GLOW + ORIGINAL PULSE
    ========================= */
-.social-row {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  align-items: center;
-  z-index: 2;
-}
 
 .social-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  text-decoration: none;
-  transition: transform .28s ease, box-shadow .28s ease;
+  text-decoration: none !important;
+  transition: transform .28s ease, filter .28s ease;
 }
 
 .social-item img {
@@ -91,33 +80,33 @@ body::before {
 
   /* NEON GLOW */
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
-  transition: filter .28s ease;
+  transition: filter .28s ease, opacity .28s ease;
 }
 
-.social-item span {
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 14px;
-}
-
-/* PULSE ANIMACIJA ZA IKONE */
+/* ORIGINAL PULSE — scale + opacity */
 .social-item {
   animation: iconPulse 3.4s ease-in-out infinite;
 }
 
 @keyframes iconPulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.12); }
-  100% { transform: scale(1); }
+  0%   { transform: scale(1); opacity: 0.85; }
+  50%  { transform: scale(1.22); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.85; }
 }
 
 /* HOVER BOOST */
 .social-item:hover img {
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.55));
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.65));
 }
 
 .social-item:hover {
-  transform: scale(1.18);
+  transform: scale(1.26);
+  text-decoration: none !important;
+}
+
+.social-item:focus {
+  outline: none !important;
+}
 }/* =========================
    LAUNCH BUTTON — NEON GLOW (ORIGINAL SIZE)
    ========================= */

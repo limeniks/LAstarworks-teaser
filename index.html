@@ -3,12 +3,48 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>LAstarworks — Bastion Observatory</title>
+
+<title>Goran Mandić — LAstarworks — Limeniks — Bastion Observatory</title>
+
+<meta name="description" content="Goran Mandić — LAstarworks — Limeniks. Bastion Observatory, astrofotografija, DIY tehnologija, autonomni sustavi, kreativni projekti i vizualni radovi.">
+
+<link rel="canonical" href="https://lastarworks.space">
+
+<link rel="icon" href="favicon.png" type="image/png" sizes="512x512">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Goran Mandić — LAstarworks — Limeniks">
+<meta property="og:description" content="Astrofotografija, Bastion Observatory, DIY tehnologija, kreativni projekti.">
+<meta property="og:image" content="https://lastarworks.space/favicon.png">
+<meta property="og:url" content="https://lastarworks.space">
+<meta property="og:type" content="website">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Goran Mandić",
+  "alternateName": "Limeniks",
+  "url": "https://lastarworks.space",
+  "description": "Multidisciplinarni kreator, astrofotograf, inženjer DIY tehnologije i autor projekta LAstarworks.",
+  "sameAs": [
+    "https://www.facebook.com/lastarworks",
+    "https://www.instagram.com/lastarworks.space/",
+    "https://app.astrobin.com/u/LAstarworks.space#gallery",
+    "https://www.youtube.com/@LAstarworks"
+  ]
+}
+</script>
 
 <link rel="stylesheet" href="style.css?v=109">
-<link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
+
+<!-- SKRIVENI SEO H1 -->
+<h1 style="position:absolute;left:-9999px;top:-9999px;opacity:0;">
+Goran Mandić — LAstarworks — Limeniks — Bastion Observatory
+</h1>
 
 <div class="background-layer"></div>
 
@@ -17,10 +53,18 @@
 </div>
 
 <div class="social-row">
-<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank"><img src="fb.svg?v=2"><span>Facebook</span></a>
-<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank"><img src="ig.svg?v=2"><span>Instagram</span></a>
-<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank"><img src="astrobin.svg?v=2"><span>AstroBin</span></a>
-<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank"><img src="youtube.svg?v=2"><span>YouTube</span></a>
+<a class="social-item" href="https://www.facebook.com/lastarworks" target="_blank">
+    <img src="fb.svg?v=2" alt="LAstarworks Facebook"><span>Facebook</span>
+</a>
+<a class="social-item" href="https://www.instagram.com/lastarworks.space/" target="_blank">
+    <img src="ig.svg?v=2" alt="LAstarworks Instagram"><span>Instagram</span>
+</a>
+<a class="social-item" href="https://app.astrobin.com/u/LAstarworks.space#gallery" target="_blank">
+    <img src="astrobin.svg?v=2" alt="LAstarworks AstroBin profil"><span>AstroBin</span>
+</a>
+<a class="social-item" href="https://www.youtube.com/@LAstarworks" target="_blank">
+    <img src="youtube.svg?v=2" alt="LAstarworks YouTube kanal"><span>YouTube</span>
+</a>
 </div>
 
 <button id="openMenu" class="enter-space-btn">LAUNCH</button>
@@ -50,7 +94,6 @@
 <a class="menu-item spa-link" data-page="events">EVENTS</a>
 <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
-<!-- ŠIROKI GUMB -->
 <a class="menu-item spa-link wide-button" data-page="limeniks">Goran Mandić — Limeniks</a>
 
 </nav>
@@ -65,7 +108,8 @@
 
 <footer>© LAstarworks.space — Project by Goran Mandić — Limeniks</footer>
 
-<script>/* Audio unlock */
+<script>
+/* Audio unlock */
 (function(){
     const audio = document.getElementById('bg-audio');
     function unlock(){ if(audio.paused) audio.play().catch(()=>{}); }
@@ -143,7 +187,9 @@
     closeBtn.addEventListener('click', closeMenu);
 
     window.closeMenu = closeMenu;
-})();/* Social icons wave */
+})();
+
+/* Social icons wave */
 (function(){
     const icons = document.querySelectorAll('.social-item');
 
@@ -200,9 +246,11 @@
 
 <p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
                 `);
-            }/* BASTION OBSERVATORY */
-if(page === 'bastion'){
-    openSPA(`
+            }
+
+            /* BASTION OBSERVATORY */
+            if(page === 'bastion'){
+                openSPA(`
 <h1>Bastion Observatory</h1>
 
 <p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware.</p>
@@ -214,12 +262,12 @@ if(page === 'bastion'){
 
 <h2>3D‑Printed Astronaut Helmet</h2>
 <p>The exterior is a full-scale 3D‑printed astronaut-inspired structure made from PETG segments.</p>
-    `);
-}
+                `);
+            }
 
-/* BASTION GARDEN — FULL */
-if(page === 'garden'){
-    openSPA(`
+            /* BASTION GARDEN */
+            if(page === 'garden'){
+                openSPA(`
 <h1>Bastion Garden</h1>
 
 <p><strong>Bastion Garden</strong> focuses specifically on experimental agriculture and sustainable systems.</p>
@@ -246,12 +294,12 @@ if(page === 'garden'){
 <p>An automated chicken coop forms another component of the system. Six hens provide eggs as well as organic material that can be processed through composting and vermiculture and returned to the garden.</p>
 
 <p>The intention is to experiment with small-scale circular systems, where outputs from one part of the environment can become inputs for another.</p>
-    `);
-}
+                `);
+            }
 
-/* CONTACT */
-if(page === 'contact'){
-    openSPA(`
+            /* CONTACT */
+            if(page === 'contact'){
+                openSPA(`
 <h1>Contact</h1>
 <ul>
 <li>Email: <strong>lastarworks@gmail.com</strong></li>
@@ -259,54 +307,54 @@ if(page === 'contact'){
 <li>YouTube: <strong>LAstarworks</strong></li>
 <li>AstroBin: <strong>LAstarworks.space</strong></li>
 </ul>
-    `);
-}
+                `);
+            }
 
-/* GALLERY */
-if(page === 'gallery'){
-    openSPA(`
+            /* GALLERY */
+            if(page === 'gallery'){
+                openSPA(`
 <h1>Gallery</h1>
 <p>Photo gallery is being migrated into SPA mode.</p>
 <p>Full astrophotography archive coming soon.</p>
-    `);
-}
+                `);
+            }
 
-/* BLOG */
-if(page === 'blog'){
-    openSPA(`
+            /* BLOG */
+            if(page === 'blog'){
+                openSPA(`
 <h1>Blog Notes</h1>
 <p>Blog entries will be displayed here.</p>
 <p>System is being upgraded to SPA format.</p>
-    `);
-}
+                `);
+            }
 
-/* EVENTS */
-if(page === 'events'){
-    openSPA(`
+            /* EVENTS */
+            if(page === 'events'){
+                openSPA(`
 <h1>Events</h1>
 <p>Upcoming events, workshops and public nights will appear here.</p>
-    `);
-}
+                `);
+            }
 
-/* DIY */
-if(page === 'diy'){
-    openSPA(`
+            /* DIY */
+            if(page === 'diy'){
+                openSPA(`
 <h1>DIY Technology</h1>
 <p>DIY engineering projects will be added here.</p>
-    `);
-}
+                `);
+            }
 
-/* MULTIMEDIA */
-if(page === 'multimedia'){
-    openSPA(`
+            /* MULTIMEDIA */
+            if(page === 'multimedia'){
+                openSPA(`
 <h1>Multimedia</h1>
 <p>Multimedia archive is being prepared.</p>
-    `);
-}
+                `);
+            }
 
-/* LIMENIKS — FULL BIO */
-if(page === 'limeniks'){
-    openSPA(`
+            /* LIMENIKS — FULL BIO */
+            if(page === 'limeniks'){
+                openSPA(`
 <h1>Goran Mandić — Limeniks</h1>
 
 <p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work spans music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
@@ -360,8 +408,8 @@ if(page === 'limeniks'){
 <p>Limeniks is the creative identity.<br>
 Limeniks Artworks represents earlier visual work.<br>
 LAstarworks is the current main project — an evolving ecosystem of smart technology, experimental agriculture, astronomy, astrophotography, engineering, and art.</p>
-    `);
-}
+                `);
+            }
 
         });
     });

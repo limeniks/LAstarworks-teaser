@@ -10,7 +10,7 @@
 <meta name="author" content="LAstarworks">
 
 <!-- Bastion SEO -->
-<meta name="keywords" content="LAstarworks, Bastion Observatory, Bastion Garden, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory">
+<meta name="keywords" content="LAstarworks, Bastion Observatory, Bastion Garden, DIY observatory, 3D printed observatory, 60 segment dome, viral Reddit observatory, Goran Mandic, Limeniks">
 <meta property="og:title" content="My DIY 3D-printed observatory – BASTION (60-segment dome)">
 <meta property="og:description" content="The viral Reddit observatory project — a 3D-printed astronomical installation built in Piljenice.">
 <meta property="og:image" content="https://lastar.space/bastion.jpg">
@@ -95,6 +95,9 @@ LAUNCH
 <a class="menu-item spa-link" data-page="events">EVENTS</a>
 
 <a class="menu-item spa-link" data-page="contact">CONTACT</a>
+
+<!-- NOVA STAVKA U MENIJU -->
+<a class="menu-item spa-link" data-page="limeniks">Goran Mandić — Limeniks</a>
 
 </nav>
 </div>
@@ -241,121 +244,31 @@ closeMenu();
 
 const page = link.dataset.page;
 
-/* ABOUT — NEW TEXT */
+/* ABOUT */
 if(page === 'about'){
 openSPA(`
 <h1>About LAstarworks</h1>
-
 <p><strong>LAstarworks</strong> is a long-term personal project combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
-
-<p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand, piece by piece.</p>
+<p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
 `);
 }
 
-/* BASTION OBSERVATORY — NEW TEXT */
+/* BASTION OBSERVATORY */
 if(page === 'bastion'){
 openSPA(`
 <h1>Bastion Observatory</h1>
-
-<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware. It became widely recognized after the viral Reddit post <em>“My DIY 3D‑printed observatory – BASTION (60‑segment dome)”</em>.</p>
-
-<h2>Bastion Telescope</h2>
-<p>Inside the installation sits the <strong>Bastion Telescope</strong>, powered by an <strong>OpenAstroTracker</strong> system — an open‑source GoTo mount capable of precise celestial tracking.</p>
-
-<h2>The 3D‑Printed Astronaut Helmet</h2>
-<p>A full‑scale 3D‑printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually, it serves as both a sculpture and a functional housing for astronomical equipment.</p>
-
-<h2>A Science‑Art Installation in Piljenice</h2>
-<p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science‑art environment where technology, nature, and imagination coexist under the stars.</p>
-
-<ul>
-<li>a symbolic landmark of exploration</li>
-<li>a functional astronomical instrument</li>
-<li>a STEM educational piece</li>
-<li>an artistic sculpture illuminated by the night sky</li>
-</ul>
-
-<h2>Open Hardware, Open Sky</h2>
-<p>LAstarworks embraces open‑source tools, modular engineering, and accessible technology.</p>
+<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware. It became widely recognized after the viral Reddit post “My DIY 3D‑printed observatory – BASTION (60‑segment dome)”.</p>
+<p>The installation houses the <strong>Bastion Telescope</strong> powered by an <strong>OpenAstroTracker</strong> GoTo mount.</p>
+<p>The exterior is a full-scale 3D‑printed astronaut-inspired structure made from PETG segments.</p>
 `);
 }
 
-/* BASTION GARDEN — NEW TEXT */
+/* BASTION GARDEN */
 if(page === 'garden'){
 openSPA(`
 <h1>Bastion Garden</h1>
-
-<p><strong>Bastion Garden</strong> is a dual‑zone experimental garden combining classical planting, permaculture, hydroponics, automation, and sustainable micro‑ecosystems.</p>
-
-<h2>Hydroponic Systems</h2>
-<p>Two prototype hydroponic towers are currently in development — one fully functional, producing lettuce and tomatoes. Future systems will include:</p>
-
-<ul>
-<li>hydroponic towers</li>
-<li>NFT systems</li>
-<li>Dutch bucket systems</li>
-<li>modular vertical units</li>
-</ul>
-
-<h2>Permaculture Zone</h2>
-<p>The small garden zone uses classical planting with permaculture principles — soil regeneration, companion planting, and low‑resource maintenance.</p>
-
-<h2>Automated Chicken Coop</h2>
-<p>The garden includes an automated coop with six hens producing daily eggs and organic fertilizer. Waste is processed through composters and a vermiculture system, returning nutrients to the permaculture bed.</p>
-
-<h2>Large Garden Zone</h2>
-<p>The large garden combines traditional planting with hydroponics, including 3D‑printed tower prototypes.</p>
-
-<h2>Modular Greenhouse</h2>
-<p>A future greenhouse will include:</p>
-
-<ul>
-<li>solar‑powered pumps</li>
-<li>automated irrigation</li>
-<li>hydroponic test modules</li>
-<li>alternative growing methods</li>
-</ul>
-
-<p>Bastion Garden is part of the broader LAstarworks vision — building autonomous, sustainable, and experimental environments.</p>
-`);
-}
-
-/* CONTACT */
-if(page === 'contact'){
-openSPA(`
-<h1>Contact</h1>
-<ul>
-<li>Email: <strong>lastarworks@gmail.com</strong></li>
-<li>Instagram: <strong>@lastarworks.space</strong></li>
-<li>YouTube: <strong>LAstarworks</strong></li>
-<li>AstroBin: <strong>LAstarworks.space</strong></li>
-</ul>
-`);
-}
-
-/* GALLERY */
-if(page === 'gallery'){
-openSPA(`
-<h1>Gallery</h1>
-<p>Photo gallery is being migrated into SPA mode.</p>
-<p>Full astrophotography archive coming soon.</p>
-`);
-}
-
-/* BLOG */
-if(page === 'blog'){
-openSPA(`
-<h1>Blog Notes</h1>
-<p>Blog entries will be displayed here.</p>
-<p>System is being upgraded to SPA format.</p>
-`);
-}
-
-/* EVENTS */
-if(page === 'events'){
-openSPA(`
-<h1>Events</h1>
-<p>Upcoming events, workshops and public nights will appear here.</p>
+<p><strong>Bastion Garden</strong> is an experimental agricultural zone combining permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
+<p>Hydroponic towers, NFT systems, Dutch buckets, vertical units, automated irrigation, sensors, solar pumps — all part of the evolving system.</p>
 `);
 }
 
@@ -375,11 +288,91 @@ openSPA(`
 `);
 }
 
-});
-});
+/* GALLERY */
+if(page === 'gallery'){
+openSPA(`
+<h1>Gallery</h1>
+<p>Photo gallery is being migrated into SPA mode.</p>
+`);
+}
 
-})();
-</script>
+/* BLOG */
+if(page === 'blog'){
+openSPA(`
+<h1>Blog Notes</h1>
+<p>Blog entries will be displayed here.</p>
+`);
+}
 
-</body>
-</html>
+/* EVENTS */
+if(page === 'events'){
+openSPA(`
+<h1>Events</h1>
+<p>Upcoming events, workshops and public nights will appear here.</p>
+`);
+}
+
+/* CONTACT */
+if(page === 'contact'){
+openSPA(`
+<h1>Contact</h1>
+<ul>
+<li>Email: <strong>lastarworks@gmail.com</strong></li>
+<li>Instagram: <strong>@lastarworks.space</strong></li>
+<li>YouTube: <strong>LAstarworks</strong></li>
+<li>AstroBin: <strong>LAstarworks.space</strong></li>
+</ul>
+`);
+}
+
+/* LIMENIKS — NOVA SPA SEKCIJA */
+if(page === 'limeniks'){
+openSPA(`
+<h1>Goran Mandić — Limeniks</h1>
+
+<p><strong>Limeniks</strong> is the artistic pseudonym of Croatian multidisciplinary creator <strong>Goran Mandić</strong>, whose work has evolved across music, photography, video production, digital art, technology, astronomy, and experimental engineering.</p>
+
+<p>The name Limeniks originated from the combination of two personal nicknames, Limeni and Iks, and gradually developed from a personal nickname into Mandić's long-term artistic and creative identity.</p>
+
+<h2>Music Background</h2>
+<p>As a bassist, Mandić was active on the Sisak music scene and performed with several local bands, including <strong>Blankets</strong>, <strong>Pištolj na gumene metke</strong>, and <strong>Šarena pojava</strong>.</p>
+
+<h2>Photography & Video Production</h2>
+<p>His involvement in music expanded into photography and video production, particularly through the creation of music videos and visual material for musicians and bands.</p>
+
+<p>He worked across filming, directing, editing, and visual development.</p>
+
+<p>Documented collaborations include work with <strong>Bad Mushrooms</strong> on the music videos <em>Demoni</em>, <em>Vrijeme promjena</em>, and <em>Sanjam da si tu</em>, as well as the video for <em>Mrtvi Sisak</em> by Šarena pojava.</p>
+
+<h2>Limeniks Artworks</h2>
+<p>This transition from musician to visual creator led to the development of <strong>Limeniks Artworks</strong>, the creative identity under which Mandić has worked in video production, photography, digital art, and other visual projects.</p>
+
+<h2>LAstarworks — Current Focus</h2>
+<p><strong>LAstarworks</strong> is an independent experimental project focused on smart-home systems, automation, open technology, intelligent environmental systems, agriculture, astronomy, astrophotography, engineering, and creative experimentation.</p>
+
+<h2>Smart Living & Experimental Agriculture</h2>
+<p>The project explores how automation, sensors, electronics, software, renewable energy, and connected devices can merge with traditional agricultural practices.</p>
+
+<ul>
+<li>automated irrigation</li>
+<li>hydroponic systems</li>
+<li>environmental monitoring</li>
+<li>smart greenhouse systems</li>
+<li>energy & water automation</li>
+<li>sensor networks</li>
+<li>open-source hardware</li>
+<li>3D-printed components</li>
+<li>modular automation</li>
+</ul>
+
+<h2>Bastion Observatory</h2>
+<p><strong>Bastion Observatory</strong> is a custom-built smart astronomical observatory and art installation combining astronomy, astrophotography, smart-home technology, open-source hardware, 3D printing, engineering, and sculpture.</p>
+
+<h2>Astro Garden</h2>
+<p>The <strong>Astro Garden</strong> merges astronomy, technology, nature, and experimentation.</p>
+
+<h2>Bastion Garden</h2>
+<p><strong>Bastion Garden</strong> focuses on experimental agriculture, combining permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
+
+<h2>Technology as Part of Life</h2>
+<p>LAstarworks explores how smart technology can become

@@ -245,31 +245,62 @@ closeMenu();
 
 const page = link.dataset.page;
 
-/* ABOUT — NEW TEXT */
+/* ABOUT */
 if(page === 'about'){
 openSPA(`
 <h1>About LAstarworks</h1>
 
 <p><strong>LAstarworks</strong> is a long-term personal project combining astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
 
-<p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
+<p>Located in Piljenice, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand.</p>
 `);
 }
-   /* BASTION OBSERVATORY — NEW TEXT */
+   /* BASTION OBSERVATORY */
 if(page === 'bastion'){
 openSPA(`
 <h1>Bastion Observatory</h1>
 
-<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware. It became widely recognized after the viral Reddit post <em>“My DIY 3D‑printed observatory – BASTION (60‑segment dome)”</em>.</p>
+<p><strong>Bastion Observatory</strong> is a unique 3D‑printed astronomical installation combining engineering, art, and real astrophotography hardware.</p>
+
+<p>It became widely recognized after the viral Reddit post “My DIY 3D‑printed observatory – BASTION (60‑segment dome)”.</p>
 
 <h2>Bastion Telescope</h2>
-<p>Inside the installation sits the <strong>Bastion Telescope</strong>, powered by an <strong>OpenAstroTracker</strong> system — an open‑source GoTo mount capable of precise celestial tracking.</p>
+<p>The observatory houses the <strong>Bastion Telescope</strong> powered by an <strong>OpenAstroTracker</strong> GoTo system.</p>
 
-<h2>The 3D‑Printed Astronaut Helmet</h2>
-<p>A full‑scale 3D‑printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually, it serves as both a sculpture and a functional housing for astronomical equipment.</p>
+<h2>3D‑Printed Astronaut Helmet</h2>
+<p>The exterior is a full-scale 3D‑printed astronaut-inspired structure made from PETG segments.</p>
+`);
+}
 
-<h2>A Science‑Art Installation in Piljenice</h2>
-<p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science‑art environment where technology, nature, and imagination coexist under the stars.</p>
+/* BASTION GARDEN — FULL VERSION */
+if(page === 'garden'){
+openSPA(`
+<h1>Bastion Garden</h1>
+
+<p><strong>Bastion Garden</strong> focuses specifically on experimental agriculture and sustainable systems.</p>
+
+<p>The garden combines conventional growing methods with permaculture, hydroponics, automation, composting, vermiculture, and modular technology.</p>
+
+<p>Several experimental hydroponic systems are being developed, including vertical towers and other modular growing systems. One existing prototype is already functional and has been used for growing crops such as lettuce and tomatoes.</p>
+
+<h2>Future development includes:</h2>
+<ul>
+<li>hydroponic towers</li>
+<li>NFT systems</li>
+<li>Dutch bucket systems</li>
+<li>modular vertical growing units</li>
+<li>automated irrigation</li>
+<li>environmental sensors</li>
+<li>solar-powered pumps</li>
+<li>smart greenhouse systems</li>
+<li>alternative growing methods</li>
+</ul>
+
+<p>The project also incorporates a small permaculture-oriented growing area, where soil regeneration, companion planting, and low-resource maintenance are explored alongside more technological approaches.</p>
+
+<p>An automated chicken coop forms another component of the system. Six hens provide eggs as well as organic material that can be processed through composting and vermiculture and returned to the garden.</p>
+
+<p>The intention is to experiment with small-scale circular systems, where outputs from one part of the environment can become inputs for another.</p>
 `);
 }
 
@@ -328,7 +359,7 @@ openSPA(`
 `);
 }
 
-/* LIMENIKS — NOVA SPA SEKCIJA */
+/* LIMENIKS — FULL BIO */
 if(page === 'limeniks'){
 openSPA(`
 <h1>Goran Mandić — Limeniks</h1>
@@ -388,16 +419,4 @@ openSPA(`
 
 <h2>The LAstarworks Vision</h2>
 <p>Limeniks is the creative identity.<br>
-Limeniks Artworks represents the earlier visual and production work.<br>
-LAstarworks is the current main project — an evolving ecosystem of smart technology, experimental agriculture, astronomy, astrophotography, engineering, and art.</p>
-`);
-}
-
-});
-});
-
-})();
-</script>
-
-</body>
-</html>
+L

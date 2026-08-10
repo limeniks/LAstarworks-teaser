@@ -85,16 +85,15 @@ LAUNCH
 <div class="menu-group">
 <div class="menu-group-title">PROJECTS</div>
 
-<a class="menu-item sub" href="bastion">Bastion Observatory</a>
-<a class="menu-item sub" href="garden">Garden</a>
-<a class="menu-item sub" href="diy">DIY Technology</a>
-<a class="menu-item sub" href="multimedia">Multimedia</a>
+<a class="menu-item spa-link" data-page="bastion">Bastion Observatory</a>
+<a class="menu-item spa-link" data-page="garden">Garden</a>
+<a class="menu-item spa-link" data-page="diy">DIY Technology</a>
+<a class="menu-item spa-link" data-page="multimedia">Multimedia</a>
 </div>
 
-<!-- SPA LINKS (NO MORE .HTML FILES) -->
-<a class="menu-item" href="gallery">GALLERY</a>
-<a class="menu-item" href="blog">BLOG NOTES</a>
-<a class="menu-item" href="events">EVENTS</a>
+<a class="menu-item spa-link" data-page="gallery">GALLERY</a>
+<a class="menu-item spa-link" data-page="blog">BLOG NOTES</a>
+<a class="menu-item spa-link" data-page="events">EVENTS</a>
 
 <a class="menu-item spa-link" data-page="contact">CONTACT</a>
 
@@ -113,8 +112,6 @@ LAUNCH
 <footer>
 © LAstarworks.space — Project by <strong>Goran Mandić</strong> — <em>Limeniks</em>
 </footer>
-
-<!-- SCRIPTS -->
 <script>
 
 /* Audio unlock */
@@ -137,8 +134,7 @@ video.play().catch(()=>{});
 });
 });
 })();
-
-/* Menu */
+   /* Menu */
 (function(){
 const menu = document.getElementById('menu');
 const openBtn = document.getElementById('openMenu');
@@ -216,7 +212,7 @@ setTimeout(()=> wave(direction==='forward'?'backward':'forward'), total + 3000);
 if(icons.length) wave('forward');
 })();
 
-/* SPA loader — FIXED */
+/* SPA loader — ALL PAGES SPA */
 (function(){
 const spa = document.getElementById('spa');
 const content = spa.querySelector('.spa-content');
@@ -238,7 +234,7 @@ document.addEventListener('keydown', e => {
 if(e.key === 'Escape') closeSPA();
 });
 
-/* ABOUT + CONTACT SPA LINKS */
+/* ALL SPA LINKS */
 document.querySelectorAll('.spa-link').forEach(link => {
 link.addEventListener('click', e => {
 e.preventDefault();
@@ -246,14 +242,47 @@ closeMenu();
 
 const page = link.dataset.page;
 
+/* ABOUT — FULL ORIGINAL TEXT */
 if(page === 'about'){
 openSPA(`
 <h1>About LAstarworks</h1>
-<p><strong>LAstarworks</strong> is a long-term personal project created by <strong>Goran Mandić — Limeniks</strong>.</p>
-<p>It connects astronomy, DIY engineering, 3D printing, and artistic installations.</p>
+
+<p><strong>LAstarworks</strong> is a long-term personal project created by <strong>Goran Mandić — Limeniks</strong>.
+It connects astronomy, DIY engineering, 3D printing, and artistic installations into a single evolving story — built slowly, intentionally, and with a deep fascination for the night sky.</p>
+
+<p>Located in the quiet rural village of Piljenice, with low light pollution and open horizons, LAstarworks grows as both a technical workshop and a creative space. Every part of the project — from mechanical design to visual storytelling — is built by hand, piece by piece.</p>
+
+<h2>Bastion Observatory</h2>
+<p>The Bastion Observatory is a unique 3D-printed astronomical installation combining engineering, art, and real astrophotography hardware.
+It became widely recognized after the viral Reddit post <em>“My DIY 3D-printed observatory – BASTION (60-segment dome)”</em>.</p>
+
+<h2>Bastion Telescope</h2>
+<p>Inside the installation sits the Bastion Telescope, powered by an OpenAstroTracker system — an open-source GoTo mount capable of precise celestial tracking.
+This fusion of open hardware and artistic design represents the core philosophy of LAstarworks: science as a creative journey.</p>
+
+<h2>The 3D-Printed Astronaut Helmet</h2>
+<p>A full-scale 3D-printed astronaut helmet forms the outer shell of the Bastion Observatory. Printed in multiple PETG segments and assembled manually,
+it serves as both a sculpture and a functional housing for astronomical equipment.</p>
+
+<h2>A Science-Art Installation in Piljenice</h2>
+<p>The Bastion installation will become the central outdoor piece in the LAstarworks garden — a small science-art environment where technology, nature, and imagination coexist under the stars.</p>
+
+<ul>
+<li>a symbolic landmark of exploration</li>
+<li>a functional astronomical instrument</li>
+<li>a STEM educational piece</li>
+<li>an artistic sculpture illuminated by the night sky</li>
+</ul>
+
+<h2>Open Hardware, Open Sky</h2>
+<p>LAstarworks embraces open-source tools, modular engineering, and accessible technology.
+The project demonstrates that advanced astronomical equipment can be built at home with creativity, patience, and experimentation.</p>
+
+<p>Thank you for visiting this corner of the universe called LAstarworks.</p>
 `);
 }
 
+/* CONTACT */
 if(page === 'contact'){
 openSPA(`
 <h1>Contact</h1>
@@ -265,60 +294,52 @@ openSPA(`
 </ul>
 `);
 }
+
+/* GALLERY */
+if(page === 'gallery'){
+openSPA(`
+<h1>Gallery</h1>
+<p>Photo gallery is being migrated into SPA mode.</p>
+<p>Full astrophotography archive coming soon.</p>
+`);
+}
+
+/* BLOG */
+if(page === 'blog'){
+openSPA(`
+<h1>Blog Notes</h1>
+<p>Blog entries will be displayed here.</p>
+<p>System is being upgraded to SPA format.</p>
+`);
+}
+
+/* EVENTS */
+if(page === 'events'){
+openSPA(`
+<h1>Events</h1>
+<p>Upcoming events, workshops and public nights will appear here.</p>
+`);
+}
+
+/* PROJECTS */
+if(page === 'bastion'){
+openSPA(`<h1>Bastion Observatory</h1><p>UNDER CONSTRUCTION</p>`);
+}
+if(page === 'garden'){
+openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
+}
+if(page === 'diy'){
+openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
+}
+if(page === 'multimedia'){
+openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
+}
+
 });
-});
-
-/* PROJECT SUBPAGES + STATIC PAGES (SPA MODE) */
-document.querySelectorAll('.menu-item').forEach(link => {
-    link.addEventListener('click', e => {
-        const page = link.getAttribute('href');
-        const spaPage = link.dataset?.page;
-
-        if (spaPage || page === "gallery" || page === "blog" || page === "events") {
-            e.preventDefault();
-            closeMenu();
-        }
-
-        if (page === "gallery") {
-            openSPA(`
-                <h1>Gallery</h1>
-                <p>Photo gallery is being migrated into SPA mode.</p>
-                <p>Full astrophotography archive coming soon.</p>
-            `);
-        }
-
-        if (page === "blog") {
-            openSPA(`
-                <h1>Blog Notes</h1>
-                <p>Blog entries will be displayed here.</p>
-                <p>System is being upgraded to SPA format.</p>
-            `);
-        }
-
-        if (page === "events") {
-            openSPA(`
-                <h1>Events</h1>
-                <p>Upcoming events, workshops and public nights will appear here.</p>
-            `);
-        }
-
-        if (page === "bastion") {
-            openSPA(`<h1>Bastion Observatory</h1><p>UNDER CONSTRUCTION</p>`);
-        }
-        if (page === "garden") {
-            openSPA(`<h1>Garden</h1><p>UNDER CONSTRUCTION</p>`);
-        }
-        if (page === "diy") {
-            openSPA(`<h1>DIY Technology</h1><p>UNDER CONSTRUCTION</p>`);
-        }
-        if (page === "multimedia") {
-            openSPA(`<h1>Multimedia</h1><p>UNDER CONSTRUCTION</p>`);
-        }
-    });
 });
 
 })();
 </script>
 
 </body>
-</html>
+</html> 

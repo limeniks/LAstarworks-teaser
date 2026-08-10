@@ -1,5 +1,5 @@
 /* =========================
-   style.css — FULL CLEAN (v113)
+   style.css — FULL CLEAN (v114)
    ========================= */
 
 /* RESET */
@@ -28,6 +28,15 @@ body::before {
   --mono: 'Share Tech Mono', monospace;
   --display: 'Orbitron', sans-serif;
   --touch: 48px;
+}
+
+/* =========================
+   SEO HIDDEN H1
+   ========================= */
+.seo-h1 {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
 }
 
 /* =========================
@@ -75,12 +84,18 @@ body::before {
   z-index: 2;
 }
 
+.social-item,
+.social-item:hover,
+.social-item:focus {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
 .social-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  text-decoration: none !important;
   transition: transform .28s ease;
 }
 
@@ -88,8 +103,6 @@ body::before {
   width: 24px;
   height: 24px;
   display: block;
-
-  /* NEON GLOW */
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.35));
   transition: filter .28s ease, transform .28s ease;
 }
@@ -97,11 +110,6 @@ body::before {
 .social-item:hover img {
   filter: drop-shadow(0 0 14px rgba(255,255,255,0.65));
   transform: scale(1.18);
-}
-
-.social-item:focus {
-  outline: none !important;
-  text-decoration: none !important;
 }
 
 .social-item span {
@@ -125,18 +133,17 @@ body::before {
   bottom: 140px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 9px 21px; /* HALF SIZE */
+  padding: 9px 21px;
   border: 1px solid rgba(255,255,255,0.55);
   border-radius: 10px;
   background: rgba(0,0,0,0.45);
   color: #fff;
-  font-size: 17px; /* HALF SIZE */
+  font-size: 17px;
   letter-spacing: 3px;
   font-family: var(--display);
   cursor: pointer;
   z-index: 2;
 
-  /* NEON GLOW */
   box-shadow:
     0 0 10px rgba(255,255,255,0.35),
     0 0 20px rgba(255,255,255,0.25),

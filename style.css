@@ -1,5 +1,5 @@
 /* =========================
-   style.css — FULL CLEAN (v115)
+   style.css — FULL CLEAN (v116)
    ========================= */
 
 /* RESET */
@@ -301,7 +301,7 @@ footer {
 }
 
 /* =========================
-   MOBILE FIX — KACIGA
+   MOBILE FIX — KACIGA (SAFE)
    ========================= */
 
 @media (max-width: 480px) {
@@ -314,7 +314,8 @@ footer {
     border-radius: 10px;
   }
 
+  /* VRATI NORMALAN PADDING — FIX ZA CLOSE BUTTON I TEKST */
   .spa-content {
-    padding: 30px 20px;
+    padding: 50px 40px;
   }
 }
